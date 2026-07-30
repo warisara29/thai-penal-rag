@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Thai Penal Code RAG evaluation item",
+  "description": "One JSON object per line in eval_set.jsonl. Section IDs use the same canonical form as the parser: arabic base number, optional '/n' or ordinal word, e.g. '288', '335/1', '33 ทวิ'.",
+  "type": "object",
+  "required": ["id", "question", "question_type", "gold_sections", "reference_answer"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "stable unique id, e.g. 'penal-0001'"
+    },
+    "question": {
+      "type": "string",
+      "minLength": 5,
+      "description": "user question in Thai (or the language you serve)"
+    },
+    "question_type": {
+      "type": "string",
+      "enum": ["lookup", "multi_hop", "penalty", "definition", "exception", "unanswerable"],
+      "description": "lookup=single section; multi_hop=offence+general provision; penalty=compute/state punishment; definition=บทนิยาม; exception=ยกเว้น/เหตุลดหย่อน; unanswerable=not covered by the Penal Code (tests refusal)"
+    },
+    "gold_sections": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "section(s) that DIRECTLY answer the question. Empty ONLY for question_type=unanswerable. Retrieval Recall/MRR is scored against this."
+    },
+    "supporting_sections": {
+      "type": "array",
+      "items": {"type": "string"},
+      "default": [],
+      "description": "general provisions (usually Book 1) needed to reason but not the headline answer, e.g. มาตรา 80 (attempt), 83 (ตัวการ). Used for multi_hop coverage scoring."
+    },
+    "reference_answer": {
+      "type": "string",
+      "description": "expert-written model answer. For 'unanswerable', the expected refusal text."
+    },
+    "answer_claims": {
+      "type": "array",
+      "items": {"type": "string"},
+      "default": [],
+      "description": "atomic factual claims in the reference answer; each is checked for grounding in gold/supporting sections (claim-level faithfulness)."
+    },
+    "applicable_version_date": {
+      "type": "string",
+      "format": "date",
+      "description": "which version of the Code applies (non-retroactivity). ISO date. Optional until you version the corpus."
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["easy", "medium", "hard"],
+      "default": "medium"
+    },
+    "annotator": {"type": "string"},
+    "notes": {"type": "string"}
+  }
+}
