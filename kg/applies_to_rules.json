@@ -1,0 +1,47 @@
+{
+  "_doc": "Scope rules for the APPLIES_TO edge (Book-1 general provision -> offence). A lawyer VERIFIES and adjusts these rules (flip `verified` to true, fix `scope`, fill `needs_review`) instead of hand-listing every edge. kg/expand_applies_to.py materialises edges from these rules. Legal nuances that need a human eye are flagged in `note`. NOTHING here is authoritative until a lawyer sets verified=true.",
+  "_scopes": {
+    "all_offences": "every offence-bearing section (has ระวางโทษ) in ภาค 2 and ภาค 3",
+    "book2": "offence-bearing sections in ภาค 2 only (มาตรา 107-366/4) — excludes ลหุโทษ",
+    "book3_lahu": "ความผิดลหุโทษ, ภาค 3 (มาตรา 367-398)",
+    "by_penalty": "applies to all offences but the effect (period/degree) depends on the penalty class — lawyer refines per HAS_PENALTY tier",
+    "specific": "only the section ids listed in `targets`",
+    "needs_review": "no edges auto-generated; listed in applies_to_review.csv for manual curation"
+  },
+  "rules": [
+    {"label": "บทนิยาม", "general_sections": ["1"], "scope": "needs_review", "verified": false,
+     "note": "นิยามเชื่อมเฉพาะมาตราที่ใช้ถ้อยคำนั้น (selective) — คัดเลือกด้วยมือ"},
+
+    {"label": "การใช้กฎหมายอาญา (เขตอำนาจ/ไม่ย้อนหลัง)", "general_sections": ["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"], "scope": "needs_review", "verified": false,
+     "note": "กฎการใช้บังคับทั่วไป — โดยหลักใช้กับทุกความผิด แต่มักไม่ต้องทำเป็น edge ต่อมาตรา; ทบทวนว่าต้องการเชื่อมหรือไม่"},
+
+    {"label": "โทษและวิธีการเพื่อความปลอดภัย (กรอบโทษ)", "general_sections": ["18","19","20","21","22","23","24","25","26","27","28","29","29/1","30","30/1","30/2","30/3","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58"], "scope": "needs_review", "verified": false,
+     "note": "กรอบการลงโทษ/รอลงโทษ/วิธีการเพื่อความปลอดภัย — เป็นระบบโทษทั่วไป ไม่ใช่ APPLIES_TO รายมาตราโดยตรง; ทบทวน"},
+
+    {"label": "ความรับผิดในทางอาญา — เหตุทั่วไป", "general_sections": ["59","60","61","62","63","64","65","66","67","68","69","70","72","73","74","75","76","77","78","79"], "scope": "all_offences", "verified": false,
+     "note": "เจตนา/ประมาท/ป้องกัน/จำเป็น/เด็ก/วิกลจริต/มึนเมา/บันดาลโทสะ ฯลฯ ใช้กับความผิดทั่วไป"},
+    {"label": "ความผิดระหว่างสามีภริยา/ญาติ (ทรัพย์)", "general_sections": ["71"], "scope": "specific", "verified": false,
+     "targets": ["334","335","336","336/2","341","349","352","354","355","356","357","358","359","360","361","362","363","364","365","366"],
+     "note": "ม.71 ใช้เฉพาะความผิดเกี่ยวกับทรัพย์บางฐาน — ตรวจรายการเป้าหมายให้ตรงฉบับ"},
+
+    {"label": "การพยายามกระทำความผิด", "general_sections": ["80","81","82"], "scope": "book2", "verified": false,
+     "note": "พยายามใช้กับความผิดที่มีโทษ; พยายามกระทำความผิดลหุโทษไม่ต้องรับโทษ (ม.105) จึง exclude ภาค 3"},
+
+    {"label": "ตัวการ/ผู้ใช้", "general_sections": ["83","84","85","85/1","87","88","89"], "scope": "all_offences", "verified": false,
+     "note": "ตัวการและผู้ใช้ใช้ได้กับความผิดทั่วไปรวมลหุโทษ"},
+    {"label": "ผู้สนับสนุน", "general_sections": ["86"], "scope": "book2", "verified": false,
+     "note": "ผู้สนับสนุนในความผิดลหุโทษไม่ต้องรับโทษ (ม.106) จึง exclude ภาค 3"},
+
+    {"label": "การกระทำผิดหลายบท/หลายกระทง", "general_sections": ["90","91"], "scope": "all_offences", "verified": false,
+     "note": "หลักการลงโทษกรรมเดียว/หลายกรรม ใช้กับทุกความผิด"},
+
+    {"label": "การกระทำความผิดอีก (เพิ่มโทษ)", "general_sections": ["92","93","94"], "scope": "by_penalty", "verified": false,
+     "note": "การเพิ่มโทษฐานไม่เข็ดหลาบ ขึ้นกับชั้นโทษ/ประเภทความผิด — ทบทวนเงื่อนไข"},
+
+    {"label": "อายุความ", "general_sections": ["95","96","97","98","99","100","101"], "scope": "by_penalty", "verified": false,
+     "note": "อายุความฟ้อง/ล่วงเลยการลงโทษ กำหนดตามชั้นโทษ (ม.95) — ใช้กับทุกความผิดแต่ระยะเวลาต่างกัน"},
+
+    {"label": "บทบัญญัติที่ใช้แก่ความผิดลหุโทษ", "general_sections": ["102","103","104","105","106"], "scope": "book3_lahu", "verified": false,
+     "note": "ใช้กับความผิดลหุโทษ (ภาค 3) เป็นการเฉพาะ"}
+  ]
+}

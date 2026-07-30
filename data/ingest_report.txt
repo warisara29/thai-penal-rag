@@ -1,0 +1,6 @@
+sections written           : 444
+enabling-act rows          : 8 (kept out of corpus tree)
+with book / title / chapter: 444 / 412 / 339
+missing book               : 0 []
+in Book 1-2 but no title   : 0 []
+missing start ids in CSV   : 0

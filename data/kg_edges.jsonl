@@ -1,0 +1,2594 @@
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:1", "type": "CONTAINS"}
+{"src": "Section:1", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:1", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:2", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:3", "type": "CONTAINS"}
+{"src": "Section:3", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:4", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:5", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:6", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:7", "type": "CONTAINS"}
+{"src": "Section:7", "dst": "Section:256", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:245", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:107", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:135/2", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:339", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:257", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:118", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:266", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:126", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:121", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:110", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:115", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:117", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:120", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:248", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:116", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:240", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:109", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:108", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:242", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:244", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:123", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:127", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:113", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:122", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:283", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:340", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:135/3", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:125", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:128", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:119", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:282", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:135/4", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:241", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:247", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:249", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:129", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:114", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:112", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:111", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:243", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:246", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:254", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:124", "type": "CITES", "resolved": true}
+{"src": "Section:7", "dst": "Section:135/1", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:8", "type": "CONTAINS"}
+{"src": "Section:8", "dst": "Section:230", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:357", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:231", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:223", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:307", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:339", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:269", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:266", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:236", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:269/7", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:341", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:269/1", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:309", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:269/15", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:297", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:310", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:308", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:280", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:233", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:346", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:306", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:267", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:238", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:360", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:288", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:344", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:237", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:228", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:334", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:354", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:359", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:220", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:343", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:337", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:232", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:298", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:217", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:352", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:222", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:234", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:335", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:342", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:340", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:285", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:347", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:353", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:312", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:268", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:265", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:221", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:358", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:314", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:32", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:313", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:218", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:276", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:290", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:295", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:226", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:315", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:317", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:336", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:264", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:229", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:235", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:289", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:338", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:296", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:269/8", "type": "CITES", "resolved": true}
+{"src": "Section:8", "dst": "Section:224", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:9", "type": "CONTAINS"}
+{"src": "Section:9", "dst": "Section:154", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:150", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:162", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:148", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:166", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:157", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:161", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:155", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:165", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:201", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:152", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:163", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:203", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:151", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:153", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:200", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:156", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:160", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:204", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:205", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:159", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:147", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:149", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:164", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:202", "type": "CITES", "resolved": true}
+{"src": "Section:9", "dst": "Section:158", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:10", "type": "CONTAINS"}
+{"src": "Section:10", "dst": "Section:9", "type": "CITES", "resolved": true}
+{"src": "Section:10", "dst": "Section:8", "type": "CITES", "resolved": true}
+{"src": "Section:10", "dst": "Section:7", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:11", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:12", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:13", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:14", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:15", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:16", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:17", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:18", "type": "CONTAINS"}
+{"src": "Section:18", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:18", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:18", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:18", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "Section:18", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:19", "type": "CONTAINS"}
+{"src": "Section:19", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:20", "type": "CONTAINS"}
+{"src": "Section:20", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:20", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:21", "type": "CONTAINS"}
+{"src": "Section:21", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:22", "type": "CONTAINS"}
+{"src": "Section:22", "dst": "Section:91", "type": "CITES", "resolved": true}
+{"src": "Section:22", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:23", "type": "CONTAINS"}
+{"src": "Section:23", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:23", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:24", "type": "CONTAINS"}
+{"src": "Section:24", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:25", "type": "CONTAINS"}
+{"src": "Section:25", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:26", "type": "CONTAINS"}
+{"src": "Section:26", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:27", "type": "CONTAINS"}
+{"src": "Section:27", "dst": "Section:23", "type": "CITES", "resolved": true}
+{"src": "Section:27", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:27", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:28", "type": "CONTAINS"}
+{"src": "Section:28", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:29", "type": "CONTAINS"}
+{"src": "Section:29", "dst": "Section:24", "type": "CITES", "resolved": true}
+{"src": "Section:29", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "Section:29", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:29/1", "type": "CONTAINS"}
+{"src": "Section:29/1", "dst": "Section:29", "type": "CITES", "resolved": true}
+{"src": "Section:29/1", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:30", "type": "CONTAINS"}
+{"src": "Section:30", "dst": "Section:22", "type": "CITES", "resolved": true}
+{"src": "Section:30", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:30", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "Section:30", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:30/1", "type": "CONTAINS"}
+{"src": "Section:30/1", "dst": "Section:30", "type": "CITES", "resolved": true}
+{"src": "Section:30/1", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:30/2", "type": "CONTAINS"}
+{"src": "Section:30/2", "dst": "Section:30/1", "type": "CITES", "resolved": true}
+{"src": "Section:30/2", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "Section:30/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:30/3", "type": "CONTAINS"}
+{"src": "Section:30/3", "dst": "Section:30/2", "type": "CITES", "resolved": true}
+{"src": "Section:30/3", "dst": "Section:30/1", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:31", "type": "CONTAINS"}
+{"src": "Section:31", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:32", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:33", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:34", "type": "CONTAINS"}
+{"src": "Section:34", "dst": "Section:201", "type": "CITES", "resolved": true}
+{"src": "Section:34", "dst": "Section:144", "type": "CITES", "resolved": true}
+{"src": "Section:34", "dst": "Section:143", "type": "CITES", "resolved": true}
+{"src": "Section:34", "dst": "Section:149", "type": "CITES", "resolved": true}
+{"src": "Section:34", "dst": "Section:150", "type": "CITES", "resolved": true}
+{"src": "Section:34", "dst": "Section:202", "type": "CITES", "resolved": true}
+{"src": "Section:34", "dst": "Section:167", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:35", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:36", "type": "CONTAINS"}
+{"src": "Section:36", "dst": "Section:34", "type": "CITES", "resolved": true}
+{"src": "Section:36", "dst": "Section:33", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:37", "type": "CONTAINS"}
+{"src": "Section:37", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:38", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:39", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:40", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:41", "type": "CONTAINS"}
+{"src": "Section:41", "dst": "Section:245", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:357", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:286", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:223", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:339", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:319", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:210", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:284", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:213", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:279", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:292", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:309", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:297", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:310", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:211", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:277", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:280", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:214", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:316", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:288", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:278", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:216", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:240", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:334", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:354", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:281", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:220", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:242", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:215", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:212", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:244", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:337", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:311", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:299", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:222", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:217", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:298", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:335", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:318", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:294", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:293", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:283", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:340", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:285", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:320", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:312", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:282", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:221", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:314", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:219", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:241", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:209", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:313", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:218", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:276", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:290", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:295", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:289", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:315", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:243", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:317", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:336", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:246", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:338", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:296", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Section:224", "type": "CITES", "resolved": true}
+{"src": "Section:41", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:42", "type": "CONTAINS"}
+{"src": "Section:42", "dst": "Section:21", "type": "CITES", "resolved": true}
+{"src": "Section:42", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:42", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:43", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:44", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:45", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:46", "type": "CONTAINS"}
+{"src": "Section:46", "dst": "Section:45", "type": "CITES", "resolved": true}
+{"src": "Section:46", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:47", "type": "CONTAINS"}
+{"src": "Section:47", "dst": "Section:46", "type": "CITES", "resolved": true}
+{"src": "Section:47", "dst": "Section:30", "type": "CITES", "resolved": true}
+{"src": "Section:47", "dst": "Section:29", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:48", "type": "CONTAINS"}
+{"src": "Section:48", "dst": "Section:65", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:49", "type": "CONTAINS"}
+{"src": "Section:49", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:50", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:51", "type": "CONTAINS"}
+{"src": "Section:51", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:51", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:51", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:52", "type": "CONTAINS"}
+{"src": "Section:52", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:52", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:52", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:53", "type": "CONTAINS"}
+{"src": "Section:53", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:53", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:54", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:55", "type": "CONTAINS"}
+{"src": "Section:55", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:55", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:56", "type": "CONTAINS"}
+{"src": "Section:56", "dst": "Section:47", "type": "CITES", "resolved": true}
+{"src": "Section:56", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:56", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:57", "type": "CONTAINS"}
+{"src": "Section:57", "dst": "Section:56", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:58", "type": "CONTAINS"}
+{"src": "Section:58", "dst": "Section:56", "type": "CITES", "resolved": true}
+{"src": "Section:58", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:59", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:60", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:61", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:62", "type": "CONTAINS"}
+{"src": "Section:62", "dst": "Section:59", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:63", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:64", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:65", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:66", "type": "CONTAINS"}
+{"src": "Section:66", "dst": "Section:65", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:67", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:68", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:69", "type": "CONTAINS"}
+{"src": "Section:69", "dst": "Section:68", "type": "CITES", "resolved": true}
+{"src": "Section:69", "dst": "Section:67", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:70", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:71", "type": "CONTAINS"}
+{"src": "Section:71", "dst": "Section:357", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:341", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:349", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:348", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:346", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:364", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:360", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:344", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:355", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:334", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:354", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:359", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:343", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:356", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:345", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:352", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:335", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:362", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:342", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:363", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:350", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:347", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:353", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:361", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:351", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:336", "type": "CITES", "resolved": true}
+{"src": "Section:71", "dst": "Section:358", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:72", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:73", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:74", "type": "CONTAINS"}
+{"src": "Section:74", "dst": "Section:56", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:75", "type": "CONTAINS"}
+{"src": "Section:75", "dst": "Section:74", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:76", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:77", "type": "CONTAINS"}
+{"src": "Section:77", "dst": "Section:74", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:78", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:79", "type": "CONTAINS"}
+{"src": "Section:79", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:80", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:81", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:82", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:6", "type": "CONTAINS"}
+{"src": "chapter:6", "dst": "Section:83", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:6", "type": "CONTAINS"}
+{"src": "chapter:6", "dst": "Section:84", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:6", "type": "CONTAINS"}
+{"src": "chapter:6", "dst": "Section:85", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:6", "type": "CONTAINS"}
+{"src": "chapter:6", "dst": "Section:85/1", "type": "CONTAINS"}
+{"src": "Section:85/1", "dst": "Section:84", "type": "CITES", "resolved": true}
+{"src": "Section:85/1", "dst": "Section:85", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:6", "type": "CONTAINS"}
+{"src": "chapter:6", "dst": "Section:86", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:6", "type": "CONTAINS"}
+{"src": "chapter:6", "dst": "Section:87", "type": "CONTAINS"}
+{"src": "Section:87", "dst": "Section:84", "type": "CITES", "resolved": true}
+{"src": "Section:87", "dst": "Section:86", "type": "CITES", "resolved": true}
+{"src": "Section:87", "dst": "Section:85", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:6", "type": "CONTAINS"}
+{"src": "chapter:6", "dst": "Section:88", "type": "CONTAINS"}
+{"src": "Section:88", "dst": "Section:84", "type": "CITES", "resolved": true}
+{"src": "Section:88", "dst": "Section:85", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:6", "type": "CONTAINS"}
+{"src": "chapter:6", "dst": "Section:89", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:7", "type": "CONTAINS"}
+{"src": "chapter:7", "dst": "Section:90", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:7", "type": "CONTAINS"}
+{"src": "chapter:7", "dst": "Section:91", "type": "CONTAINS"}
+{"src": "Section:91", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:91", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:8", "type": "CONTAINS"}
+{"src": "chapter:8", "dst": "Section:92", "type": "CONTAINS"}
+{"src": "Section:92", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:8", "type": "CONTAINS"}
+{"src": "chapter:8", "dst": "Section:93", "type": "CONTAINS"}
+{"src": "Section:93", "dst": "Section:223", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:307", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:266", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:236", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:183", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:213", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:110", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:309", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:131", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:168", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:182", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:185", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:233", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:186", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:306", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:346", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:303", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:344", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:278", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:116", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:143", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:216", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:240", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:179", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:108", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:165", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:123", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:222", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:298", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:152", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:352", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:294", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:200", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:260", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:347", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:227", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:268", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:314", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:141", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:132", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:290", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:229", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:226", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:315", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:174", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:338", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:124", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:158", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:176", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:231", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:245", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:256", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:259", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:118", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:339", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:274", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:319", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:284", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:138", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:275", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:279", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:273", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:349", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:277", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:194", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:280", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:270", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:120", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:137", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:162", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:238", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:157", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:191", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:228", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:161", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:109", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:220", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:172", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:261", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:173", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:215", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:356", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:212", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:244", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:345", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:201", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:318", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:301", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:153", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:160", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:285", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:125", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:252", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:350", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:353", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:119", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:253", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:221", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:265", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:219", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:361", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:209", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:187", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:255", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:272", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:139", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:202", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:184", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:296", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:224", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:358", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:230", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:178", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:357", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:257", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:126", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:210", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:121", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:150", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:302", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:115", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:117", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:170", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:348", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:214", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:316", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:360", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:188", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:169", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:237", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:355", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:334", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:281", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:359", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:140", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:155", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:146", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:232", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:127", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:217", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:335", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:163", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:362", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:122", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:156", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:340", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:312", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:135", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:175", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:241", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:159", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:313", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:295", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:114", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:129", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:289", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:112", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:111", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:149", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:190", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:246", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:164", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:107", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:269", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:258", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:136", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:154", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:180", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:192", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:250", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:341", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:145", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:297", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:310", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:308", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:211", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:267", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:364", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:148", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:288", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:248", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:166", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:354", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:130", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:251", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:242", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:343", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:337", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:142", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:299", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:133", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:234", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:113", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:342", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:151", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:283", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:363", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:320", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:128", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:204", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:189", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:167", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:282", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:181", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:247", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:249", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:351", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:144", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:218", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:276", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:365", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:147", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:243", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:264", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:171", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:271", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:317", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:254", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:336", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:203", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:177", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Section:134", "type": "CITES", "resolved": true}
+{"src": "Section:93", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:8", "type": "CONTAINS"}
+{"src": "chapter:8", "dst": "Section:94", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:9", "type": "CONTAINS"}
+{"src": "chapter:9", "dst": "Section:95", "type": "CONTAINS"}
+{"src": "Section:95", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:95", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:95", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:9", "type": "CONTAINS"}
+{"src": "chapter:9", "dst": "Section:96", "type": "CONTAINS"}
+{"src": "Section:96", "dst": "Section:95", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:9", "type": "CONTAINS"}
+{"src": "chapter:9", "dst": "Section:97", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:9", "type": "CONTAINS"}
+{"src": "chapter:9", "dst": "Section:98", "type": "CONTAINS"}
+{"src": "Section:98", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:98", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:98", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:9", "type": "CONTAINS"}
+{"src": "chapter:9", "dst": "Section:99", "type": "CONTAINS"}
+{"src": "Section:99", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:99", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "Section:99", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:9", "type": "CONTAINS"}
+{"src": "chapter:9", "dst": "Section:100", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:9", "type": "CONTAINS"}
+{"src": "chapter:9", "dst": "Section:101", "type": "CONTAINS"}
+{"src": "Section:101", "dst": "Section:46", "type": "CITES", "resolved": true}
+{"src": "Section:101", "dst": "Section:47", "type": "CITES", "resolved": true}
+{"src": "book:1", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "Section:102", "type": "CONTAINS"}
+{"src": "Section:102", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:102", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:1", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "Section:103", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "Section:104", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "Section:105", "type": "CONTAINS"}
+{"src": "book:1", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "Section:106", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:107", "type": "CONTAINS"}
+{"src": "Section:107", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:107", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:107", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:108", "type": "CONTAINS"}
+{"src": "Section:108", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:108", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:108", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:109", "type": "CONTAINS"}
+{"src": "Section:109", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:109", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:110", "type": "CONTAINS"}
+{"src": "Section:110", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:110", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:110", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:111", "type": "CONTAINS"}
+{"src": "Section:111", "dst": "Section:108", "type": "CITES", "resolved": true}
+{"src": "Section:111", "dst": "Section:109", "type": "CITES", "resolved": true}
+{"src": "Section:111", "dst": "Section:107", "type": "CITES", "resolved": true}
+{"src": "Section:111", "dst": "Section:110", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:112", "type": "CONTAINS"}
+{"src": "Section:112", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:113", "type": "CONTAINS"}
+{"src": "Section:113", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:113", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:113", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:114", "type": "CONTAINS"}
+{"src": "Section:114", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:115", "type": "CONTAINS"}
+{"src": "Section:115", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:116", "type": "CONTAINS"}
+{"src": "Section:116", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:117", "type": "CONTAINS"}
+{"src": "Section:117", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:117", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:118", "type": "CONTAINS"}
+{"src": "Section:118", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:118", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:119", "type": "CONTAINS"}
+{"src": "Section:119", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:119", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:119", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:120", "type": "CONTAINS"}
+{"src": "Section:120", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:120", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:121", "type": "CONTAINS"}
+{"src": "Section:121", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:121", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:121", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:122", "type": "CONTAINS"}
+{"src": "Section:122", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:122", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:122", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:123", "type": "CONTAINS"}
+{"src": "Section:123", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:124", "type": "CONTAINS"}
+{"src": "Section:124", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:124", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:124", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:125", "type": "CONTAINS"}
+{"src": "Section:125", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:126", "type": "CONTAINS"}
+{"src": "Section:126", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:127", "type": "CONTAINS"}
+{"src": "Section:127", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:127", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:127", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:128", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:129", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:130", "type": "CONTAINS"}
+{"src": "Section:130", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:131", "type": "CONTAINS"}
+{"src": "Section:131", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:132", "type": "CONTAINS"}
+{"src": "Section:132", "dst": "Section:130", "type": "CITES", "resolved": true}
+{"src": "Section:132", "dst": "Section:131", "type": "CITES", "resolved": true}
+{"src": "Section:132", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:132", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:132", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:133", "type": "CONTAINS"}
+{"src": "Section:133", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:133", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:134", "type": "CONTAINS"}
+{"src": "Section:134", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:134", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1", "type": "CONTAINS"}
+{"src": "title:1", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:135", "type": "CONTAINS"}
+{"src": "Section:135", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:135", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1/1", "type": "CONTAINS"}
+{"src": "title:1/1", "dst": "Section:135/1", "type": "CONTAINS"}
+{"src": "Section:135/1", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:135/1", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:135/1", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:135/1", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1/1", "type": "CONTAINS"}
+{"src": "title:1/1", "dst": "Section:135/2", "type": "CONTAINS"}
+{"src": "Section:135/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:135/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:1/1", "type": "CONTAINS"}
+{"src": "title:1/1", "dst": "Section:135/3", "type": "CONTAINS"}
+{"src": "Section:135/3", "dst": "Section:135/2", "type": "CITES", "resolved": true}
+{"src": "Section:135/3", "dst": "Section:135/1", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:1/1", "type": "CONTAINS"}
+{"src": "title:1/1", "dst": "Section:135/4", "type": "CONTAINS"}
+{"src": "Section:135/4", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:135/4", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:136", "type": "CONTAINS"}
+{"src": "Section:136", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:136", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:137", "type": "CONTAINS"}
+{"src": "Section:137", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:137", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:138", "type": "CONTAINS"}
+{"src": "Section:138", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:138", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:139", "type": "CONTAINS"}
+{"src": "Section:139", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:139", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:140", "type": "CONTAINS"}
+{"src": "Section:140", "dst": "Section:139", "type": "CITES", "resolved": true}
+{"src": "Section:140", "dst": "Section:138", "type": "CITES", "resolved": true}
+{"src": "Section:140", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:140", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:141", "type": "CONTAINS"}
+{"src": "Section:141", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:141", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:142", "type": "CONTAINS"}
+{"src": "Section:142", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:142", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:143", "type": "CONTAINS"}
+{"src": "Section:143", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:143", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:144", "type": "CONTAINS"}
+{"src": "Section:144", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:144", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:145", "type": "CONTAINS"}
+{"src": "Section:145", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:145", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:146", "type": "CONTAINS"}
+{"src": "Section:146", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:146", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:147", "type": "CONTAINS"}
+{"src": "Section:147", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:147", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:147", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:148", "type": "CONTAINS"}
+{"src": "Section:148", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:148", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:148", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:148", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:149", "type": "CONTAINS"}
+{"src": "Section:149", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:149", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:149", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:149", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:150", "type": "CONTAINS"}
+{"src": "Section:150", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:150", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:150", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:151", "type": "CONTAINS"}
+{"src": "Section:151", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:151", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:151", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:152", "type": "CONTAINS"}
+{"src": "Section:152", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:152", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:153", "type": "CONTAINS"}
+{"src": "Section:153", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:153", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:154", "type": "CONTAINS"}
+{"src": "Section:154", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:154", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:154", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:155", "type": "CONTAINS"}
+{"src": "Section:155", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:155", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:155", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:156", "type": "CONTAINS"}
+{"src": "Section:156", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:156", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:156", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:157", "type": "CONTAINS"}
+{"src": "Section:157", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:157", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:158", "type": "CONTAINS"}
+{"src": "Section:158", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:158", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:159", "type": "CONTAINS"}
+{"src": "Section:159", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:159", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:160", "type": "CONTAINS"}
+{"src": "Section:160", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:160", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:161", "type": "CONTAINS"}
+{"src": "Section:161", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:161", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:162", "type": "CONTAINS"}
+{"src": "Section:162", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:162", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:163", "type": "CONTAINS"}
+{"src": "Section:163", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:163", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:164", "type": "CONTAINS"}
+{"src": "Section:164", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:164", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:165", "type": "CONTAINS"}
+{"src": "Section:165", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:165", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:2", "type": "CONTAINS"}
+{"src": "title:2", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:166", "type": "CONTAINS"}
+{"src": "Section:166", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:166", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:167", "type": "CONTAINS"}
+{"src": "Section:167", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:167", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:168", "type": "CONTAINS"}
+{"src": "Section:168", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:168", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:169", "type": "CONTAINS"}
+{"src": "Section:169", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:169", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:170", "type": "CONTAINS"}
+{"src": "Section:170", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:170", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:171", "type": "CONTAINS"}
+{"src": "Section:171", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:171", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:172", "type": "CONTAINS"}
+{"src": "Section:172", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:172", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:173", "type": "CONTAINS"}
+{"src": "Section:173", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:173", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:174", "type": "CONTAINS"}
+{"src": "Section:174", "dst": "Section:173", "type": "CITES", "resolved": true}
+{"src": "Section:174", "dst": "Section:172", "type": "CITES", "resolved": true}
+{"src": "Section:174", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:174", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:175", "type": "CONTAINS"}
+{"src": "Section:175", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:175", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:176", "type": "CONTAINS"}
+{"src": "Section:176", "dst": "Section:175", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:177", "type": "CONTAINS"}
+{"src": "Section:177", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:177", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:178", "type": "CONTAINS"}
+{"src": "Section:178", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:178", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:179", "type": "CONTAINS"}
+{"src": "Section:179", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:179", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:180", "type": "CONTAINS"}
+{"src": "Section:180", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:180", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:181", "type": "CONTAINS"}
+{"src": "Section:181", "dst": "Section:178", "type": "CITES", "resolved": true}
+{"src": "Section:181", "dst": "Section:180", "type": "CITES", "resolved": true}
+{"src": "Section:181", "dst": "Section:174", "type": "CITES", "resolved": true}
+{"src": "Section:181", "dst": "Section:177", "type": "CITES", "resolved": true}
+{"src": "Section:181", "dst": "Section:175", "type": "CITES", "resolved": true}
+{"src": "Section:181", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:181", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:181", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:181", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:182", "type": "CONTAINS"}
+{"src": "Section:182", "dst": "Section:178", "type": "CITES", "resolved": true}
+{"src": "Section:182", "dst": "Section:177", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:183", "type": "CONTAINS"}
+{"src": "Section:183", "dst": "Section:180", "type": "CITES", "resolved": true}
+{"src": "Section:183", "dst": "Section:178", "type": "CITES", "resolved": true}
+{"src": "Section:183", "dst": "Section:177", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:184", "type": "CONTAINS"}
+{"src": "Section:184", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:184", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:185", "type": "CONTAINS"}
+{"src": "Section:185", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:185", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:186", "type": "CONTAINS"}
+{"src": "Section:186", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:186", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:187", "type": "CONTAINS"}
+{"src": "Section:187", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:187", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:188", "type": "CONTAINS"}
+{"src": "Section:188", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:188", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:189", "type": "CONTAINS"}
+{"src": "Section:189", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:189", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:190", "type": "CONTAINS"}
+{"src": "Section:190", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:190", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:191", "type": "CONTAINS"}
+{"src": "Section:191", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:191", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:191", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:191", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:192", "type": "CONTAINS"}
+{"src": "Section:192", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:192", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:193", "type": "CONTAINS"}
+{"src": "Section:193", "dst": "Section:192", "type": "CITES", "resolved": true}
+{"src": "Section:193", "dst": "Section:184", "type": "CITES", "resolved": true}
+{"src": "Section:193", "dst": "Section:189", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:194", "type": "CONTAINS"}
+{"src": "Section:194", "dst": "Section:45", "type": "CITES", "resolved": true}
+{"src": "Section:194", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:194", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:195", "type": "CONTAINS"}
+{"src": "Section:195", "dst": "Section:49", "type": "CITES", "resolved": true}
+{"src": "Section:195", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:195", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:196", "type": "CONTAINS"}
+{"src": "Section:196", "dst": "Section:50", "type": "CITES", "resolved": true}
+{"src": "Section:196", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:196", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:197", "type": "CONTAINS"}
+{"src": "Section:197", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:197", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:198", "type": "CONTAINS"}
+{"src": "Section:198", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:198", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:199", "type": "CONTAINS"}
+{"src": "Section:199", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:199", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:200", "type": "CONTAINS"}
+{"src": "Section:200", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:200", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:200", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:201", "type": "CONTAINS"}
+{"src": "Section:201", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:201", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:201", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:201", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:202", "type": "CONTAINS"}
+{"src": "Section:202", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:202", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:202", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:202", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:203", "type": "CONTAINS"}
+{"src": "Section:203", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:203", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:204", "type": "CONTAINS"}
+{"src": "Section:204", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:204", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:204", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:204", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:3", "type": "CONTAINS"}
+{"src": "title:3", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:205", "type": "CONTAINS"}
+{"src": "Section:205", "dst": "Section:204", "type": "CITES", "resolved": true}
+{"src": "Section:205", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:205", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:205", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:205", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:4", "type": "CONTAINS"}
+{"src": "title:4", "dst": "Section:206", "type": "CONTAINS"}
+{"src": "Section:206", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:206", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:4", "type": "CONTAINS"}
+{"src": "title:4", "dst": "Section:207", "type": "CONTAINS"}
+{"src": "Section:207", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:207", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:4", "type": "CONTAINS"}
+{"src": "title:4", "dst": "Section:208", "type": "CONTAINS"}
+{"src": "Section:208", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:208", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:5", "type": "CONTAINS"}
+{"src": "title:5", "dst": "Section:209", "type": "CONTAINS"}
+{"src": "Section:209", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:209", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:5", "type": "CONTAINS"}
+{"src": "title:5", "dst": "Section:210", "type": "CONTAINS"}
+{"src": "Section:210", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:210", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:210", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:210", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:5", "type": "CONTAINS"}
+{"src": "title:5", "dst": "Section:211", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:5", "type": "CONTAINS"}
+{"src": "title:5", "dst": "Section:212", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:5", "type": "CONTAINS"}
+{"src": "title:5", "dst": "Section:213", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:5", "type": "CONTAINS"}
+{"src": "title:5", "dst": "Section:214", "type": "CONTAINS"}
+{"src": "Section:214", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:214", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:5", "type": "CONTAINS"}
+{"src": "title:5", "dst": "Section:215", "type": "CONTAINS"}
+{"src": "Section:215", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:215", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:5", "type": "CONTAINS"}
+{"src": "title:5", "dst": "Section:216", "type": "CONTAINS"}
+{"src": "Section:216", "dst": "Section:215", "type": "CITES", "resolved": true}
+{"src": "Section:216", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:216", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:217", "type": "CONTAINS"}
+{"src": "Section:217", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:217", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:218", "type": "CONTAINS"}
+{"src": "Section:218", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:218", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:218", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:219", "type": "CONTAINS"}
+{"src": "Section:219", "dst": "Section:218", "type": "CITES", "resolved": true}
+{"src": "Section:219", "dst": "Section:217", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:220", "type": "CONTAINS"}
+{"src": "Section:220", "dst": "Section:218", "type": "CITES", "resolved": true}
+{"src": "Section:220", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:220", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:221", "type": "CONTAINS"}
+{"src": "Section:221", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:221", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:222", "type": "CONTAINS"}
+{"src": "Section:222", "dst": "Section:218", "type": "CITES", "resolved": true}
+{"src": "Section:222", "dst": "Section:217", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:223", "type": "CONTAINS"}
+{"src": "Section:223", "dst": "Section:222", "type": "CITES", "resolved": true}
+{"src": "Section:223", "dst": "Section:217", "type": "CITES", "resolved": true}
+{"src": "Section:223", "dst": "Section:218", "type": "CITES", "resolved": true}
+{"src": "Section:223", "dst": "Section:220", "type": "CITES", "resolved": true}
+{"src": "Section:223", "dst": "Section:221", "type": "CITES", "resolved": true}
+{"src": "Section:223", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:223", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:224", "type": "CONTAINS"}
+{"src": "Section:224", "dst": "Section:218", "type": "CITES", "resolved": true}
+{"src": "Section:224", "dst": "Section:222", "type": "CITES", "resolved": true}
+{"src": "Section:224", "dst": "Section:221", "type": "CITES", "resolved": true}
+{"src": "Section:224", "dst": "Section:217", "type": "CITES", "resolved": true}
+{"src": "Section:224", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:224", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:224", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:225", "type": "CONTAINS"}
+{"src": "Section:225", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:225", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:226", "type": "CONTAINS"}
+{"src": "Section:226", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:226", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:227", "type": "CONTAINS"}
+{"src": "Section:227", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:227", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:228", "type": "CONTAINS"}
+{"src": "Section:228", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:228", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:229", "type": "CONTAINS"}
+{"src": "Section:229", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:229", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:230", "type": "CONTAINS"}
+{"src": "Section:230", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:230", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:231", "type": "CONTAINS"}
+{"src": "Section:231", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:231", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:232", "type": "CONTAINS"}
+{"src": "Section:232", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:232", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:233", "type": "CONTAINS"}
+{"src": "Section:233", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:233", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:234", "type": "CONTAINS"}
+{"src": "Section:234", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:234", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:235", "type": "CONTAINS"}
+{"src": "Section:235", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:235", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:236", "type": "CONTAINS"}
+{"src": "Section:236", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:236", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:237", "type": "CONTAINS"}
+{"src": "Section:237", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:237", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:238", "type": "CONTAINS"}
+{"src": "Section:238", "dst": "Section:230", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:231", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:233", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:232", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:234", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:236", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:229", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:237", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:226", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:228", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:235", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Section:227", "type": "CITES", "resolved": true}
+{"src": "Section:238", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:238", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:238", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:6", "type": "CONTAINS"}
+{"src": "title:6", "dst": "Section:239", "type": "CONTAINS"}
+{"src": "Section:239", "dst": "Section:230", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:231", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:233", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:232", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:234", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:236", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:229", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:237", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:226", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:228", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:235", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Section:227", "type": "CITES", "resolved": true}
+{"src": "Section:239", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:239", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:240", "type": "CONTAINS"}
+{"src": "Section:240", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:240", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:240", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:241", "type": "CONTAINS"}
+{"src": "Section:241", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:241", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:241", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:242", "type": "CONTAINS"}
+{"src": "Section:242", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:242", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:243", "type": "CONTAINS"}
+{"src": "Section:243", "dst": "Section:240", "type": "CITES", "resolved": true}
+{"src": "Section:243", "dst": "Section:241", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:244", "type": "CONTAINS"}
+{"src": "Section:244", "dst": "Section:240", "type": "CITES", "resolved": true}
+{"src": "Section:244", "dst": "Section:241", "type": "CITES", "resolved": true}
+{"src": "Section:244", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:244", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:245", "type": "CONTAINS"}
+{"src": "Section:245", "dst": "Section:240", "type": "CITES", "resolved": true}
+{"src": "Section:245", "dst": "Section:241", "type": "CITES", "resolved": true}
+{"src": "Section:245", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:245", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:246", "type": "CONTAINS"}
+{"src": "Section:246", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:246", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:247", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:248", "type": "CONTAINS"}
+{"src": "Section:248", "dst": "Section:240", "type": "CITES", "resolved": true}
+{"src": "Section:248", "dst": "Section:241", "type": "CITES", "resolved": true}
+{"src": "Section:248", "dst": "Section:247", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:249", "type": "CONTAINS"}
+{"src": "Section:249", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:249", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:250", "type": "CONTAINS"}
+{"src": "Section:250", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:250", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:251", "type": "CONTAINS"}
+{"src": "Section:251", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:251", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:252", "type": "CONTAINS"}
+{"src": "Section:252", "dst": "Section:251", "type": "CITES", "resolved": true}
+{"src": "Section:252", "dst": "Section:250", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:253", "type": "CONTAINS"}
+{"src": "Section:253", "dst": "Section:251", "type": "CITES", "resolved": true}
+{"src": "Section:253", "dst": "Section:250", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:254", "type": "CONTAINS"}
+{"src": "Section:254", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:254", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:255", "type": "CONTAINS"}
+{"src": "Section:255", "dst": "Section:251", "type": "CITES", "resolved": true}
+{"src": "Section:255", "dst": "Section:250", "type": "CITES", "resolved": true}
+{"src": "Section:255", "dst": "Section:254", "type": "CITES", "resolved": true}
+{"src": "Section:255", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:255", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:256", "type": "CONTAINS"}
+{"src": "Section:256", "dst": "Section:254", "type": "CITES", "resolved": true}
+{"src": "Section:256", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:256", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:257", "type": "CONTAINS"}
+{"src": "Section:257", "dst": "Section:256", "type": "CITES", "resolved": true}
+{"src": "Section:257", "dst": "Section:254", "type": "CITES", "resolved": true}
+{"src": "Section:257", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:257", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:258", "type": "CONTAINS"}
+{"src": "Section:258", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:258", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:259", "type": "CONTAINS"}
+{"src": "Section:259", "dst": "Section:258", "type": "CITES", "resolved": true}
+{"src": "Section:259", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:259", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:260", "type": "CONTAINS"}
+{"src": "Section:260", "dst": "Section:259", "type": "CITES", "resolved": true}
+{"src": "Section:260", "dst": "Section:258", "type": "CITES", "resolved": true}
+{"src": "Section:260", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:260", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:261", "type": "CONTAINS"}
+{"src": "Section:261", "dst": "Section:259", "type": "CITES", "resolved": true}
+{"src": "Section:261", "dst": "Section:258", "type": "CITES", "resolved": true}
+{"src": "Section:261", "dst": "Section:254", "type": "CITES", "resolved": true}
+{"src": "Section:261", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:261", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:262", "type": "CONTAINS"}
+{"src": "Section:262", "dst": "Section:256", "type": "CITES", "resolved": true}
+{"src": "Section:262", "dst": "Section:261", "type": "CITES", "resolved": true}
+{"src": "Section:262", "dst": "Section:257", "type": "CITES", "resolved": true}
+{"src": "Section:262", "dst": "Section:254", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:263", "type": "CONTAINS"}
+{"src": "Section:263", "dst": "Section:256", "type": "CITES", "resolved": true}
+{"src": "Section:263", "dst": "Section:259", "type": "CITES", "resolved": true}
+{"src": "Section:263", "dst": "Section:258", "type": "CITES", "resolved": true}
+{"src": "Section:263", "dst": "Section:251", "type": "CITES", "resolved": true}
+{"src": "Section:263", "dst": "Section:250", "type": "CITES", "resolved": true}
+{"src": "Section:263", "dst": "Section:254", "type": "CITES", "resolved": true}
+{"src": "Section:263", "dst": "Section:262", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:264", "type": "CONTAINS"}
+{"src": "Section:264", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:264", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:265", "type": "CONTAINS"}
+{"src": "Section:265", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:265", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:266", "type": "CONTAINS"}
+{"src": "Section:266", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:266", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:267", "type": "CONTAINS"}
+{"src": "Section:267", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:267", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:268", "type": "CONTAINS"}
+{"src": "Section:268", "dst": "Section:266", "type": "CITES", "resolved": true}
+{"src": "Section:268", "dst": "Section:264", "type": "CITES", "resolved": true}
+{"src": "Section:268", "dst": "Section:265", "type": "CITES", "resolved": true}
+{"src": "Section:268", "dst": "Section:267", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:269", "type": "CONTAINS"}
+{"src": "Section:269", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:269/1", "type": "CONTAINS"}
+{"src": "Section:269/1", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/1", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:269/2", "type": "CONTAINS"}
+{"src": "Section:269/2", "dst": "Section:269/1", "type": "CITES", "resolved": true}
+{"src": "Section:269/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:269/3", "type": "CONTAINS"}
+{"src": "Section:269/3", "dst": "Section:269/2", "type": "CITES", "resolved": true}
+{"src": "Section:269/3", "dst": "Section:269/1", "type": "CITES", "resolved": true}
+{"src": "Section:269/3", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/3", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:269/4", "type": "CONTAINS"}
+{"src": "Section:269/4", "dst": "Section:269/1", "type": "CITES", "resolved": true}
+{"src": "Section:269/4", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/4", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:269/5", "type": "CONTAINS"}
+{"src": "Section:269/5", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/5", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:269/6", "type": "CONTAINS"}
+{"src": "Section:269/6", "dst": "Section:269/5", "type": "CITES", "resolved": true}
+{"src": "Section:269/6", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/6", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:269/7", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:269/8", "type": "CONTAINS"}
+{"src": "Section:269/8", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/8", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:269/9", "type": "CONTAINS"}
+{"src": "Section:269/9", "dst": "Section:269/8", "type": "CITES", "resolved": true}
+{"src": "Section:269/9", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/9", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:269/10", "type": "CONTAINS"}
+{"src": "Section:269/10", "dst": "Section:269/8", "type": "CITES", "resolved": true}
+{"src": "Section:269/10", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/10", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:269/11", "type": "CONTAINS"}
+{"src": "Section:269/11", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/11", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:269/12", "type": "CONTAINS"}
+{"src": "Section:269/12", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/12", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:269/13", "type": "CONTAINS"}
+{"src": "Section:269/13", "dst": "Section:269/12", "type": "CITES", "resolved": true}
+{"src": "Section:269/13", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/13", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:269/14", "type": "CONTAINS"}
+{"src": "Section:269/14", "dst": "Section:269/12", "type": "CITES", "resolved": true}
+{"src": "Section:269/14", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:269/14", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:7", "type": "CONTAINS"}
+{"src": "title:7", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:269/15", "type": "CONTAINS"}
+{"src": "Section:269/15", "dst": "Section:269/13", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:8", "type": "CONTAINS"}
+{"src": "title:8", "dst": "Section:270", "type": "CONTAINS"}
+{"src": "Section:270", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:270", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:8", "type": "CONTAINS"}
+{"src": "title:8", "dst": "Section:271", "type": "CONTAINS"}
+{"src": "Section:271", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:271", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:8", "type": "CONTAINS"}
+{"src": "title:8", "dst": "Section:272", "type": "CONTAINS"}
+{"src": "Section:272", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:272", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:8", "type": "CONTAINS"}
+{"src": "title:8", "dst": "Section:273", "type": "CONTAINS"}
+{"src": "Section:273", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:273", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:8", "type": "CONTAINS"}
+{"src": "title:8", "dst": "Section:274", "type": "CONTAINS"}
+{"src": "Section:274", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:274", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:8", "type": "CONTAINS"}
+{"src": "title:8", "dst": "Section:275", "type": "CONTAINS"}
+{"src": "Section:275", "dst": "Section:273", "type": "CITES", "resolved": true}
+{"src": "Section:275", "dst": "Section:274", "type": "CITES", "resolved": true}
+{"src": "Section:275", "dst": "Section:272", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:276", "type": "CONTAINS"}
+{"src": "Section:276", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:276", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:276", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:277", "type": "CONTAINS"}
+{"src": "Section:277", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:277", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:277", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:277/2", "type": "CONTAINS"}
+{"src": "Section:277/2", "dst": "Section:276", "type": "CITES", "resolved": true}
+{"src": "Section:277/2", "dst": "Section:277", "type": "CITES", "resolved": true}
+{"src": "Section:277/2", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:277/2", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:277/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:277/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:277/3", "type": "CONTAINS"}
+{"src": "Section:277/3", "dst": "Section:276", "type": "CITES", "resolved": true}
+{"src": "Section:277/3", "dst": "Section:277", "type": "CITES", "resolved": true}
+{"src": "Section:277/3", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:277/3", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:277/3", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:278", "type": "CONTAINS"}
+{"src": "Section:278", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:278", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:278", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:279", "type": "CONTAINS"}
+{"src": "Section:279", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:279", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:279", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:280", "type": "CONTAINS"}
+{"src": "Section:280", "dst": "Section:278", "type": "CITES", "resolved": true}
+{"src": "Section:280", "dst": "Section:279", "type": "CITES", "resolved": true}
+{"src": "Section:280", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:280", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:280", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:280", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:280/1", "type": "CONTAINS"}
+{"src": "Section:280/1", "dst": "Section:276", "type": "CITES", "resolved": true}
+{"src": "Section:280/1", "dst": "Section:277", "type": "CITES", "resolved": true}
+{"src": "Section:280/1", "dst": "Section:278", "type": "CITES", "resolved": true}
+{"src": "Section:280/1", "dst": "Section:279", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:281", "type": "CONTAINS"}
+{"src": "Section:281", "dst": "Section:285/2", "type": "CITES", "resolved": true}
+{"src": "Section:281", "dst": "Section:285", "type": "CITES", "resolved": true}
+{"src": "Section:281", "dst": "Section:276", "type": "CITES", "resolved": true}
+{"src": "Section:281", "dst": "Section:278", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:282", "type": "CONTAINS"}
+{"src": "Section:282", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:282", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:283", "type": "CONTAINS"}
+{"src": "Section:283", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:283", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:283", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:283", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:283/2", "type": "CONTAINS"}
+{"src": "Section:283/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:283/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:284", "type": "CONTAINS"}
+{"src": "Section:284", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:284", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:285", "type": "CONTAINS"}
+{"src": "Section:285", "dst": "Section:280", "type": "CITES", "resolved": true}
+{"src": "Section:285", "dst": "Section:282", "type": "CITES", "resolved": true}
+{"src": "Section:285", "dst": "Section:277/2", "type": "CITES", "resolved": true}
+{"src": "Section:285", "dst": "Section:278", "type": "CITES", "resolved": true}
+{"src": "Section:285", "dst": "Section:276", "type": "CITES", "resolved": true}
+{"src": "Section:285", "dst": "Section:277/3", "type": "CITES", "resolved": true}
+{"src": "Section:285", "dst": "Section:283", "type": "CITES", "resolved": true}
+{"src": "Section:285", "dst": "Section:279", "type": "CITES", "resolved": true}
+{"src": "Section:285", "dst": "Section:277", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:285/1", "type": "CONTAINS"}
+{"src": "Section:285/1", "dst": "Section:277", "type": "CITES", "resolved": true}
+{"src": "Section:285/1", "dst": "Section:283", "type": "CITES", "resolved": true}
+{"src": "Section:285/1", "dst": "Section:279", "type": "CITES", "resolved": true}
+{"src": "Section:285/1", "dst": "Section:282", "type": "CITES", "resolved": true}
+{"src": "Section:285/1", "dst": "Section:283/2", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:285/2", "type": "CONTAINS"}
+{"src": "Section:285/2", "dst": "Section:277/2", "type": "CITES", "resolved": true}
+{"src": "Section:285/2", "dst": "Section:278", "type": "CITES", "resolved": true}
+{"src": "Section:285/2", "dst": "Section:276", "type": "CITES", "resolved": true}
+{"src": "Section:285/2", "dst": "Section:277/3", "type": "CITES", "resolved": true}
+{"src": "Section:285/2", "dst": "Section:279", "type": "CITES", "resolved": true}
+{"src": "Section:285/2", "dst": "Section:277", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:286", "type": "CONTAINS"}
+{"src": "Section:286", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:286", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:286", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:287", "type": "CONTAINS"}
+{"src": "Section:287", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:287", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:287/1", "type": "CONTAINS"}
+{"src": "Section:287/1", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:287/1", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:9", "type": "CONTAINS"}
+{"src": "title:9", "dst": "Section:287/2", "type": "CONTAINS"}
+{"src": "Section:287/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:287/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:288", "type": "CONTAINS"}
+{"src": "Section:288", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:288", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:288", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:289", "type": "CONTAINS"}
+{"src": "Section:289", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:290", "type": "CONTAINS"}
+{"src": "Section:290", "dst": "Section:289", "type": "CITES", "resolved": true}
+{"src": "Section:290", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:291", "type": "CONTAINS"}
+{"src": "Section:291", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:291", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:292", "type": "CONTAINS"}
+{"src": "Section:292", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:292", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:293", "type": "CONTAINS"}
+{"src": "Section:293", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:293", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:294", "type": "CONTAINS"}
+{"src": "Section:294", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:294", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:295", "type": "CONTAINS"}
+{"src": "Section:295", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:295", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:296", "type": "CONTAINS"}
+{"src": "Section:296", "dst": "Section:289", "type": "CITES", "resolved": true}
+{"src": "Section:296", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:296", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:297", "type": "CONTAINS"}
+{"src": "Section:297", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:297", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:298", "type": "CONTAINS"}
+{"src": "Section:298", "dst": "Section:297", "type": "CITES", "resolved": true}
+{"src": "Section:298", "dst": "Section:289", "type": "CITES", "resolved": true}
+{"src": "Section:298", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:298", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:299", "type": "CONTAINS"}
+{"src": "Section:299", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:299", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:300", "type": "CONTAINS"}
+{"src": "Section:300", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:300", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:301", "type": "CONTAINS"}
+{"src": "Section:301", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:301", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:302", "type": "CONTAINS"}
+{"src": "Section:302", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:302", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:303", "type": "CONTAINS"}
+{"src": "Section:303", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:303", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:304", "type": "CONTAINS"}
+{"src": "Section:304", "dst": "Section:302", "type": "CITES", "resolved": true}
+{"src": "Section:304", "dst": "Section:301", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:305", "type": "CONTAINS"}
+{"src": "Section:305", "dst": "Section:302", "type": "CITES", "resolved": true}
+{"src": "Section:305", "dst": "Section:301", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:306", "type": "CONTAINS"}
+{"src": "Section:306", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:306", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:307", "type": "CONTAINS"}
+{"src": "Section:307", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:307", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:10", "type": "CONTAINS"}
+{"src": "title:10", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:308", "type": "CONTAINS"}
+{"src": "Section:308", "dst": "Section:307", "type": "CITES", "resolved": true}
+{"src": "Section:308", "dst": "Section:298", "type": "CITES", "resolved": true}
+{"src": "Section:308", "dst": "Section:306", "type": "CITES", "resolved": true}
+{"src": "Section:308", "dst": "Section:290", "type": "CITES", "resolved": true}
+{"src": "Section:308", "dst": "Section:297", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:309", "type": "CONTAINS"}
+{"src": "Section:309", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:309", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:310", "type": "CONTAINS"}
+{"src": "Section:310", "dst": "Section:297", "type": "CITES", "resolved": true}
+{"src": "Section:310", "dst": "Section:290", "type": "CITES", "resolved": true}
+{"src": "Section:310", "dst": "Section:298", "type": "CITES", "resolved": true}
+{"src": "Section:310", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:310", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "Section:310", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:310/2", "type": "CONTAINS"}
+{"src": "Section:310/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:310/2", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "Section:310/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:311", "type": "CONTAINS"}
+{"src": "Section:311", "dst": "Section:300", "type": "CITES", "resolved": true}
+{"src": "Section:311", "dst": "Section:291", "type": "CITES", "resolved": true}
+{"src": "Section:311", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:311", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "Section:311", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:312", "type": "CONTAINS"}
+{"src": "Section:312", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:312", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:312/2", "type": "CONTAINS"}
+{"src": "Section:312/2", "dst": "Section:312", "type": "CITES", "resolved": true}
+{"src": "Section:312/2", "dst": "Section:310/2", "type": "CITES", "resolved": true}
+{"src": "Section:312/2", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:312/2", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:312/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:312/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:312/3", "type": "CONTAINS"}
+{"src": "Section:312/3", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:312/3", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:313", "type": "CONTAINS"}
+{"src": "Section:313", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:313", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:313", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:313", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "Section:313", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:314", "type": "CONTAINS"}
+{"src": "Section:314", "dst": "Section:313", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:315", "type": "CONTAINS"}
+{"src": "Section:315", "dst": "Section:313", "type": "CITES", "resolved": true}
+{"src": "Section:315", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:315", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:315", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:316", "type": "CONTAINS"}
+{"src": "Section:316", "dst": "Section:313", "type": "CITES", "resolved": true}
+{"src": "Section:316", "dst": "Section:314", "type": "CITES", "resolved": true}
+{"src": "Section:316", "dst": "Section:315", "type": "CITES", "resolved": true}
+{"src": "Section:316", "dst": "Penalty:detention", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:317", "type": "CONTAINS"}
+{"src": "Section:317", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:317", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:318", "type": "CONTAINS"}
+{"src": "Section:318", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:318", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:319", "type": "CONTAINS"}
+{"src": "Section:319", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:319", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:320", "type": "CONTAINS"}
+{"src": "Section:320", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:320", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:321", "type": "CONTAINS"}
+{"src": "Section:321", "dst": "Section:309", "type": "CITES", "resolved": true}
+{"src": "Section:321", "dst": "Section:310", "type": "CITES", "resolved": true}
+{"src": "Section:321", "dst": "Section:311", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:321/1", "type": "CONTAINS"}
+{"src": "Section:321/1", "dst": "Section:317", "type": "CITES", "resolved": true}
+{"src": "Section:321/1", "dst": "Section:312/3", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:322", "type": "CONTAINS"}
+{"src": "Section:322", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:322", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:323", "type": "CONTAINS"}
+{"src": "Section:323", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:323", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:324", "type": "CONTAINS"}
+{"src": "Section:324", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:324", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:325", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:326", "type": "CONTAINS"}
+{"src": "Section:326", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:326", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:327", "type": "CONTAINS"}
+{"src": "Section:327", "dst": "Section:326", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:328", "type": "CONTAINS"}
+{"src": "Section:328", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:328", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:329", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:330", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:331", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:332", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:11", "type": "CONTAINS"}
+{"src": "title:11", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:333", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:334", "type": "CONTAINS"}
+{"src": "Section:334", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:334", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:335", "type": "CONTAINS"}
+{"src": "Section:335", "dst": "Section:334", "type": "CITES", "resolved": true}
+{"src": "Section:335", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:335", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:335/2", "type": "CONTAINS"}
+{"src": "Section:335/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:335/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:336", "type": "CONTAINS"}
+{"src": "Section:336", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:336", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:1", "type": "CONTAINS"}
+{"src": "chapter:1", "dst": "Section:336/2", "type": "CONTAINS"}
+{"src": "Section:336/2", "dst": "Section:334", "type": "CITES", "resolved": true}
+{"src": "Section:336/2", "dst": "Section:335", "type": "CITES", "resolved": true}
+{"src": "Section:336/2", "dst": "Section:336", "type": "CITES", "resolved": true}
+{"src": "Section:336/2", "dst": "Section:335/2", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:337", "type": "CONTAINS"}
+{"src": "Section:337", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:337", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:338", "type": "CONTAINS"}
+{"src": "Section:338", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:338", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:339", "type": "CONTAINS"}
+{"src": "Section:339", "dst": "Section:335", "type": "CITES", "resolved": true}
+{"src": "Section:339", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:339", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:339", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:339", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:339/2", "type": "CONTAINS"}
+{"src": "Section:339/2", "dst": "Section:335/2", "type": "CITES", "resolved": true}
+{"src": "Section:339/2", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:339/2", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:339/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:339/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:340", "type": "CONTAINS"}
+{"src": "Section:340", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:340", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:340", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:340", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:340/2", "type": "CONTAINS"}
+{"src": "Section:340/2", "dst": "Section:335/2", "type": "CITES", "resolved": true}
+{"src": "Section:340/2", "dst": "Penalty:death", "type": "HAS_PENALTY"}
+{"src": "Section:340/2", "dst": "Penalty:life", "type": "HAS_PENALTY"}
+{"src": "Section:340/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:340/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:2", "type": "CONTAINS"}
+{"src": "chapter:2", "dst": "Section:340/3", "type": "CONTAINS"}
+{"src": "Section:340/3", "dst": "Section:339/2", "type": "CITES", "resolved": true}
+{"src": "Section:340/3", "dst": "Section:340/2", "type": "CITES", "resolved": true}
+{"src": "Section:340/3", "dst": "Section:340", "type": "CITES", "resolved": true}
+{"src": "Section:340/3", "dst": "Section:339", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:341", "type": "CONTAINS"}
+{"src": "Section:341", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:341", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:342", "type": "CONTAINS"}
+{"src": "Section:342", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:342", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:343", "type": "CONTAINS"}
+{"src": "Section:343", "dst": "Section:342", "type": "CITES", "resolved": true}
+{"src": "Section:343", "dst": "Section:341", "type": "CITES", "resolved": true}
+{"src": "Section:343", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:343", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:344", "type": "CONTAINS"}
+{"src": "Section:344", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:344", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:345", "type": "CONTAINS"}
+{"src": "Section:345", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:345", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:346", "type": "CONTAINS"}
+{"src": "Section:346", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:346", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:347", "type": "CONTAINS"}
+{"src": "Section:347", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:347", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:3", "type": "CONTAINS"}
+{"src": "chapter:3", "dst": "Section:348", "type": "CONTAINS"}
+{"src": "Section:348", "dst": "Section:343", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:349", "type": "CONTAINS"}
+{"src": "Section:349", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:349", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:350", "type": "CONTAINS"}
+{"src": "Section:350", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:350", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:4", "type": "CONTAINS"}
+{"src": "chapter:4", "dst": "Section:351", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:352", "type": "CONTAINS"}
+{"src": "Section:352", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:352", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:353", "type": "CONTAINS"}
+{"src": "Section:353", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:353", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:354", "type": "CONTAINS"}
+{"src": "Section:354", "dst": "Section:353", "type": "CITES", "resolved": true}
+{"src": "Section:354", "dst": "Section:352", "type": "CITES", "resolved": true}
+{"src": "Section:354", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:354", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:355", "type": "CONTAINS"}
+{"src": "Section:355", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:355", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:5", "type": "CONTAINS"}
+{"src": "chapter:5", "dst": "Section:356", "type": "CONTAINS"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:6", "type": "CONTAINS"}
+{"src": "chapter:6", "dst": "Section:357", "type": "CONTAINS"}
+{"src": "Section:357", "dst": "Section:335/2", "type": "CITES", "resolved": true}
+{"src": "Section:357", "dst": "Section:335", "type": "CITES", "resolved": true}
+{"src": "Section:357", "dst": "Section:339/2", "type": "CITES", "resolved": true}
+{"src": "Section:357", "dst": "Section:340/2", "type": "CITES", "resolved": true}
+{"src": "Section:357", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:357", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:7", "type": "CONTAINS"}
+{"src": "chapter:7", "dst": "Section:358", "type": "CONTAINS"}
+{"src": "Section:358", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:358", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:7", "type": "CONTAINS"}
+{"src": "chapter:7", "dst": "Section:359", "type": "CONTAINS"}
+{"src": "Section:359", "dst": "Section:358", "type": "CITES", "resolved": true}
+{"src": "Section:359", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:359", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:7", "type": "CONTAINS"}
+{"src": "chapter:7", "dst": "Section:360", "type": "CONTAINS"}
+{"src": "Section:360", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:360", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:7", "type": "CONTAINS"}
+{"src": "chapter:7", "dst": "Section:360/2", "type": "CONTAINS"}
+{"src": "Section:360/2", "dst": "Section:335/2", "type": "CITES", "resolved": true}
+{"src": "Section:360/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:360/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:7", "type": "CONTAINS"}
+{"src": "chapter:7", "dst": "Section:361", "type": "CONTAINS"}
+{"src": "Section:361", "dst": "Section:359", "type": "CITES", "resolved": true}
+{"src": "Section:361", "dst": "Section:358", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:8", "type": "CONTAINS"}
+{"src": "chapter:8", "dst": "Section:362", "type": "CONTAINS"}
+{"src": "Section:362", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:362", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:8", "type": "CONTAINS"}
+{"src": "chapter:8", "dst": "Section:363", "type": "CONTAINS"}
+{"src": "Section:363", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:363", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:8", "type": "CONTAINS"}
+{"src": "chapter:8", "dst": "Section:364", "type": "CONTAINS"}
+{"src": "Section:364", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:364", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:8", "type": "CONTAINS"}
+{"src": "chapter:8", "dst": "Section:365", "type": "CONTAINS"}
+{"src": "Section:365", "dst": "Section:364", "type": "CITES", "resolved": true}
+{"src": "Section:365", "dst": "Section:363", "type": "CITES", "resolved": true}
+{"src": "Section:365", "dst": "Section:362", "type": "CITES", "resolved": true}
+{"src": "Section:365", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:365", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:12", "type": "CONTAINS"}
+{"src": "title:12", "dst": "chapter:8", "type": "CONTAINS"}
+{"src": "chapter:8", "dst": "Section:366", "type": "CONTAINS"}
+{"src": "Section:366", "dst": "Section:365", "type": "CITES", "resolved": true}
+{"src": "book:2", "dst": "title:13", "type": "CONTAINS"}
+{"src": "title:13", "dst": "Section:366/1", "type": "CONTAINS"}
+{"src": "Section:366/1", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:366/1", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:13", "type": "CONTAINS"}
+{"src": "title:13", "dst": "Section:366/2", "type": "CONTAINS"}
+{"src": "Section:366/2", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:366/2", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:13", "type": "CONTAINS"}
+{"src": "title:13", "dst": "Section:366/3", "type": "CONTAINS"}
+{"src": "Section:366/3", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:366/3", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:2", "dst": "title:13", "type": "CONTAINS"}
+{"src": "title:13", "dst": "Section:366/4", "type": "CONTAINS"}
+{"src": "Section:366/4", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:366/4", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:367", "type": "CONTAINS"}
+{"src": "Section:367", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:368", "type": "CONTAINS"}
+{"src": "Section:368", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:368", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:369", "type": "CONTAINS"}
+{"src": "Section:369", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:370", "type": "CONTAINS"}
+{"src": "Section:370", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:371", "type": "CONTAINS"}
+{"src": "Section:371", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:372", "type": "CONTAINS"}
+{"src": "Section:372", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:371", "type": "CONTAINS"}
+{"src": "Section:371", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:374", "type": "CONTAINS"}
+{"src": "Section:374", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:374", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:375", "type": "CONTAINS"}
+{"src": "Section:375", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:376", "type": "CONTAINS"}
+{"src": "Section:376", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:376", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:377", "type": "CONTAINS"}
+{"src": "Section:377", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:377", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:378", "type": "CONTAINS"}
+{"src": "Section:378", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:379", "type": "CONTAINS"}
+{"src": "Section:379", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:379", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:380", "type": "CONTAINS"}
+{"src": "Section:380", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:380", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:381", "type": "CONTAINS"}
+{"src": "Section:381", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:381", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:382", "type": "CONTAINS"}
+{"src": "Section:382", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:382", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:383", "type": "CONTAINS"}
+{"src": "Section:383", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:383", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:384", "type": "CONTAINS"}
+{"src": "Section:384", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:384", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:385", "type": "CONTAINS"}
+{"src": "Section:385", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:386", "type": "CONTAINS"}
+{"src": "Section:386", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:387", "type": "CONTAINS"}
+{"src": "Section:387", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:388", "type": "CONTAINS"}
+{"src": "Section:388", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:389", "type": "CONTAINS"}
+{"src": "Section:389", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:389", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:390", "type": "CONTAINS"}
+{"src": "Section:390", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:390", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:391", "type": "CONTAINS"}
+{"src": "Section:391", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:391", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:392", "type": "CONTAINS"}
+{"src": "Section:392", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:392", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:393", "type": "CONTAINS"}
+{"src": "Section:393", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:393", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:394", "type": "CONTAINS"}
+{"src": "Section:394", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:394", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:395", "type": "CONTAINS"}
+{"src": "Section:395", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:396", "type": "CONTAINS"}
+{"src": "Section:396", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:397", "type": "CONTAINS"}
+{"src": "Section:397", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:397", "dst": "Penalty:fine", "type": "HAS_PENALTY"}
+{"src": "book:3", "dst": "Section:398", "type": "CONTAINS"}
+{"src": "Section:398", "dst": "Penalty:imprisonment", "type": "HAS_PENALTY"}
+{"src": "Section:398", "dst": "Penalty:fine", "type": "HAS_PENALTY"}

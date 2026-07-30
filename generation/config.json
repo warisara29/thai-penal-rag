@@ -1,0 +1,13 @@
+{
+  "_doc": "Config for generation + judge harnesses. Wire backends to enable LLM steps.",
+  "sections_path": "data/sections.jsonl",
+  "k": 5,
+  "backends": {
+    "generator": null,
+    "judge": null
+  },
+  "_backend_hints": {
+    "generator": "the pinned Thai open model, temperature 0 — implement retrieval.backends.Generator, e.g. 'mypkg.thaigen:TyphoonGenerator'",
+    "judge": "MUST differ from the generator — 'generation.judge:AnthropicJudge' works out of the box (pip install anthropic + creds)"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "_doc": "Runtime config for retrieval/run_eval.py. Fill backend classes to enable model arms.",
+  "sections_path": "data/sections.jsonl",
+  "tree_path": "data/penal_tree.json",
+  "cites_edges_path": "data/kg_edges.jsonl",
+  "applies_to_edges_path": "data/applies_to_edges.jsonl",
+  "verified_applies_to_only": false,
+  "tokenizer": "char_ngram",
+  "k": 5,
+  "k_recall": 5,
+  "k_mrr": 10,
+  "backends": {
+    "embedder": null,
+    "reranker": null,
+    "navigator": null,
+    "generator": null
+  }
+}
