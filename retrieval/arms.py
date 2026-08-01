@@ -20,6 +20,22 @@ FACTORIAL = ["A1", "A2", "A3", "A4"]
 REFERENCE = ["R0", "R1", "C0", "C1"]
 ALL_ARMS = FACTORIAL + REFERENCE
 
+# Thesis-figure nomenclature (comparison ladder + 2x2). Internal ids stay stable
+# as dict/file keys; B-labels are the canonical display + CLI alias.
+ARM_LABELS = {"C0": "B0", "R0": "B1", "R1": "B2", "A1": "B3",
+              "A2": "B3+KG", "A3": "B3+PI", "A4": "PIKG-RAG", "C1": "ORACLE"}
+LABEL_TO_ARM = {v: k for k, v in ARM_LABELS.items()}
+LADDER = ["C0", "R0", "R1", "A1", "A4"]  # B0 -> B1 -> B2 -> B3 -> PIKG-RAG
+
+
+def label(arm: str) -> str:
+    return ARM_LABELS.get(arm, arm)
+
+
+def resolve(name: str) -> str:
+    """Accept either an internal id (A1) or a B-label (B3, PIKG-RAG)."""
+    return LABEL_TO_ARM.get(name, name)
+
 POOL = 50  # candidate pool a base retriever surfaces before rerank/expansion
 
 

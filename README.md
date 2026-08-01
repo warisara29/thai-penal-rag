@@ -2,6 +2,20 @@
 
 Corpus: **ประมวลกฎหมายอาญา only**. Three ingredients, one shared corpus.
 
+## Arms (thesis figure ↔ code)
+Comparison ladder **B0→B1→B2→B3→PIKG-RAG** and the 2×2 (base × KG). Internal ids are
+stable keys; B-labels match the figure and work on every `--arms` flag.
+
+| B-label | id | | B-label | id |
+|---|---|---|---|---|
+| B0 LLM only | C0 | | B3+KG | A2 |
+| B1 LLM + Keyword | R0 | | B3+PI | A3 |
+| B2 LLM + RAG | R1 | | PIKG-RAG | A4 |
+| B3 LLM + Hybrid RAG | A1 | | ORACLE (ceiling) | C1 |
+
+PageIndex (B3+PI) is a **replacement** base retriever, not an add-on — so the 2×2 factor
+is base{hybrid, PageIndex} × KG{off, on}, matching the §7 GLMM.
+
 ```
 ingest/pageindex_parser.py   raw .txt  ->  penal_tree.json + sections.jsonl
 kg/build_kg.py               sections.jsonl -> KG (nodes/edges/cypher)

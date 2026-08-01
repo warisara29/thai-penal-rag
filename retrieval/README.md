@@ -2,16 +2,22 @@
 
 Same questions, every arm, chunk = 1 มาตรา, k=5, temperature 0.
 
-| Arm | What | Status |
-|-----|------|--------|
-| **R0** `BM25` | lexical floor | ✅ runs now (pure Python) |
-| **R1** `DENSE` | BGE-M3 dense-only | ⚙️ needs `Embedder` backend |
-| **A1** `HYB` | dense+sparse fusion → rerank | ⚙️ needs `Embedder` + `Reranker` |
-| **A2** `HYB+KG` | A1 seeds → KG one-hop → rerank | ⚙️ KG logic ✅, needs A1 backends |
-| **A3** `PI` | LLM tree navigation | ✅ runs now via heuristic navigator (structure-only baseline); ⚙️ plug `LLMNodeSelector` for the real arm |
-| **A4** `PI+KG` | A3 → KG one-hop → rerank | ⚙️ needs `Reranker` |
-| **C0** `CLOSED` | generator, no context | ⚙️ needs `Generator` (generation-only) |
-| **C1** `ORACLE` | generator, gold∪supporting | ⚙️ needs `Generator` (generation-only) |
+Arm ids are stable dict/file keys; **B-labels** match the thesis figure (comparison
+ladder + 2×2). `--arms` accepts either (`--arms B3+PI` == `--arms A3`).
+
+| id | B-label | What | Status |
+|----|---------|------|--------|
+| **C0** | `B0` | LLM only (no context) | ⚙️ needs `Generator` (generation-only) |
+| **R0** | `B1` | LLM + Keyword Search (BM25) | ✅ runs now (pure Python) |
+| **R1** | `B2` | LLM + RAG (BGE-M3 dense) | ⚙️ needs `Embedder` |
+| **A1** | `B3` | LLM + Hybrid RAG (dense+sparse→rerank) | ⚙️ needs `Embedder` + `Reranker` |
+| **A2** | `B3+KG` | B3 → KG one-hop → rerank | ⚙️ KG logic ✅, needs A1 backends |
+| **A3** | `B3+PI` | PageIndex tree navigation (replaces hybrid base) | ✅ heuristic baseline; ⚙️ plug `LLMNodeSelector` |
+| **A4** | `PIKG-RAG` | PageIndex → KG one-hop → rerank | ⚙️ needs `Reranker` |
+| **C1** | `ORACLE` | generator, gold∪supporting (ceiling) | ⚙️ needs `Generator` (generation-only) |
+
+Ladder: **B0 → B1 → B2 → B3 → PIKG-RAG**. 2×2: base{hybrid, PageIndex} × KG{off, on},
+off/off = B3. "B3+PI" uses PageIndex *instead of* hybrid (replacement, not add-on).
 
 ## Run
 ```bash

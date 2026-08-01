@@ -18,6 +18,7 @@ import importlib
 import json
 from pathlib import Path
 
+from retrieval import arms as A
 from retrieval import backends as B
 from retrieval.base import Corpus, EvalItem
 from . import prompts
@@ -62,7 +63,7 @@ def main():
     args.out_dir.mkdir(parents=True, exist_ok=True)
     ranked_cache: dict = {}
 
-    for arm in [a.strip() for a in args.arms.split(",")]:
+    for arm in [A.resolve(a.strip()) for a in args.arms.split(",")]:
         out = []
         try:
             for it in items:
@@ -77,7 +78,7 @@ def main():
             continue
         (args.out_dir / f"{arm}.jsonl").write_text(
             "\n".join(json.dumps(o, ensure_ascii=False) for o in out), "utf-8")
-        print(f"  {arm:4s} wrote {len(out)} answers -> {args.out_dir}/{arm}.jsonl")
+        print(f"  {A.label(arm):8s}({arm}) wrote {len(out)} answers -> {args.out_dir}/{arm}.jsonl")
 
 
 if __name__ == "__main__":
