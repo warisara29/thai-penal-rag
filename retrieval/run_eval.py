@@ -80,27 +80,28 @@ def main():
     args.out_dir.mkdir(parents=True, exist_ok=True)
     k, kr, km = cfg["k"], cfg["k_recall"], cfg["k_mrr"]
 
-    requested = A.ALL_ARMS if args.arms == "all" else [a.strip() for a in args.arms.split(",")]
+    requested = A.ALL_ARMS if args.arms == "all" else [A.resolve(a.strip()) for a in args.arms.split(",")]
     print(f"eval items: {len(items)}  (answerable retrieval-scored: "
           f"{sum(1 for i in items if i.question_type != 'unanswerable')})\n")
 
     summary = []
     for name in requested:
+        tag = f"{A.label(name):8s}({name})"
         if name in A.GEN_ONLY:
-            print(f"  {name:4s} generation-only (C0 closed-book / C1 oracle) — "
+            print(f"  {tag} generation-only (B0 closed-book / ORACLE) — "
                   f"needs Generator backend; not retrieval-scored")
             continue
         try:
             rows, out = run_arm(name, ctx, items, k)
         except B.NotConfigured as e:
-            print(f"  {name:4s} SKIPPED — {e}")
+            print(f"  {tag} SKIPPED — {e}")
             continue
         (args.out_dir / f"{name}.jsonl").write_text(
             "\n".join(json.dumps(o, ensure_ascii=False) for o in out), "utf-8")
         agg = M.aggregate(rows, kr, km)
         summary.append((name, agg))
         sup = f"  support_recall@{kr}={agg[f'support_recall@{kr}']:.3f}" if f"support_recall@{kr}" in agg else ""
-        print(f"  {name:4s} n={agg['n']:>3}  "
+        print(f"  {tag} n={agg['n']:>3}  "
               f"recall@{kr}={agg.get(f'recall@{kr}', float('nan')):.3f}  "
               f"hit@{kr}={agg.get(f'hit@{kr}', float('nan')):.3f}  "
               f"mrr@{km}={agg.get(f'mrr@{km}', float('nan')):.3f}  "

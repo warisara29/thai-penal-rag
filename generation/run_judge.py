@@ -21,6 +21,7 @@ import json
 from pathlib import Path
 from statistics import mean
 
+from retrieval import arms as A
 from retrieval.base import Corpus
 from . import hallucination as H
 from . import judge as J
@@ -54,10 +55,11 @@ def main():
     judge_on = judge_spec is not None
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
-    for arm in [a.strip() for a in args.arms.split(",")]:
+    for arm in [A.resolve(a.strip()) for a in args.arms.split(",")]:
+        tag = f"{A.label(arm):8s}({arm})"
         path = args.answers_dir / f"{arm}.jsonl"
         if not path.exists():
-            print(f"  {arm:4s} no answers file ({path}) — run run_generation first")
+            print(f"  {tag} no answers file ({path}) — run run_generation first")
             continue
         answers = [json.loads(l) for l in path.read_text("utf-8").splitlines() if l.strip()]
 
@@ -86,7 +88,7 @@ def main():
             "\n".join(json.dumps(v, ensure_ascii=False) for v in verdicts), "utf-8")
 
         ref = RF.score([{"question_type": a["question_type"], "answer": a["answer"]} for a in answers])
-        line = (f"  {arm:4s} n={len(answers):>3}  "
+        line = (f"  {tag} n={len(answers):>3}  "
                 f"halluc_hard={mean(hard):.3f} soft={mean(soft):.3f}  "
                 f"refusal_F1={ref['refusal_f1']:.3f}")
         if judge_on and ground_rates:

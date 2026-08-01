@@ -20,6 +20,7 @@ import argparse
 import json
 from pathlib import Path
 
+from retrieval import arms as ARMS
 from . import bootstrap as BS
 from . import contrasts as C
 from . import outcomes as O
@@ -40,7 +41,7 @@ def main():
     ap.add_argument("--glmm", action="store_true", help="also fit the mixed-effects 2x2 (needs statsmodels + A1-A4)")
     args = ap.parse_args()
 
-    wanted = ALL if args.arms == "all" else [a.strip() for a in args.arms.split(",")]
+    wanted = ALL if args.arms == "all" else [ARMS.resolve(a.strip()) for a in args.arms.split(",")]
     src = args.results_dir if args.metric in O.RETRIEVAL_METRICS else args.verdicts_dir
     arms = {}
     for a in wanted:
@@ -58,8 +59,8 @@ def main():
     print("=== per-arm mean [95% bootstrap CI] ===")
     for a in sorted(arms):
         ci = BS.ci_mean(list(arms[a].values()))
-        report["per_arm"][a] = ci
-        print(f"  {a:4s} n={ci['n']:>3}  {ci['mean']:.3f}  [{ci['lo']:.3f}, {ci['hi']:.3f}]")
+        report["per_arm"][a] = {"label": ARMS.label(a), **ci}
+        print(f"  {ARMS.label(a):8s}({a}) n={ci['n']:>3}  {ci['mean']:.3f}  [{ci['lo']:.3f}, {ci['hi']:.3f}]")
 
     fam = C.family_for(args.metric)
     pvals = {}
