@@ -1,6 +1,8 @@
 {
   "_comment": "Config for eval/generate_eval.py. Targets sum to >=250 (six types). Gold sections are fixed by construction (the section is given to the drafter; it never chooses the number).",
+  "drafter_provider": "deepinfra",
   "drafter_model": "claude-opus-4-8",
+  "_drafter_note": "provider=deepinfra uses DEEPINFRA_DRAFT_MODEL (default deepseek-ai/DeepSeek-V4-Pro, != Qwen generator). Set provider=anthropic to use drafter_model (Claude) instead.",
   "id_prefix": "penal",
   "id_start": 6,
   "targets": {
