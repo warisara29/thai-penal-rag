@@ -1,0 +1,220 @@
+{"id": "penal-0006", "ranked": ["135/4"], "gold": ["135/4"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3345, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0007", "ranked": ["251"], "gold": ["251"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4131, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0008", "ranked": [], "gold": ["364"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3759, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0009", "ranked": ["210", "211"], "gold": ["210"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3063, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0010", "ranked": ["206"], "gold": ["206"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 2600, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0011", "ranked": ["358", "359", "360", "360/2", "361"], "gold": ["366/3"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3781, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0012", "ranked": ["59", "86"], "gold": ["270"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4234, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0013", "ranked": ["309", "83", "84", "295"], "gold": ["309"], "supporting": [], "meta": {"llm_calls": 7, "tokens": 7634, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0014", "ranked": ["136"], "gold": ["133"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3472, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0015", "ranked": ["288"], "gold": ["289"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3514, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0016", "ranked": ["355"], "gold": ["186"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3792, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0017", "ranked": [], "gold": ["396"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3007, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0018", "ranked": ["290", "291"], "gold": ["239"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5729, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0019", "ranked": ["281"], "gold": ["281"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4079, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0020", "ranked": ["1"], "gold": ["149"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 2199, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0021", "ranked": ["135/2"], "gold": ["135/2"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 2664, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0022", "ranked": ["268"], "gold": ["269/15"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4205, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0023", "ranked": ["339/2", "340"], "gold": ["339/2"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4065, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0024", "ranked": ["213"], "gold": ["213"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3102, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0025", "ranked": ["71"], "gold": ["208"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4195, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0026", "ranked": [], "gold": ["366/1"], "supporting": [], "meta": {"llm_calls": 1, "tokens": 452, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0027", "ranked": ["264", "268"], "gold": ["273"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3594, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0028", "ranked": ["320"], "gold": ["320"], "supporting": [], "meta": {"llm_calls": 8, "tokens": 12394, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0029", "ranked": ["210"], "gold": ["120"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3339, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0030", "ranked": ["290"], "gold": ["290"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4080, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0031", "ranked": ["190", "191"], "gold": ["191"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5324, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0032", "ranked": ["326"], "gold": ["393"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 4550, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0033", "ranked": ["230"], "gold": ["230"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4109, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0034", "ranked": ["277/2", "280", "285", "285/1", "285/2"], "gold": ["280"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5600, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0035", "ranked": ["137"], "gold": ["162"], "supporting": [], "meta": {"llm_calls": 8, "tokens": 10400, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0036", "ranked": ["334", "335", "335/2", "336", "336/2"], "gold": ["135/3"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5026, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0037", "ranked": ["250", "251", "252"], "gold": ["269/13"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4281, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0038", "ranked": ["326", "328", "332"], "gold": ["366"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3461, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0039", "ranked": ["211", "212", "89"], "gold": ["212"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 6455, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0040", "ranked": ["207"], "gold": ["207"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 2630, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0041", "ranked": [], "gold": ["366/4"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3260, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0042", "ranked": ["102", "103", "104", "105", "106"], "gold": ["275"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 7367, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0043", "ranked": ["300"], "gold": ["328"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 6186, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0044", "ranked": ["135/1", "135/2"], "gold": ["128"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 2688, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0045", "ranked": ["292"], "gold": ["292"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4012, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0046", "ranked": ["137"], "gold": ["183"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3704, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0047", "ranked": ["59", "66"], "gold": ["376"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 8205, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0048", "ranked": ["229"], "gold": ["229"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4091, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0049", "ranked": ["282", "283", "283/2", "284", "285/1"], "gold": ["283"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 9037, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0050", "ranked": ["84", "86"], "gold": ["143"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 2694, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0051", "ranked": ["135/1", "135/2", "135/3", "135/4"], "gold": ["135/1"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 2682, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0052", "ranked": ["59"], "gold": ["269/4"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4242, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0053", "ranked": ["361", "365"], "gold": ["361"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4121, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0054", "ranked": ["211", "212", "213"], "gold": ["211"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3360, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0055", "ranked": [], "gold": ["366/2"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3194, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0056", "ranked": ["271", "272", "273", "274", "275"], "gold": ["272"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5534, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0057", "ranked": ["358"], "gold": ["322"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3801, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0058", "ranked": ["135/1", "135/2", "135/3", "135/4", "235"], "gold": ["122"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4405, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0059", "ranked": [], "gold": ["305"], "supporting": [], "meta": {"llm_calls": 1, "tokens": 468, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0060", "ranked": ["184", "185", "187"], "gold": ["187"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 6700, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0061", "ranked": [], "gold": ["382"], "supporting": [], "meta": {"llm_calls": 1, "tokens": 475, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0062", "ranked": ["224", "238"], "gold": ["238"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5752, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0063", "ranked": ["276", "280/1"], "gold": ["280/1"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 6133, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0064", "ranked": ["167", "201", "202", "203", "204"], "gold": ["150"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 11870, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0065", "ranked": ["1"], "gold": ["258"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3707, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0066", "ranked": [], "gold": ["341"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 823, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0067", "ranked": ["215", "216"], "gold": ["216"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 5466, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0068", "ranked": ["264", "265", "266", "267", "268"], "gold": ["274"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3571, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0069", "ranked": ["295", "299"], "gold": ["311"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3521, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0070", "ranked": ["119", "120", "121", "122", "127"], "gold": ["119"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3985, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0071", "ranked": ["295", "296"], "gold": ["296"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3445, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0072", "ranked": ["200", "202"], "gold": ["200"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3223, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0073", "ranked": ["295", "299"], "gold": ["390"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3485, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0074", "ranked": ["226", "227", "235"], "gold": ["226"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4140, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0075", "ranked": ["282", "283", "283/2", "284", "285"], "gold": ["286"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 8544, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0076", "ranked": ["1", "60"], "gold": ["154"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4314, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0077", "ranked": ["240", "244"], "gold": ["248"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 7074, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0078", "ranked": ["334", "336/2"], "gold": ["336/2"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 7553, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0079", "ranked": ["210", "215", "216"], "gold": ["215"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4816, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0080", "ranked": ["1", "62"], "gold": ["271"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3894, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0081", "ranked": ["288", "289"], "gold": ["289"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3505, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0082", "ranked": ["136", "137"], "gold": ["384"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4224, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0083", "ranked": ["295", "296", "297", "298"], "gold": ["131"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3467, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0084", "ranked": ["189"], "gold": ["214"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5724, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0085", "ranked": ["102", "103", "104", "105", "106"], "gold": ["208"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3999, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0086", "ranked": ["283", "283/2", "284", "312/3"], "gold": ["286"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5778, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0087", "ranked": ["194"], "gold": ["194"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 6770, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0088", "ranked": ["230", "238"], "gold": ["230"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4077, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0089", "ranked": ["206", "207", "358"], "gold": ["366/4"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3953, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0090", "ranked": ["352"], "gold": ["352"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 7416, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0091", "ranked": ["18"], "gold": ["243"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 4673, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0092", "ranked": ["135/1", "221", "223"], "gold": ["135/1"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4465, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0093", "ranked": ["137"], "gold": ["137"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3636, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0094", "ranked": ["83", "86"], "gold": ["315"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4201, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0095", "ranked": ["1"], "gold": ["270"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3731, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0096", "ranked": ["290"], "gold": ["290"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4004, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0097", "ranked": ["59", "62"], "gold": ["382"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4518, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0098", "ranked": ["120", "121", "122", "123", "124"], "gold": ["122"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3992, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0099", "ranked": ["357"], "gold": ["212"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3520, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0100", "ranked": ["206"], "gold": ["206"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 2660, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0101", "ranked": ["277/2", "277/3", "280", "285", "285/2"], "gold": ["280"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5065, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0102", "ranked": ["168", "169", "170", "138"], "gold": ["168"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 9166, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0103", "ranked": ["220", "221", "222"], "gold": ["222"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4747, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0104", "ranked": ["358"], "gold": ["366/3"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3983, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0105", "ranked": ["1", "59", "61", "71", "78"], "gold": ["341"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3873, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0106", "ranked": ["245"], "gold": ["245"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3991, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0107", "ranked": ["135/4", "135/1", "135/2", "135/3", "209"], "gold": ["135/4"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3405, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0108", "ranked": ["138", "139", "140", "141", "142"], "gold": ["165"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 9205, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0109", "ranked": ["59"], "gold": ["320"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4370, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0110", "ranked": ["272", "273", "274", "275"], "gold": ["272"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4146, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0111", "ranked": ["307", "308"], "gold": ["307"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3301, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0112", "ranked": ["229", "59"], "gold": ["386"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 7930, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0113", "ranked": ["142", "143", "144", "145", "146"], "gold": ["125"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 6721, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0114", "ranked": ["216", "136"], "gold": ["216"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 6704, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0115", "ranked": ["207"], "gold": ["207"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 2609, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0116", "ranked": ["277", "277/2", "279", "280", "285/1"], "gold": ["277"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3963, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0117", "ranked": ["203", "358"], "gold": ["185"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 4640, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0118", "ranked": ["234"], "gold": ["226"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4079, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0119", "ranked": ["286"], "gold": ["366/2"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4931, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0120", "ranked": ["358", "359"], "gold": ["358"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5501, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0121", "ranked": ["1", "90"], "gold": ["265"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3840, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0122", "ranked": ["276", "286"], "gold": ["135/3"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4074, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0123", "ranked": ["342"], "gold": ["146"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 5881, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0124", "ranked": ["326", "328", "329", "330", "332"], "gold": ["326"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3507, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0125", "ranked": ["264", "265", "266", "267", "268"], "gold": ["273"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3583, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0126", "ranked": ["292", "293"], "gold": ["292"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4135, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0127", "ranked": ["295", "296", "297", "298", "299"], "gold": ["379"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3434, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0128", "ranked": ["120", "126", "127", "128", "129"], "gold": ["120"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4060, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0129", "ranked": ["210", "215", "216"], "gold": ["215"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5961, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0130", "ranked": ["283/2", "284"], "gold": ["283/2"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4006, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0131", "ranked": ["184", "189"], "gold": ["184"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5656, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0132", "ranked": ["225"], "gold": ["225"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4081, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0133", "ranked": ["286"], "gold": ["366/1"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5039, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0134", "ranked": ["206"], "gold": ["360/2"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 2585, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0135", "ranked": ["264", "266", "268"], "gold": ["266"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3541, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0136", "ranked": ["105", "59", "80", "334"], "gold": ["105"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 7852, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0137", "ranked": ["59"], "gold": ["294"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4283, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0138", "ranked": [], "gold": ["329"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 3119, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0139", "ranked": ["186", "189", "193"], "gold": ["214"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5456, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0140", "ranked": ["288", "293"], "gold": ["88"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3797, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0141", "ranked": ["175", "176"], "gold": ["176"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5862, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0142", "ranked": ["277", "279", "281"], "gold": ["277"], "supporting": [], "meta": {"llm_calls": 3, "tokens": 4154, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0143", "ranked": ["1", "62"], "gold": ["271"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3998, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0144", "ranked": ["370", "102", "103"], "gold": ["106"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 9447, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0145", "ranked": ["299"], "gold": ["299"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 4432, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0146", "ranked": ["177", "198"], "gold": ["331"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 6832, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0147", "ranked": ["288"], "gold": ["52"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3554, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0148", "ranked": ["192", "193"], "gold": ["193"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 5424, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0149", "ranked": ["303", "304"], "gold": ["304"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3739, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0150", "ranked": ["59", "62"], "gold": ["330"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3917, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0151", "ranked": ["334", "335"], "gold": ["71"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 7329, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0152", "ranked": ["59", "62"], "gold": ["182"], "supporting": [], "meta": {"llm_calls": 6, "tokens": 7182, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0153", "ranked": [], "gold": ["305"], "supporting": [], "meta": {"llm_calls": 1, "tokens": 519, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0154", "ranked": ["53"], "gold": ["53"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 3383, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0155", "ranked": ["73"], "gold": ["73"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3683, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0156", "ranked": ["288", "289"], "gold": ["82"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3973, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0157", "ranked": ["288"], "gold": ["81"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3814, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0158", "ranked": ["70"], "gold": ["70"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3991, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0159", "ranked": ["2", "3"], "gold": ["2"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3680, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0160", "ranked": ["67", "83", "84", "340", "340/2"], "gold": ["67"], "supporting": [], "meta": {"llm_calls": 7, "tokens": 9569, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0161", "ranked": [], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 819, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0162", "ranked": ["59"], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3570, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0163", "ranked": [], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 819, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0164", "ranked": ["291", "299"], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 4276, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0165", "ranked": [], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 819, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0166", "ranked": [], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 3177, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0167", "ranked": [], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 819, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0168", "ranked": [], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 835, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0169", "ranked": ["1"], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 2063, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0170", "ranked": ["291", "299"], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 4276, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0171", "ranked": ["1"], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 2063, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0172", "ranked": ["291", "299"], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 4276, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0173", "ranked": [], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 819, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0174", "ranked": [], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 823, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0175", "ranked": ["1"], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 2063, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0176", "ranked": ["291", "299"], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 4276, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0177", "ranked": [], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 819, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0178", "ranked": [], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 2, "tokens": 823, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0179", "ranked": ["1"], "gold": ["1"], "supporting": [], "meta": {"llm_calls": 4, "tokens": 2063, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0180", "ranked": ["291", "299"], "gold": ["59"], "supporting": [], "meta": {"llm_calls": 5, "tokens": 4276, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0181", "ranked": ["209", "210", "83"], "gold": ["209"], "supporting": ["80"], "meta": {"llm_calls": 5, "tokens": 7208, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0182", "ranked": ["210", "215"], "gold": ["166"], "supporting": ["83"], "meta": {"llm_calls": 3, "tokens": 3120, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0183", "ranked": ["334", "335"], "gold": ["364"], "supporting": ["84"], "meta": {"llm_calls": 4, "tokens": 4087, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0184", "ranked": ["208", "84", "86"], "gold": ["208"], "supporting": ["86"], "meta": {"llm_calls": 5, "tokens": 6981, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0185", "ranked": ["232", "233"], "gold": ["233"], "supporting": ["91"], "meta": {"llm_calls": 3, "tokens": 4536, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0186", "ranked": ["123", "124"], "gold": ["123"], "supporting": ["92"], "meta": {"llm_calls": 4, "tokens": 3863, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0187", "ranked": ["270"], "gold": ["270"], "supporting": ["80"], "meta": {"llm_calls": 5, "tokens": 6378, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0188", "ranked": ["240", "246"], "gold": ["240"], "supporting": ["83"], "meta": {"llm_calls": 4, "tokens": 4106, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0189", "ranked": ["197"], "gold": ["197"], "supporting": ["84"], "meta": {"llm_calls": 5, "tokens": 7714, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0190", "ranked": ["309", "320"], "gold": ["309"], "supporting": ["86"], "meta": {"llm_calls": 5, "tokens": 6052, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0191", "ranked": ["288", "289", "295"], "gold": ["289"], "supporting": ["91"], "meta": {"llm_calls": 4, "tokens": 4486, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0192", "ranked": ["347"], "gold": ["366/4"], "supporting": ["92"], "meta": {"llm_calls": 4, "tokens": 5351, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0193", "ranked": ["135/1", "135/2", "221"], "gold": ["135/1"], "supporting": ["80"], "meta": {"llm_calls": 3, "tokens": 4725, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0194", "ranked": ["287", "287/1", "287/2"], "gold": ["287/1"], "supporting": ["83"], "meta": {"llm_calls": 3, "tokens": 4271, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0195", "ranked": ["213", "84", "339", "339/2", "340/2"], "gold": ["213"], "supporting": ["84"], "meta": {"llm_calls": 6, "tokens": 8980, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0196", "ranked": ["369", "138"], "gold": ["165"], "supporting": ["86"], "meta": {"llm_calls": 5, "tokens": 11390, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0197", "ranked": ["233", "234", "239", "358", "359"], "gold": ["360"], "supporting": ["91"], "meta": {"llm_calls": 4, "tokens": 5741, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0198", "ranked": ["207"], "gold": ["207"], "supporting": ["92"], "meta": {"llm_calls": 3, "tokens": 2765, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0199", "ranked": ["221", "222"], "gold": ["222"], "supporting": ["80"], "meta": {"llm_calls": 3, "tokens": 4240, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0200", "ranked": ["326"], "gold": ["134"], "supporting": ["83"], "meta": {"llm_calls": 5, "tokens": 6371, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0201", "ranked": ["84", "88"], "gold": ["273"], "supporting": ["84"], "meta": {"llm_calls": 6, "tokens": 7396, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0202", "ranked": ["86", "264", "268"], "gold": ["264"], "supporting": ["86"], "meta": {"llm_calls": 6, "tokens": 7768, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0203", "ranked": ["167"], "gold": ["167"], "supporting": ["91"], "meta": {"llm_calls": 4, "tokens": 6383, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0204", "ranked": ["317", "321"], "gold": ["317"], "supporting": ["92"], "meta": {"llm_calls": 5, "tokens": 5688, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0205", "ranked": ["292", "307", "308"], "gold": ["292"], "supporting": ["80"], "meta": {"llm_calls": 4, "tokens": 4135, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0206", "ranked": ["285/2", "286"], "gold": ["366/2"], "supporting": ["83"], "meta": {"llm_calls": 4, "tokens": 5657, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0207", "ranked": ["135/2", "135/3"], "gold": ["135/2"], "supporting": ["84"], "meta": {"llm_calls": 3, "tokens": 3588, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0208", "ranked": ["276", "281"], "gold": ["276"], "supporting": ["86"], "meta": {"llm_calls": 4, "tokens": 5290, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0209", "ranked": ["215", "216", "295", "297", "298"], "gold": ["215"], "supporting": ["91"], "meta": {"llm_calls": 4, "tokens": 7476, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0210", "ranked": ["264", "265", "266", "267", "268"], "gold": ["162"], "supporting": ["92"], "meta": {"llm_calls": 4, "tokens": 4335, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0211", "ranked": ["339"], "gold": ["339"], "supporting": ["80"], "meta": {"llm_calls": 8, "tokens": 10489, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0212", "ranked": ["206"], "gold": ["206"], "supporting": ["83"], "meta": {"llm_calls": 3, "tokens": 2786, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0213", "ranked": ["232", "233", "237"], "gold": ["232"], "supporting": ["84"], "meta": {"llm_calls": 3, "tokens": 4408, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0214", "ranked": ["167"], "gold": ["115"], "supporting": ["86"], "meta": {"llm_calls": 6, "tokens": 9619, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0215", "ranked": ["273", "275"], "gold": ["275"], "supporting": ["91"], "meta": {"llm_calls": 6, "tokens": 9365, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0216", "ranked": ["266", "268"], "gold": ["266"], "supporting": ["92"], "meta": {"llm_calls": 5, "tokens": 5584, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0217", "ranked": ["204", "205"], "gold": ["204"], "supporting": ["80"], "meta": {"llm_calls": 5, "tokens": 4800, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0218", "ranked": ["310", "290", "291"], "gold": ["310"], "supporting": ["83"], "meta": {"llm_calls": 5, "tokens": 6144, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0219", "ranked": ["288", "289"], "gold": ["288"], "supporting": ["84"], "meta": {"llm_calls": 4, "tokens": 3597, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0220", "ranked": ["358"], "gold": ["366/3"], "supporting": ["86"], "meta": {"llm_calls": 4, "tokens": 6012, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0221", "ranked": ["135/4", "334", "90", "335"], "gold": ["135/4"], "supporting": ["91"], "meta": {"llm_calls": 6, "tokens": 7752, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0222", "ranked": ["276", "280/1", "334"], "gold": ["280/1"], "supporting": ["92"], "meta": {"llm_calls": 4, "tokens": 6878, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0223", "ranked": ["210", "80", "340"], "gold": ["210"], "supporting": ["80"], "meta": {"llm_calls": 6, "tokens": 9192, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0224", "ranked": ["167"], "gold": ["150"], "supporting": ["83"], "meta": {"llm_calls": 6, "tokens": 10035, "navigator": "DeepInfraNodeSelector"}}
+{"id": "penal-0225", "ranked": ["339", "339/2", "340", "340/2", "340/3"], "gold": ["340"], "supporting": ["84"], "meta": {"llm_calls": 5, "tokens": 6035, "navigator": "DeepInfraNodeSelector"}}

@@ -1,0 +1,191 @@
+{
+  "metric": "correct",
+  "k": 5,
+  "per_arm": {
+    "A1": {
+      "label": "B3",
+      "mean": 0.6363636363636364,
+      "lo": 0.5727272727272728,
+      "hi": 0.7,
+      "n": 220
+    },
+    "A2": {
+      "label": "B3+KG",
+      "mean": 0.6545454545454545,
+      "lo": 0.5909090909090909,
+      "hi": 0.7181818181818181,
+      "n": 220
+    },
+    "A3": {
+      "label": "B3+PI",
+      "mean": 0.33181818181818185,
+      "lo": 0.2727272727272727,
+      "hi": 0.39545454545454545,
+      "n": 220
+    },
+    "A4": {
+      "label": "PIKG-RAG",
+      "mean": 0.37272727272727274,
+      "lo": 0.31363636363636366,
+      "hi": 0.43636363636363634,
+      "n": 220
+    },
+    "C0": {
+      "label": "B0",
+      "mean": 0.022727272727272728,
+      "lo": 0.004545454545454545,
+      "hi": 0.045454545454545456,
+      "n": 220
+    },
+    "C1": {
+      "label": "ORACLE",
+      "mean": 0.8090909090909091,
+      "lo": 0.7545454545454545,
+      "hi": 0.8590909090909091,
+      "n": 220
+    },
+    "R0": {
+      "label": "B1",
+      "mean": 0.44545454545454544,
+      "lo": 0.37727272727272726,
+      "hi": 0.509090909090909,
+      "n": 220
+    },
+    "R1": {
+      "label": "B2",
+      "mean": 0.6136363636363636,
+      "lo": 0.55,
+      "hi": 0.6772727272727272,
+      "n": 220
+    }
+  },
+  "contrasts": {
+    "B1 − B0 (ladder: keyword vs LLM-only)": {
+      "rq": "ladder",
+      "delta_ci": {
+        "delta": 0.42272727272727273,
+        "lo": 0.35,
+        "hi": 0.4909090909090909,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.42272727272727273,
+      "p": 0.0
+    },
+    "B2 − B1 (ladder: RAG vs keyword)": {
+      "rq": "ladder",
+      "delta_ci": {
+        "delta": 0.16818181818181818,
+        "lo": 0.09545454545454546,
+        "hi": 0.2409090909090909,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.16818181818181818,
+      "p": 0.0
+    },
+    "B3 − B2 (ladder: hybrid vs dense)": {
+      "rq": "ladder",
+      "delta_ci": {
+        "delta": 0.022727272727272728,
+        "lo": -0.03636363636363636,
+        "hi": 0.08181818181818182,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.022727272727272728,
+      "p": 0.5504
+    },
+    "PIKG-RAG − B3 (ladder: full system vs hybrid)": {
+      "rq": "ladder",
+      "delta_ci": {
+        "delta": -0.2636363636363636,
+        "lo": -0.34545454545454546,
+        "hi": -0.18181818181818182,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": -0.2636363636363636,
+      "p": 0.0
+    },
+    "B3 − B0 (RQ5: hybrid RAG vs parametric)": {
+      "rq": "RQ5",
+      "delta_ci": {
+        "delta": 0.6136363636363636,
+        "lo": 0.55,
+        "hi": 0.6772727272727272,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.6136363636363636,
+      "p": 0.0
+    },
+    "PIKG-RAG − B0 (RQ5: full system vs parametric)": {
+      "rq": "RQ5",
+      "delta_ci": {
+        "delta": 0.35,
+        "lo": 0.2863636363636364,
+        "hi": 0.41818181818181815,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.35,
+      "p": 0.0
+    },
+    "ORACLE − B0 (generation ceiling vs floor)": {
+      "rq": "RQ5",
+      "delta_ci": {
+        "delta": 0.7863636363636364,
+        "lo": 0.7318181818181818,
+        "hi": 0.8363636363636363,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.7863636363636364,
+      "p": 0.0
+    }
+  },
+  "interaction": {
+    "did": 0.022727272727272728,
+    "lo": -0.05454545454545454,
+    "hi": 0.1,
+    "n": 220
+  },
+  "holm_bonferroni": {
+    "B1 − B0 (ladder: keyword vs LLM-only)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "B2 − B1 (ladder: RAG vs keyword)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "PIKG-RAG − B3 (ladder: full system vs hybrid)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "B3 − B0 (RQ5: hybrid RAG vs parametric)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "PIKG-RAG − B0 (RQ5: full system vs parametric)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "ORACLE − B0 (generation ceiling vs floor)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "B3 − B2 (ladder: hybrid vs dense)": {
+      "p": 0.5504,
+      "p_adj": 0.5504,
+      "reject": false
+    }
+  }
+}
