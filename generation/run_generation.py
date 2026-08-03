@@ -18,6 +18,8 @@ import importlib
 import json
 from pathlib import Path
 
+import sys
+
 from retrieval import arms as A
 from retrieval import backends as B
 from retrieval.base import Corpus, EvalItem
@@ -53,6 +55,7 @@ def main():
     ap.add_argument("--arms", default="C1", help="comma list from A1-A4,R0,R1,C0,C1")
     ap.add_argument("--results-dir", type=Path, default=Path("retrieval/results"))
     ap.add_argument("--out-dir", type=Path, default=Path("generation/answers"))
+    ap.add_argument("--workers", type=int, default=4, help="parallel generations per arm")
     args = ap.parse_args()
 
     cfg = json.loads(args.config.read_text("utf-8"))
@@ -63,22 +66,48 @@ def main():
     args.out_dir.mkdir(parents=True, exist_ok=True)
     ranked_cache: dict = {}
 
-    for arm in [A.resolve(a.strip()) for a in args.arms.split(",")]:
-        out = []
-        try:
-            for it in items:
-                ctx_ids = context_ids_for(arm, it, k, args.results_dir, ranked_cache)
-                answer, meta = gen.answer(it.question, ctx_ids, corpus)
-                out.append({"id": it.id, "arm": arm, "question": it.question,
-                            "question_type": it.question_type, "context_ids": ctx_ids,
-                            "answer": answer, "gold": it.gold_sections,
-                            "supporting": it.supporting_sections, "meta": meta})
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    def answer_one(arm, it):
+        ctx_ids = context_ids_for(arm, it, k, args.results_dir, ranked_cache)
+        ans, meta = gen.answer(it.question, ctx_ids, corpus)
+        return {"id": it.id, "arm": arm, "question": it.question,
+                "question_type": it.question_type, "context_ids": ctx_ids,
+                "answer": ans, "gold": it.gold_sections,
+                "supporting": it.supporting_sections, "meta": meta}
+
+    requested = A.ALL_ARMS if args.arms == "all" else [A.resolve(a.strip()) for a in args.arms.split(",")]
+    for arm in requested:
+        try:  # probe the backend once so an unconfigured arm skips cleanly
+            answer_one(arm, items[0])
         except B.NotConfigured as e:
-            print(f"  {arm:4s} SKIPPED — {e}")
+            print(f"  {A.label(arm):8s}({arm}) SKIPPED — {e}")
             continue
+        except Exception:
+            pass  # a real per-item error is handled in the loop below
+
+        out, fails = [], 0
+        if args.workers > 1:
+            with ThreadPoolExecutor(max_workers=args.workers) as ex:
+                futs = [ex.submit(answer_one, arm, it) for it in items]
+                for f in as_completed(futs):
+                    try:
+                        out.append(f.result())
+                    except Exception as e:
+                        fails += 1
+                        print(f"    ! item error: {e}", file=sys.stderr)
+        else:
+            for it in items:
+                try:
+                    out.append(answer_one(arm, it))
+                except Exception as e:
+                    fails += 1
+                    print(f"    ! item error: {e}", file=sys.stderr)
+        out.sort(key=lambda o: o["id"])
         (args.out_dir / f"{arm}.jsonl").write_text(
             "\n".join(json.dumps(o, ensure_ascii=False) for o in out), "utf-8")
-        print(f"  {A.label(arm):8s}({arm}) wrote {len(out)} answers -> {args.out_dir}/{arm}.jsonl")
+        note = f"  ({fails} dropped)" if fails else ""
+        print(f"  {A.label(arm):8s}({arm}) wrote {len(out)} answers -> {args.out_dir}/{arm}.jsonl{note}")
 
 
 if __name__ == "__main__":

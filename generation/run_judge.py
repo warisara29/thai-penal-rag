@@ -43,6 +43,7 @@ def main():
     ap.add_argument("--arms", default="C1", help="comma list")
     ap.add_argument("--answers-dir", type=Path, default=Path("generation/answers"))
     ap.add_argument("--out-dir", type=Path, default=Path("generation/verdicts"))
+    ap.add_argument("--workers", type=int, default=4, help="parallel judge calls per arm")
     args = ap.parse_args()
 
     cfg = json.loads(args.config.read_text("utf-8"))
@@ -55,7 +56,8 @@ def main():
     judge_on = judge_spec is not None
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
-    for arm in [A.resolve(a.strip()) for a in args.arms.split(",")]:
+    requested = A.ALL_ARMS if args.arms == "all" else [A.resolve(a.strip()) for a in args.arms.split(",")]
+    for arm in requested:
         tag = f"{A.label(arm):8s}({arm})"
         path = args.answers_dir / f"{arm}.jsonl"
         if not path.exists():
@@ -63,26 +65,36 @@ def main():
             continue
         answers = [json.loads(l) for l in path.read_text("utf-8").splitlines() if l.strip()]
 
-        verdicts, hard, soft, ground_rates, scores, corrects = [], [], [], [], [], []
-        for a in answers:
+        def judge_one(a):
             item = ev.get(a["id"], {})
             hl = H.flag(a["answer"], corpus_ids, set(a["context_ids"]))
-            hard.append(hl["hard_rate"]); soft.append(hl["soft_rate"])
             v = {"id": a["id"], "arm": arm, "hallucination": hl}
-
             if judge_on:
                 ctx = prompts.build_context(a["context_ids"], corpus)
                 claims = item.get("answer_claims", []) if a["question_type"] != "unanswerable" else []
                 if claims:
                     gv = judge.ground_claims(claims, ctx)
-                    rate = sum(gv) / len(gv)
-                    ground_rates.append(rate)
-                    v["claim_grounding"] = {"verdicts": gv, "rate": rate}
+                    v["claim_grounding"] = {"verdicts": gv, "rate": sum(gv) / len(gv)}
                 if a["question_type"] != "unanswerable" and item.get("reference_answer"):
-                    sc = judge.score_correctness(a["answer"], item["reference_answer"])
-                    scores.append(sc["score"]); corrects.append(1 if sc["correct"] else 0)
-                    v["correctness"] = sc
-            verdicts.append(v)
+                    v["correctness"] = judge.score_correctness(a["answer"], item["reference_answer"])
+            return v
+
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        verdicts = []
+        if args.workers > 1 and judge_on:
+            with ThreadPoolExecutor(max_workers=args.workers) as ex:
+                futs = [ex.submit(judge_one, a) for a in answers]
+                for f in as_completed(futs):
+                    verdicts.append(f.result())
+        else:
+            verdicts = [judge_one(a) for a in answers]
+        verdicts.sort(key=lambda v: v["id"])
+
+        hard = [v["hallucination"]["hard_rate"] for v in verdicts]
+        soft = [v["hallucination"]["soft_rate"] for v in verdicts]
+        ground_rates = [v["claim_grounding"]["rate"] for v in verdicts if "claim_grounding" in v]
+        scores = [v["correctness"]["score"] for v in verdicts if "correctness" in v]
+        corrects = [1 if v["correctness"]["correct"] else 0 for v in verdicts if "correctness" in v]
 
         (args.out_dir / f"{arm}.jsonl").write_text(
             "\n".join(json.dumps(v, ensure_ascii=False) for v in verdicts), "utf-8")
