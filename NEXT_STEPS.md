@@ -8,10 +8,19 @@ Do it in this order — each step unlocks the next.
 ---
 
 ## Step 0 — one-time inputs (no code)
-- [ ] `export ANTHROPIC_API_KEY=…` (for the eval drafter + the Claude judge)
-- [ ] `pip install anthropic sentence-transformers statsmodels pandas pythainlp`
+- [ ] `export DEEPINFRA_API_KEY=…`  (the ONLY key needed — all models run on DeepInfra)
+- [ ] `python3 -m venv .venv && .venv/bin/pip install openai requests statsmodels pandas pythainlp`
+      (run everything with `.venv/bin/python`; homebrew python blocks system installs)
 - [ ] Lawyer: verify `kg/applies_to_rules.json` (`verified:true`) + fill
       `data/applies_to_review.csv`; re-run `kg/expand_applies_to.py … --verified-only`.
+
+All models are on DeepInfra (verified working on the seed set):
+| Role | Model |
+|---|---|
+| Generator + PageIndex navigator | `Qwen/Qwen3.6-35B-A3B` |
+| Embedder | `BAAI/bge-m3` |
+| Reranker | `Qwen/Qwen3-Reranker-4B` |
+| Judge + eval drafter (≠ generator) | `deepseek-ai/DeepSeek-V4-Pro` |
 
 ## Step 1 — build the eval set
 ```bash
@@ -20,28 +29,19 @@ python eval/validate_eval.py eval/eval_set.generated.jsonl --schema eval/schema.
 ```
 → 255 items. Use `--eval eval/eval_set.generated.jsonl` everywhere below.
 
-## Step 2 — retrieval backends (unlocks R1, A1, A2, real A3/A4)
-Implement in a module of yours; point `retrieval/config.json → backends` at `module:Class`.
-
-| Backend | Interface (from `retrieval/backends.py`) | Model | Unlocks |
-|---|---|---|---|
-| `Embedder` | `encode(texts: list[str]) -> list[list[float]]` | BGE-M3 (`BAAI/bge-m3`) | R1, A1 dense leg |
-| `Reranker` | `rerank(query: str, candidate_ids: list[str], corpus) -> list[str]` (reordered best-first) | one shared cross-encoder (§4c) | A1, A2, A4 |
-| `LLMNodeSelector._choose` (`retrieval/pageindex.py`) | `(query, options: list[str], max_choose) -> (indices: list[int], tokens: int)` | **same Thai open model**, temp 0 | real A3, A4 |
-
-Then run and confirm metrics rise vs R0/A3-heuristic:
+## Step 2 — retrieval backends (wired to DeepInfra, verified)
+`backends_deepinfra.py` implements everything; the config files already point at it.
+B1/B2/B3/B3+PI all confirmed on the seed set. Just run:
 ```bash
-python -m retrieval.run_eval --arms all --eval eval/eval_set.generated.jsonl
+.venv/bin/python -m retrieval.run_eval --arms all --eval eval/eval_set.generated.jsonl
 ```
 → writes `retrieval/results/<arm>.jsonl` (recall@5, mrr@10, map@10, coverage@5, support_recall@5).
+(Set any backend to `null` in `retrieval/config.json` to fall back: navigator=null → the
+no-LLM heuristic PageIndex; embedder/reranker=null → skip those arms. R0/B1 needs none.)
 
-## Step 3 — generation + judge (answer-quality axis)
-| Backend | Interface | Model |
-|---|---|---|
-| `Generator` (`retrieval/backends.py`) | `answer(question, context_ids: list[str], corpus) -> (text, meta)` | pinned Thai model, temp 0 |
-| `judge` | `generation.judge:AnthropicJudge` works as-is (Claude Opus 4.8 ≠ generator) | — |
-
-Set `generation/config.json → backends.{generator,judge}`, then:
+## Step 3 — generation + judge (already wired)
+Generator = `backends_deepinfra:DeepInfraGenerator` (Qwen, temp 0); judge =
+`backends_deepinfra:DeepInfraJudge` (DeepSeek-V4-Pro ≠ Qwen generator, no self-preference bias). Then:
 ```bash
 python -m generation.run_generation --arms A1,A2,A3,A4,R0,R1,C0,C1 --eval eval/eval_set.generated.jsonl
 python -m generation.run_judge      --arms A1,A2,A3,A4,R0,R1,C0,C1 --eval eval/eval_set.generated.jsonl

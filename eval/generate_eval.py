@@ -228,19 +228,9 @@ def build_tasks(cfg, secs, by_id, rng):
     return tasks, report
 
 
-def draft_one(client, model, task):
-    """Call the drafter; return a fully-assembled eval item dict (no id yet)."""
-    resp = client.messages.create(
-        model=model,
-        max_tokens=2000,
-        thinking={"type": "adaptive"},
-        output_config={"effort": "medium",
-                       "format": {"type": "json_schema", "schema": DRAFT_SCHEMA}},
-        system=SYSTEM,
-        messages=[{"role": "user", "content": task["prompt"]}],
-    )
-    text = next(b.text for b in resp.content if b.type == "text")
-    d = json.loads(text)
+def draft_one(draft_fn, model_label, task):
+    """Draft one item via `draft_fn(system, user) -> dict`; assemble the eval item."""
+    d = draft_fn(SYSTEM, task["prompt"])
     item = {
         "question": d["question"].strip(),
         "question_type": task["qtype"],
@@ -249,9 +239,32 @@ def draft_one(client, model, task):
         "reference_answer": d["reference_answer"].strip(),
         "answer_claims": [] if task["qtype"] == "unanswerable" else d.get("answer_claims", []),
         "difficulty": d.get("difficulty", "medium"),
-        "annotator": "llm-drafted:" + model,
+        "annotator": "llm-drafted:" + model_label,
     }
     return item
+
+
+def make_drafter(cfg):
+    """Return (draft_fn, model_label). Provider from cfg['drafter_provider']."""
+    provider = cfg.get("drafter_provider", "anthropic")
+    if provider == "deepinfra":
+        import pathlib
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+        import backends_deepinfra as B
+        hint = ('\n\nตอบเป็น JSON เท่านั้น รูปแบบ: {"question": "...", "reference_answer": "...", '
+                '"answer_claims": ["..."], "difficulty": "easy|medium|hard"}')
+        return (lambda system, user: B.draft_json(system, user + hint)), B.DRAFT_MODEL
+    import anthropic
+    client, model = anthropic.Anthropic(), cfg["drafter_model"]
+
+    def draft_fn(system, user):
+        resp = client.messages.create(
+            model=model, max_tokens=2000, thinking={"type": "adaptive"},
+            output_config={"effort": "medium",
+                           "format": {"type": "json_schema", "schema": DRAFT_SCHEMA}},
+            system=system, messages=[{"role": "user", "content": user}])
+        return json.loads(next(b.text for b in resp.content if b.type == "text"))
+    return draft_fn, model
 
 
 def main():
@@ -290,13 +303,12 @@ def main():
         print("\n(dry run — no items written. Re-run without --dry-run to draft via the API.)")
         return
 
-    import anthropic  # imported lazily so --dry-run needs no SDK/key
-    client = anthropic.Anthropic()
-    model = cfg["drafter_model"]
+    draft_fn, model_label = make_drafter(cfg)  # lazy: --dry-run needs no SDK/key
+    print(f"drafter: {model_label}\n")
 
     items, failures = [], 0
     with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        futs = {ex.submit(draft_one, client, model, t): i for i, t in enumerate(tasks)}
+        futs = {ex.submit(draft_one, draft_fn, model_label, t): i for i, t in enumerate(tasks)}
         for done, fut in enumerate(as_completed(futs), 1):
             try:
                 items.append((futs[fut], fut.result()))

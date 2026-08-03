@@ -3,8 +3,8 @@
   "sections_path": "data/sections.jsonl",
   "k": 5,
   "backends": {
-    "generator": null,
-    "judge": null
+    "generator": "backends_deepinfra:DeepInfraGenerator",
+    "judge": "backends_deepinfra:DeepInfraJudge"
   },
   "_backend_hints": {
     "generator": "the pinned Thai open model, temperature 0 — implement retrieval.backends.Generator, e.g. 'mypkg.thaigen:TyphoonGenerator'",

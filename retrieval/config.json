@@ -10,9 +10,10 @@
   "k_recall": 5,
   "k_mrr": 10,
   "backends": {
-    "embedder": null,
-    "reranker": null,
-    "navigator": null,
+    "embedder": "backends_deepinfra:DeepInfraEmbedder",
+    "reranker": "backends_deepinfra:DeepInfraReranker",
+    "navigator": "backends_deepinfra:DeepInfraNavigator",
     "generator": null
-  }
+  },
+  "_note": "backends are DeepInfra (needs DEEPINFRA_API_KEY). Set navigator=null for the no-LLM heuristic PageIndex (A3/A4); set embedder/reranker=null to skip those arms. R0 needs no backend."
 }
