@@ -63,7 +63,8 @@ class _Client:
                 from openai import OpenAI  # lazy
             except ImportError as e:
                 raise NotConfigured("pip install openai") from e
-            cls._c = OpenAI(base_url=BASE_URL, api_key=key)
+            # bump retries so transient 429 'engine_overloaded' auto-backs-off
+            cls._c = OpenAI(base_url=BASE_URL, api_key=key, max_retries=6, timeout=120)
         return cls._c
 
 
@@ -202,8 +203,19 @@ class DeepInfraReranker:
         if not ids:
             return candidate_ids
         url = f"https://api.deepinfra.com/v1/inference/{RERANK_MODEL}"
-        payload = {"queries": [query] * len(docs), "documents": docs}          # <-- verify
-        r = requests.post(url, headers={"Authorization": f"Bearer {_key()}"}, json=payload, timeout=60)
-        r.raise_for_status()
-        scores = r.json()["scores"]                                            # <-- verify
-        return [i for _, i in sorted(zip(scores, ids), reverse=True)]
+        payload = {"queries": [query] * len(docs), "documents": docs}
+        import random
+        import time
+        last = None
+        for attempt in range(9):  # retry transient 429/5xx with backoff + jitter
+            r = requests.post(url, headers={"Authorization": f"Bearer {_key()}"},
+                              json=payload, timeout=120)
+            if r.status_code in (429, 500, 502, 503):
+                last = r
+                wait = float(r.headers.get("retry-after", 0)) or min(30, 2 ** attempt)
+                time.sleep(wait + random.uniform(0, 1.5))
+                continue
+            r.raise_for_status()
+            scores = r.json()["scores"]
+            return [i for _, i in sorted(zip(scores, ids), reverse=True)]
+        (last or r).raise_for_status()  # exhausted retries

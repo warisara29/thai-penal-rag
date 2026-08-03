@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import importlib
 import json
+import sys
 from pathlib import Path
 
 from . import arms as A
@@ -52,17 +53,49 @@ def build_context(cfg) -> A.Context:
     )
 
 
-def run_arm(name, ctx, items, k):
+def run_arm(name, ctx, items, k, workers=1):
+    from concurrent.futures import ThreadPoolExecutor, as_completed
     arm = A.build_arm(name, ctx)
+    todo = [(i, it) for i, it in enumerate(items) if it.question_type != "unanswerable"]
+    results: dict[int, object] = {}
+
+    def do(i, it):
+        return i, arm.retrieve(it.question, it.id, k)
+
+    fails = 0
+    if workers > 1 and todo:
+        # pre-warm synchronously (first call encodes the corpus for dense arms;
+        # avoids N threads racing to embed it) then parallelise the rest
+        i0, it0 = todo[0]
+        results[i0] = do(i0, it0)[1]
+        with ThreadPoolExecutor(max_workers=workers) as ex:
+            futs = [ex.submit(do, i, it) for i, it in todo[1:]]
+            for f in as_completed(futs):
+                try:
+                    i, res = f.result()
+                    results[i] = res
+                except Exception as e:  # isolate a bad item; don't kill the sweep
+                    fails += 1
+                    print(f"    ! item error: {e}", file=sys.stderr)
+    else:
+        for i, it in todo:
+            try:
+                results[i] = do(i, it)[1]
+            except Exception as e:
+                fails += 1
+                print(f"    ! item error: {e}", file=sys.stderr)
+
     rows, out = [], []
-    for it in items:
-        if it.question_type == "unanswerable":
-            continue  # no retrieval target
-        res = arm.retrieve(it.question, it.id, k)
+    for i, it in todo:
+        res = results.get(i)
+        if res is None:
+            continue
         rows.append({"ranked": res.ranked_ids, "gold": it.gold_sections,
                      "supporting": it.supporting_sections})
         out.append({"id": it.id, "ranked": res.ranked_ids, "gold": it.gold_sections,
                     "supporting": it.supporting_sections, "meta": res.meta})
+    if fails:
+        print(f"    ({fails} items dropped on errors)", file=sys.stderr)
     return rows, out
 
 
@@ -72,6 +105,7 @@ def main():
     ap.add_argument("--eval", type=Path, default=Path("eval/eval_set.seed.jsonl"))
     ap.add_argument("--arms", default="R0", help="comma list, or 'all'")
     ap.add_argument("--out-dir", type=Path, default=Path("retrieval/results"))
+    ap.add_argument("--workers", type=int, default=8, help="parallel queries per arm")
     args = ap.parse_args()
 
     cfg = json.loads(args.config.read_text("utf-8"))
@@ -92,7 +126,7 @@ def main():
                   f"needs Generator backend; not retrieval-scored")
             continue
         try:
-            rows, out = run_arm(name, ctx, items, k)
+            rows, out = run_arm(name, ctx, items, k, workers=args.workers)
         except B.NotConfigured as e:
             print(f"  {tag} SKIPPED — {e}")
             continue
