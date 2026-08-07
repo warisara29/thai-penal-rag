@@ -122,7 +122,7 @@ class DeepInfraNodeSelector(LLMNodeSelector):
 class DeepInfraNavigator(PageIndexNavigator):
     """TreeNavigator backend for A3/A4 = PageIndex descent driven by Qwen."""
 
-    def __init__(self, beam_width: int = 3):
+    def __init__(self, beam_width: int = 5):  # wider beam: keep more ลักษณะ/หมวด branches
         super().__init__(DeepInfraNodeSelector(), beam_width=beam_width)
 
 

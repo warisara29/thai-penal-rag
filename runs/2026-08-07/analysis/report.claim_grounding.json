@@ -1,0 +1,159 @@
+{
+  "metric": "claim_grounding",
+  "k": 5,
+  "per_arm": {
+    "A1": {
+      "label": "hybrid",
+      "mean": 0.8259054834054834,
+      "lo": 0.7823827561327561,
+      "hi": 0.8689736652236653,
+      "n": 220
+    },
+    "A2": {
+      "label": "hybrid+kg",
+      "mean": 0.8379653679653679,
+      "lo": 0.7945400432900432,
+      "hi": 0.8794588744588745,
+      "n": 220
+    },
+    "A3": {
+      "label": "pi",
+      "mean": 0.4537337662337662,
+      "lo": 0.39305194805194804,
+      "hi": 0.5153787878787879,
+      "n": 220
+    },
+    "A4B": {
+      "label": "hybrid+pi+kg",
+      "mean": 0.8409848484848484,
+      "lo": 0.7963257575757576,
+      "hi": 0.8826623376623377,
+      "n": 220
+    },
+    "A5": {
+      "label": "hybrid+pi",
+      "mean": 0.8527020202020202,
+      "lo": 0.8117424242424243,
+      "hi": 0.8916540404040404,
+      "n": 220
+    },
+    "C0": {
+      "label": "closed",
+      "mean": 0.022727272727272728,
+      "lo": 0.004545454545454545,
+      "hi": 0.045454545454545456,
+      "n": 220
+    },
+    "C1": {
+      "label": "ORACLE",
+      "mean": 0.9385443722943723,
+      "lo": 0.9146212121212122,
+      "hi": 0.9606493506493506,
+      "n": 220
+    },
+    "R0": {
+      "label": "keyword",
+      "mean": 0.5557196969696969,
+      "lo": 0.49242424242424243,
+      "hi": 0.6181439393939394,
+      "n": 220
+    },
+    "R1": {
+      "label": "dense",
+      "mean": 0.7301190476190477,
+      "lo": 0.6783333333333333,
+      "hi": 0.7835227272727273,
+      "n": 220
+    }
+  },
+  "contrasts": {
+    "B1 − B0 (ladder: keyword vs LLM-only)": {
+      "rq": "ladder",
+      "delta_ci": {
+        "delta": 0.5329924242424242,
+        "lo": 0.4681818181818182,
+        "hi": 0.5957954545454546,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.5329924242424243,
+      "p": 0.0
+    },
+    "B2 − B1 (ladder: RAG vs keyword)": {
+      "rq": "ladder",
+      "delta_ci": {
+        "delta": 0.17439935064935064,
+        "lo": 0.11613636363636363,
+        "hi": 0.2353896103896104,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.17439935064935064,
+      "p": 0.0
+    },
+    "B3 − B2 (ladder: hybrid vs dense)": {
+      "rq": "ladder",
+      "delta_ci": {
+        "delta": 0.09578643578643578,
+        "lo": 0.05609848484848485,
+        "hi": 0.13571248196248195,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.09578643578643578,
+      "p": 0.0
+    },
+    "B3 − B0 (RQ5: hybrid RAG vs parametric)": {
+      "rq": "RQ5",
+      "delta_ci": {
+        "delta": 0.8031782106782107,
+        "lo": 0.7553228715728716,
+        "hi": 0.8497943722943723,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.8031782106782107,
+      "p": 0.0
+    },
+    "ORACLE − B0 (generation ceiling vs floor)": {
+      "rq": "RQ5",
+      "delta_ci": {
+        "delta": 0.9158170995670996,
+        "lo": 0.883961038961039,
+        "hi": 0.9450595238095238,
+        "n": 220
+      },
+      "test": "permutation",
+      "delta": 0.9158170995670997,
+      "p": 0.0
+    }
+  },
+  "interaction": null,
+  "holm_bonferroni": {
+    "B1 − B0 (ladder: keyword vs LLM-only)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "B2 − B1 (ladder: RAG vs keyword)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "B3 − B2 (ladder: hybrid vs dense)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "B3 − B0 (RQ5: hybrid RAG vs parametric)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    },
+    "ORACLE − B0 (generation ceiling vs floor)": {
+      "p": 0.0,
+      "p_adj": 0.0,
+      "reject": true
+    }
+  }
+}

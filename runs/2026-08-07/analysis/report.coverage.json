@@ -1,0 +1,136 @@
+{
+  "metric": "coverage",
+  "k": 5,
+  "per_arm": {
+    "A1": {
+      "label": "hybrid",
+      "mean": 0.8,
+      "lo": 0.7454545454545455,
+      "hi": 0.85,
+      "n": 220
+    },
+    "A2": {
+      "label": "hybrid+kg",
+      "mean": 0.8264840182648402,
+      "lo": 0.776255707762557,
+      "hi": 0.8767123287671232,
+      "n": 219
+    },
+    "A3": {
+      "label": "pi",
+      "mean": 0.4,
+      "lo": 0.33636363636363636,
+      "hi": 0.4636363636363636,
+      "n": 220
+    },
+    "A4B": {
+      "label": "hybrid+pi+kg",
+      "mean": 0.85,
+      "lo": 0.8,
+      "hi": 0.8954545454545455,
+      "n": 220
+    },
+    "A5": {
+      "label": "hybrid+pi",
+      "mean": 0.8272727272727273,
+      "lo": 0.7772727272727272,
+      "hi": 0.8772727272727273,
+      "n": 220
+    },
+    "R0": {
+      "label": "keyword",
+      "mean": 0.5272727272727272,
+      "lo": 0.4590909090909091,
+      "hi": 0.5954545454545455,
+      "n": 220
+    },
+    "R1": {
+      "label": "dense",
+      "mean": 0.6818181818181818,
+      "lo": 0.6227272727272727,
+      "hi": 0.740909090909091,
+      "n": 220
+    }
+  },
+  "contrasts": {
+    "B3+PI − B3 (RQ1: PageIndex vs hybrid base)": {
+      "rq": "RQ1",
+      "delta_ci": {
+        "delta": -0.4,
+        "lo": -0.4727272727272727,
+        "hi": -0.32727272727272727,
+        "n": 220
+      },
+      "test": "mcnemar",
+      "a_wins": 7,
+      "b_wins": 95,
+      "p": 7.849647205790365e-21,
+      "odds_ratio": 0.07368421052631578
+    },
+    "B3+KG − B3 (RQ2: KG on hybrid)": {
+      "rq": "RQ2",
+      "delta_ci": {
+        "delta": 0.0273972602739726,
+        "lo": 0.0045662100456621,
+        "hi": 0.0547945205479452,
+        "n": 219
+      },
+      "test": "mcnemar",
+      "a_wins": 7,
+      "b_wins": 1,
+      "p": 0.0703125,
+      "odds_ratio": 7.0
+    },
+    "B2 − B1 (ladder: dense RAG vs keyword)": {
+      "rq": "ladder",
+      "delta_ci": {
+        "delta": 0.15454545454545454,
+        "lo": 0.09545454545454546,
+        "hi": 0.21363636363636362,
+        "n": 220
+      },
+      "test": "mcnemar",
+      "a_wins": 41,
+      "b_wins": 7,
+      "p": 6.240408438884515e-07,
+      "odds_ratio": 5.857142857142857
+    },
+    "B3 − B2 (ladder: hybrid vs dense)": {
+      "rq": "ladder",
+      "delta_ci": {
+        "delta": 0.11818181818181818,
+        "lo": 0.07272727272727272,
+        "hi": 0.16363636363636364,
+        "n": 220
+      },
+      "test": "mcnemar",
+      "a_wins": 28,
+      "b_wins": 2,
+      "p": 8.67992639541626e-07,
+      "odds_ratio": 14.0
+    }
+  },
+  "interaction": null,
+  "holm_bonferroni": {
+    "B3+PI − B3 (RQ1: PageIndex vs hybrid base)": {
+      "p": 7.849647205790365e-21,
+      "p_adj": 3.139858882316146e-20,
+      "reject": true
+    },
+    "B2 − B1 (ladder: dense RAG vs keyword)": {
+      "p": 6.240408438884515e-07,
+      "p_adj": 1.8721225316653545e-06,
+      "reject": true
+    },
+    "B3 − B2 (ladder: hybrid vs dense)": {
+      "p": 8.67992639541626e-07,
+      "p_adj": 1.8721225316653545e-06,
+      "reject": true
+    },
+    "B3+KG − B3 (RQ2: KG on hybrid)": {
+      "p": 0.0703125,
+      "p_adj": 0.0703125,
+      "reject": false
+    }
+  }
+}

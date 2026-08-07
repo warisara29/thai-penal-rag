@@ -18,11 +18,12 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-# ladder order + labels + which are the 2x2 core
-ORDER = ["C0", "R0", "R1", "A1", "A2", "A3", "A4", "C1"]
-LABEL = {"C0": "B0\nclosed", "R0": "B1\nkeyword", "R1": "B2\ndense", "A1": "B3\nhybrid",
-         "A2": "B3+KG", "A3": "B3+PI", "A4": "PIKG-RAG", "C1": "ORACLE"}
-CORE = {"A1", "A2", "A3", "A4"}
+# additive-design order + descriptive labels + which arms are the additive comparison set
+ORDER = ["C0", "R0", "R1", "A1", "A3", "A5", "A2", "A4B", "C1"]
+LABEL = {"C0": "closed", "R0": "keyword", "R1": "dense", "A1": "hybrid",
+         "A3": "pi", "A5": "hybrid\n+pi", "A2": "hybrid\n+kg", "A4B": "hybrid\n+pi+kg",
+         "A4": "pi+kg", "C1": "ORACLE"}
+CORE = {"A1", "A3", "A5", "A2", "A4B"}
 
 
 def _load(path):
@@ -92,7 +93,9 @@ def main():
     # Fig 1: retrieval — recall@5 with bootstrap CI (arms that have retrieval)
     arms_r = [a for a in ORDER if a in rm]
     ci = ci_from_report(args.run, "hit")
-    yerr = [[ci[a][1] for a in arms_r], [ci[a][2] for a in arms_r]] if all(a in ci for a in arms_r) else None
+    # per-arm whiskers: CI where the report has it, zero-length for spliced-in arms (e.g. A4B)
+    yerr = ([[ci.get(a, (0, 0, 0))[1] for a in arms_r], [ci.get(a, (0, 0, 0))[2] for a in arms_r]]
+            if any(a in ci for a in arms_r) else None)
     fig, ax = plt.subplots(figsize=(8, 4.5))
     bars(ax, arms_r, [rm[a]["recall"] for a in arms_r], [col(a) for a in arms_r],
          "Recall@5", "Retrieval Recall@5 (95% bootstrap CI)", yerr)
@@ -101,7 +104,8 @@ def main():
     # Fig 2: answer correctness ladder with CI + oracle ceiling
     arms_c = [a for a in ORDER if a in vm]
     cic = ci_from_report(args.run, "correct")
-    yerr2 = [[cic[a][1] for a in arms_c], [cic[a][2] for a in arms_c]] if all(a in cic for a in arms_c) else None
+    yerr2 = ([[cic.get(a, (0, 0, 0))[1] for a in arms_c], [cic.get(a, (0, 0, 0))[2] for a in arms_c]]
+             if any(a in cic for a in arms_c) else None)
     fig, ax = plt.subplots(figsize=(8, 4.5))
     bars(ax, arms_c, [vm[a]["correct"] for a in arms_c], [col(a) for a in arms_c],
          "Answer correctness", "Answer Correctness (judge, 95% CI)", yerr2)
@@ -125,9 +129,10 @@ def main():
     fig.tight_layout(); fig.savefig(figs / "fig3_three_axes.png", dpi=150); plt.close(fig)
 
     # Fig 4: KG effect on multi-hop support recall
-    arms_s = [a for a in ["A1", "A2", "A3", "A4"] if a in rm]
-    fig, ax = plt.subplots(figsize=(6, 4))
-    bars(ax, arms_s, [rm[a]["support_recall"] for a in arms_s], ["#7f8c8d", "#c0392b", "#7f8c8d", "#c0392b"],
+    arms_s = [a for a in ["A1", "A3", "A5", "A2", "A4B"] if a in rm]
+    kgcol = {"A1": "#7f8c8d", "A3": "#7f8c8d", "A5": "#7f8c8d", "A2": "#c0392b", "A4B": "#c0392b"}
+    fig, ax = plt.subplots(figsize=(7, 4))
+    bars(ax, arms_s, [rm[a]["support_recall"] for a in arms_s], [kgcol[a] for a in arms_s],
          "Support-recall@5", "KG effect on multi-hop (support-recall@5)")
     fig.tight_layout(); fig.savefig(figs / "fig4_kg_support.png", dpi=150); plt.close(fig)
 
