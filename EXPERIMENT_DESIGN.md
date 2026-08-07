@@ -30,7 +30,7 @@ in every case is "no difference."
 
 | RQ | Question | Primary metric | Hypothesis |
 |----|----------|----------------|-----------|
-| **RQ1** | Does PageIndex tree navigation beat the dense-hybrid baseline at finding the *directly answering* section(s)? | Recall@5, MRR@10 vs `gold_sections` | **H1**: PageIndex ≥ baseline overall; gain is largest on `definition`/`exception`/structural questions where the hierarchy carries signal. |
+| **RQ1** | Does PageIndex tree navigation beat the dense-hybrid baseline at finding the *directly answering* section(s)? | Recall@5, MRR@10 vs `gold_sections` | **H1**: PageIndex ≥ baseline overall; gain is largest on `definition`/`exception`/structural questions where the hierarchy carries signal. **Refined (2026-08-04):** H1 rejected for PageIndex as a *replacement* base (loses to hybrid); it holds only *additively* — PageIndex on top of hybrid (A4B) beats hybrid. |
 | **RQ2** | Does KG multi-hop expansion recover the *general provisions* needed to reason (Book-1 sections)? | Multi-hop coverage @k vs `gold ∪ supporting` | **H2**: KG expansion raises multi-hop coverage on `multi_hop` items with negligible effect on `lookup`; the `APPLIES_TO` edge is the driver. |
 | **RQ3** | Does better retrieval translate into a better *generated answer* from a fixed Thai LLM? | Claim-grounding rate, hallucinated-section rate | **H3**: downstream faithfulness increases monotonically with retrieval quality, holding the generator fixed. |
 | **RQ4** | What does each structural layer cost? | LLM calls/query, p95 latency, index build | **H4** (descriptive): PageIndex and KG add answer quality at super-linear latency/cost; we quantify the trade. |
@@ -97,6 +97,19 @@ sections, never in granularity (removes a confound).
 
 `CLOSED` and `ORACLE` are generation-only (no retrieval metric). Every other arm is scored
 on both retrieval and generation.
+
+### 4d. Full-system arm (added post-hoc, see 2026-08-04 progress)
+
+The 2×2 above treats PageIndex as a *replacement* base retriever (A3/A4). The first full run
+showed this loses badly (A4 recall 0.49 vs hybrid 0.93) — PageIndex is too weak to *replace*
+dense-hybrid retrieval. The refined full system keeps hybrid and lets structure *augment* it:
+
+| ID | Arm | Base retriever | KG | Description |
+|----|-----|----------------|----|-------------|
+| **A4B** `PIKG+` | Additive full system | **hybrid ∪ PageIndex** | on | Union the hybrid pool with PageIndex-selected sections → KG one-hop → shared re-rank. Never discards the strong retriever. |
+
+A4B is reported alongside the factorial, not inside it — the 2×2 main-effects/interaction
+analysis (§7) is unchanged. A4B is the arm the thesis proposes as the deployable pipeline.
 
 ### 4c. Fair-comparison rules (pre-registered)
 

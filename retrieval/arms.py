@@ -18,14 +18,22 @@ from .kg_expand import KGExpander
 GEN_ONLY = {"C0", "C1"}          # scored on generation only, not retrieval
 FACTORIAL = ["A1", "A2", "A3", "A4"]
 REFERENCE = ["R0", "R1", "C0", "C1"]
-ALL_ARMS = FACTORIAL + REFERENCE
+ALL_ARMS = ["A1", "A2", "A3", "A4", "A4B", "A5", "R0", "R1", "C0", "C1"]
 
-# Thesis-figure nomenclature (comparison ladder + 2x2). Internal ids stay stable
-# as dict/file keys; B-labels are the canonical display + CLI alias.
-ARM_LABELS = {"C0": "B0", "R0": "B1", "R1": "B2", "A1": "B3",
-              "A2": "B3+KG", "A3": "B3+PI", "A4": "PIKG-RAG", "C1": "ORACLE"}
+# Additive-component design: three ingredients (hybrid, PageIndex, KG) combined
+# additively — descriptive labels are canonical and read literally (no misleading "+").
+# Internal ids stay stable as dict/file keys.
+ARM_LABELS = {"C0": "closed", "R0": "keyword", "R1": "dense",
+              "A1": "hybrid", "A3": "pi", "A5": "hybrid+pi",
+              "A2": "hybrid+kg", "A4": "pi+kg", "A4B": "hybrid+pi+kg",
+              "C1": "ORACLE"}
+# The clean 5-arm additive comparison set the thesis tells its story with:
+ADDITIVE = ["A1", "A3", "A5", "A2", "A4B"]  # hybrid · pi · hybrid+pi · hybrid+kg · hybrid+pi+kg
+LADDER = ADDITIVE
 LABEL_TO_ARM = {v: k for k, v in ARM_LABELS.items()}
-LADDER = ["C0", "R0", "R1", "A1", "A4"]  # B0 -> B1 -> B2 -> B3 -> PIKG-RAG
+# Back-compat: still accept the retired B0-B3 / PIKG-RAG / PIKG+ labels on the CLI.
+OLD_ALIASES = {"B0": "C0", "B1": "R0", "B2": "R1", "B3": "A1", "B3+KG": "A2",
+               "B3+PI": "A3", "PIKG-RAG": "A4", "PIKG+": "A4B", "ORACLE": "C1"}
 
 
 def label(arm: str) -> str:
@@ -33,10 +41,11 @@ def label(arm: str) -> str:
 
 
 def resolve(name: str) -> str:
-    """Accept either an internal id (A1) or a B-label (B3, PIKG-RAG)."""
-    return LABEL_TO_ARM.get(name, name)
+    """Accept an internal id (A5), a descriptive label (hybrid+pi), or an old B-label (B3)."""
+    return LABEL_TO_ARM.get(name, OLD_ALIASES.get(name, name))
 
-POOL = 50  # candidate pool a base retriever surfaces before rerank/expansion
+import os
+POOL = int(os.environ.get("RAG_POOL", "50"))  # candidate pool before rerank/expansion (env-tunable for ablation)
 
 
 @dataclass
@@ -130,7 +139,47 @@ class KGArm:
         return RetrievalResult(query_id, ranked, meta=seeds.meta)
 
 
+class FullSystem:
+    """Additive full system: keep the strong hybrid pool AND add PageIndex-selected
+    sections, optionally expand along the KG, then shared rerank. Unlike the
+    replacement arms (A3/A4), this never throws hybrid away — structure augments it.
+    expander=None → hybrid+pi (no KG); an expander → hybrid+pi+kg."""
+
+    def __init__(self, hybrid, pi, expander, reranker, corpus, name="A4B", kg_reserve=1):
+        self.hybrid, self.pi = hybrid, pi
+        self.expander, self.reranker, self.corpus, self.name = expander, reranker, corpus, name
+        self.kg_reserve = kg_reserve   # slots at the tail reserved for KG supporting provisions
+
+    def retrieve(self, query: str, query_id: str, k: int) -> RetrievalResult:
+        hpool = self.hybrid._fused_pool(query)                      # strong hybrid candidates
+        pi = self.pi.retrieve(query, query_id, POOL)                # PageIndex-selected
+        seed = list(dict.fromkeys(hpool + pi.ranked_ids))          # union (hybrid first)
+        # Rank the ANSWER candidates cleanly — KG never dilutes the primary ordering.
+        primary = self.reranker.rerank(query, seed, self.corpus)
+        if not self.expander:
+            return RetrievalResult(query_id, primary[:k], meta=pi.meta)
+        # KG APPENDS the best supporting provision(s) into reserved tail slots, so it
+        # can add multi-hop context without ever displacing a primary gold section.
+        expanded = self.expander.expand(seed)
+        head = primary[: k - self.kg_reserve]
+        kg_new = [s for s in expanded if s not in set(seed)]        # provisions only KG surfaced
+        tail = [s for s in self.reranker.rerank(query, kg_new, self.corpus)
+                if s not in set(head)][: self.kg_reserve] if kg_new else []
+        ranked = (head + tail + primary)                           # backfill if KG found nothing
+        ranked = list(dict.fromkeys(ranked))[:k]
+        return RetrievalResult(query_id, ranked, meta=pi.meta)
+
+
 def build_arm(name: str, ctx: Context):
+    if name == "A4B":  # additive full system: hybrid ∪ PageIndex → KG → rerank
+        hyb = HybridRetriever(ctx.corpus, ctx.bm25, ctx.embedder, ctx.reranker, name="A4B.hyb")
+        pi = PageIndexRetriever(ctx.corpus, ctx.navigator, ctx.config["tree_path"], name="A4B.pi")
+        return FullSystem(hyb, pi, ctx.expander, ctx.reranker, ctx.corpus, "A4B",
+                          kg_reserve=ctx.config.get("kg_reserve", 1))
+    if name == "A5":  # additive hybrid+pi, NO KG: hybrid ∪ PageIndex → rerank
+        hyb = HybridRetriever(ctx.corpus, ctx.bm25, ctx.embedder, ctx.reranker, name="A5.hyb")
+        pi = PageIndexRetriever(ctx.corpus, ctx.navigator, ctx.config["tree_path"], name="A5.pi")
+        return FullSystem(hyb, pi, None, ctx.reranker, ctx.corpus, "A5")
     if name == "R0":
         return ctx.bm25
     if name == "R1":
