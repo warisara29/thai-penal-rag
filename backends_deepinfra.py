@@ -196,12 +196,13 @@ class DeepInfraReranker:
     VERIFY the request/response shape against current DeepInfra docs for this model —
     adjust the two marked lines if the schema differs."""
 
-    def rerank(self, query: str, candidate_ids: list[str], corpus: Corpus) -> list[str]:
+    def _scored(self, query: str, candidate_ids: list[str], corpus: Corpus) -> list[tuple[str, float]]:
+        """Return [(id, score)] sorted by score desc (shared by rerank/rerank_scored)."""
         import requests
         docs = [corpus.by_id[c].content for c in candidate_ids if c in corpus.by_id]
         ids = [c for c in candidate_ids if c in corpus.by_id]
         if not ids:
-            return candidate_ids
+            return [(c, 0.0) for c in candidate_ids]
         url = f"https://api.deepinfra.com/v1/inference/{RERANK_MODEL}"
         payload = {"queries": [query] * len(docs), "documents": docs}
         import random
@@ -217,5 +218,11 @@ class DeepInfraReranker:
                 continue
             r.raise_for_status()
             scores = r.json()["scores"]
-            return [i for _, i in sorted(zip(scores, ids), reverse=True)]
+            return sorted(zip(ids, scores), key=lambda t: t[1], reverse=True)
         (last or r).raise_for_status()  # exhausted retries
+
+    def rerank(self, query: str, candidate_ids: list[str], corpus: Corpus) -> list[str]:
+        return [i for i, _ in self._scored(query, candidate_ids, corpus)]
+
+    def rerank_scored(self, query: str, candidate_ids: list[str], corpus: Corpus) -> list[tuple[str, float]]:
+        return self._scored(query, candidate_ids, corpus)

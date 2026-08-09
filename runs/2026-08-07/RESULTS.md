@@ -87,10 +87,24 @@ current KG, and that the remaining bottleneck is **KG edge precision**, not any 
 | | `kg_reserve=2` | 0.702 | −0.018 | support-recall 0.556→0.378 |
 | **Candidate pool depth** | `POOL=50` (base) | 0.718 | — | 50 optimal |
 | | `POOL=100` | 0.686 | −0.032 | recall ↑0.945 but multi_hop −0.111 |
+| **KG slot gating** | static reserve (base) | 0.718 | — | correctness-optimal |
+| | adaptive (score-gated) | 0.686 | −0.032 | recall@5 ↑0.955 (best of all) but correct ↓ |
 
 Note the pool-depth row: `POOL=100` **does** raise recall@5 (0.932→0.945), confirming primary
 recall can go higher — but correctness *falls*, because the larger seed expands into more KG
 noise and multi_hop collapses. Recall is not the binding constraint; KG precision is.
+
+**The recall↔correctness frontier (KG slot gating).** recall@5 and MRR@10 score only the
+*primary* answering section; the reserved slot deliberately spends one of `k` slots on a KG
+supporting provision, so the full system is best on coverage@5 (0.850) and support-recall@5
+(0.556) but not on recall@5 (0.932 vs 0.950 for `HYBRID+PI`). An **adaptive** variant that
+reserves the KG slot only when its supporting candidate out-scores the cut-off primary recovers
+the best recall@5 of any arm (**0.955**) — but its correctness *drops* to 0.686 (support-recall
+0.556→0.400), because it withholds relevant-but-lower-scored provisions that the multi-hop items
+need. The two objectives cannot be maximised together: forcing the supporting provision in
+(static reserve) is correctness-optimal, gating it out is recall-optimal. We keep the static,
+**correctness-optimal** configuration; the recall@5 shortfall is a deliberate reallocation of
+retrieval budget from primary to supporting evidence, not a deficiency.
 
 **Multi-hop diagnosis (the residual gap).** `multi_hop` is 0.489 vs oracle 0.778. Decomposed:
 retrieval-fault (supporting missing from top-5) = 33% of items, generation-fault (supporting
