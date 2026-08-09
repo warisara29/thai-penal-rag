@@ -20,7 +20,7 @@ PageIndex for hybrid in the "full" system makes it the *worst* real configuratio
 provisions into a reserved rank slot — the full system (`HYBRID+PI+KG`) becomes the best real
 arm at **0.718** answer accuracy, the only configuration to beat the hybrid baseline with
 Holm-corrected significance (Δ = +0.082, p = 0.006), closing 35% of the gap to an oracle-context
-ceiling (0.809). Four ablations and a fault decomposition show the residual gap is bounded by
+ceiling (0.809). Five ablations and a fault decomposition show the residual gap is bounded by
 **KG edge precision** — the correct supporting provision is 100% reachable but out-ranked among
 ~271 over-generic `APPLIES_TO` neighbours — not by candidate depth, context size, or the
 generator. We release the benchmark, pipeline, and a reproducible run snapshot.
@@ -252,10 +252,28 @@ precisely.
 
 ## 8. Future Work
 
-Lawyer-curated `APPLIES_TO` edges (pruning generic scopes, verifying the specific ones) to lift
-the multi-hop precision ceiling; a second-annotator (legal) pass for inter-annotator agreement;
-GLMM interaction estimation; an RQ4 cost/latency roll-up; a second Thai generator and a second
-legal corpus for robustness and generalisation.
+Our diagnosis makes the highest-value directions concrete rather than open-ended:
+
+- **KG edge curation (primary lever for multi-hop).** The residual multi-hop gap is bounded by
+  the precision of `APPLIES_TO` edges, of which the `all_offences` scope (67% of edges,
+  ~271 neighbours/node) is near-complete and un-discriminative. A lawyer-verified pass —
+  pruning generic scopes and confirming the specific `book2`/`by_penalty` edges — should let a
+  reserved or adaptive KG slot surface the right supporting provision reliably. Handling the
+  small set of universal provisions (limitation, principals/accessories, attempt) as
+  query-triggered inclusions rather than dense edges is a lighter-weight alternative.
+- **Judge validation at scale.** Extend the blind expert audit and add a **second legal
+  annotator** on an overlapping subset to report inter-annotator agreement alongside
+  human–judge agreement, strengthening the evaluation instrument.
+- **Unanswerable / refusal handling.** Repair the deterministic refusal metric so the
+  `unanswerable` type re-enters the analysis (currently scoped out).
+- **Statistics and cost.** Fit the pre-registered 2×2 GLMM interaction (we report a bootstrap
+  difference-in-differences); complete the RQ4 cost/latency roll-up (LLM calls/query, p95
+  latency, index build) from the logged per-query metadata.
+- **Robustness and generalisation.** Replicate with a second Thai generator; enlarge the eval
+  set to separate the top additive arms (tied at n = 220); and extend beyond the Penal Code to
+  a second statute to test that the additive principle transfers.
+- **Retrieval refinements.** Query decomposition for multi-hop, and a tuned adaptive KG gate on
+  curated edges (§5), toward closing the recall–accuracy trade-off rather than sitting on it.
 
 ---
 
