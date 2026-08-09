@@ -145,28 +145,43 @@ class FullSystem:
     replacement arms (A3/A4), this never throws hybrid away — structure augments it.
     expander=None → hybrid+pi (no KG); an expander → hybrid+pi+kg."""
 
-    def __init__(self, hybrid, pi, expander, reranker, corpus, name="A4B", kg_reserve=1):
+    def __init__(self, hybrid, pi, expander, reranker, corpus, name="A4B", kg_reserve=1,
+                 kg_tau=None):
         self.hybrid, self.pi = hybrid, pi
         self.expander, self.reranker, self.corpus, self.name = expander, reranker, corpus, name
         self.kg_reserve = kg_reserve   # slots at the tail reserved for KG supporting provisions
+        # Adaptive gate: reserve a KG slot only when its best supporting candidate scores within
+        # kg_tau * (top-to-cutoff spread) of the primary it would displace. None -> always reserve
+        # (static reserved-slot). Env RAG_KG_GATE sets it globally for ablation.
+        env = os.environ.get("RAG_KG_GATE")
+        self.kg_tau = float(env) if (kg_tau is None and env not in (None, "")) else kg_tau
+
+    def _scored(self, query, ids):
+        if hasattr(self.reranker, "rerank_scored"):
+            return self.reranker.rerank_scored(query, ids, self.corpus)
+        order = self.reranker.rerank(query, ids, self.corpus)       # fallback: rank as pseudo-score
+        return [(i, float(len(order) - r)) for r, i in enumerate(order)]
 
     def retrieve(self, query: str, query_id: str, k: int) -> RetrievalResult:
         hpool = self.hybrid._fused_pool(query)                      # strong hybrid candidates
         pi = self.pi.retrieve(query, query_id, POOL)                # PageIndex-selected
         seed = list(dict.fromkeys(hpool + pi.ranked_ids))          # union (hybrid first)
         # Rank the ANSWER candidates cleanly — KG never dilutes the primary ordering.
-        primary = self.reranker.rerank(query, seed, self.corpus)
+        scored = self._scored(query, seed)
+        primary = [i for i, _ in scored]
         if not self.expander:
             return RetrievalResult(query_id, primary[:k], meta=pi.meta)
-        # KG APPENDS the best supporting provision(s) into reserved tail slots, so it
-        # can add multi-hop context without ever displacing a primary gold section.
         expanded = self.expander.expand(seed)
-        head = primary[: k - self.kg_reserve]
         kg_new = [s for s in expanded if s not in set(seed)]        # provisions only KG surfaced
-        tail = [s for s in self.reranker.rerank(query, kg_new, self.corpus)
-                if s not in set(head)][: self.kg_reserve] if kg_new else []
-        ranked = (head + tail + primary)                           # backfill if KG found nothing
-        ranked = list(dict.fromkeys(ranked))[:k]
+        head = primary[:k]                                          # default: keep full primary top-k
+        if kg_new and len(scored) >= k:
+            top, disp = scored[0][1], scored[k - 1][1]              # top / cutoff primary scores
+            spread = (top - disp) or 1.0
+            reserved = [i for i, s in self._scored(query, kg_new)[: self.kg_reserve]
+                        if self.kg_tau is None or s >= disp - self.kg_tau * spread]
+            if reserved:                                            # give up 1 primary slot per gated KG
+                head = primary[: k - len(reserved)] + reserved
+        ranked = list(dict.fromkeys(head + primary))[:k]
         return RetrievalResult(query_id, ranked, meta=pi.meta)
 
 
