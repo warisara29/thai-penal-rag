@@ -236,19 +236,85 @@ def score(run: Path):
         print(f"  disagreement audit_ids: {', '.join(sorted(bad, key=lambda x: int(x)))}")
 
 
+def export_xlsx(run: Path):
+    """Convert the blind CSV into an .xlsx with dropdown data validation on the two
+    HUMAN columns (0/1 and 1-5). Opens in Excel; keeps the dropdowns when imported to
+    Google Sheets. Read-only source columns are wrapped/sized; HUMAN columns highlighted."""
+    from openpyxl import Workbook
+    from openpyxl.worksheet.datavalidation import DataValidation
+    from openpyxl.styles import Font, Alignment, PatternFill
+    from openpyxl.utils import get_column_letter
+
+    src = run / "judge_audit" / "audit_sheet_blind.csv"
+    rows = list(csv.DictReader(src.open(encoding="utf-8")))
+    if not rows:
+        raise SystemExit(f"{src} is empty — run --sample first")
+    headers = list(rows[0].keys())
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "judge_audit"
+
+    hdr_fill = PatternFill("solid", fgColor="34495E")
+    human_fill = PatternFill("solid", fgColor="FCF3CF")   # highlight the columns to fill
+    ws.append(headers)
+    for c, h in enumerate(headers, 1):
+        cell = ws.cell(1, c)
+        cell.font = Font(bold=True, color="FFFFFF")
+        cell.fill = hdr_fill
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+    for r in rows:
+        ws.append([r[h] for h in headers])
+
+    widths = {"audit_id": 8, "question_type": 13, "question": 60, "reference_answer": 60,
+              "model_answer": 60, "HUMAN_correct": 15, "HUMAN_score": 13, "notes": 24}
+    col = {h: get_column_letter(i + 1) for i, h in enumerate(headers)}
+    for h, w in widths.items():
+        if h in col:
+            ws.column_dimensions[col[h]].width = w
+    wrap = Alignment(wrap_text=True, vertical="top")
+    for h in ("question", "reference_answer", "model_answer", "notes"):
+        if h in col:
+            for cell in ws[col[h]][1:]:
+                cell.alignment = wrap
+
+    n = len(rows)
+    dvs = {"HUMAN_correct": '"0,1"', "HUMAN_score": '"1,2,3,4,5"'}
+    for h, f in dvs.items():
+        if h not in col:
+            continue
+        dv = DataValidation(type="list", formula1=f, allow_blank=True, showDropDown=False)
+        dv.error = "เลือกจากรายการเท่านั้น"
+        dv.errorTitle = "ค่าไม่ถูกต้อง"
+        ws.add_data_validation(dv)
+        dv.add(f"{col[h]}2:{col[h]}{n + 1}")
+        for cell in ws[col[h]][1:]:
+            cell.fill = human_fill
+            cell.alignment = Alignment(horizontal="center", vertical="center")
+
+    ws.freeze_panes = "A2"       # keep header visible while scrolling
+    out = run / "judge_audit" / "audit_sheet.xlsx"
+    wb.save(out)
+    print(f"✓ wrote {out}  ({n} rows; dropdowns on HUMAN_correct[0/1] + HUMAN_score[1-5])")
+    print("  Excel: fill the yellow columns. Google Sheets: File→Import→Upload (keeps dropdowns).")
+    print("  When done, export back to CSV over audit_sheet_blind.csv, then run --score.")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", type=Path, default=Path("runs/2026-08-07"))
     ap.add_argument("--sample", action="store_true")
     ap.add_argument("--score", action="store_true")
+    ap.add_argument("--xlsx", action="store_true", help="export blind sheet to .xlsx with dropdowns")
     ap.add_argument("--n", type=int, default=80)
     args = ap.parse_args()
     if args.sample:
         sample(args.run, args.n)
+    elif args.xlsx:
+        export_xlsx(args.run)
     elif args.score:
         score(args.run)
     else:
-        ap.error("choose --sample or --score")
+        ap.error("choose --sample, --xlsx, or --score")
 
 
 if __name__ == "__main__":
