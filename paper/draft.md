@@ -1,7 +1,10 @@
 # Structure Augments, It Does Not Replace: Additive Structure-Aware Retrieval for Thai Statutory Question Answering
 
-**Draft — sections with complete experimental support. Placeholders marked `[TODO]`.**
-Numbers are from the locked run `runs/2026-08-07/` (n=255 eval, DeepInfra models).
+**DRAFT for advisor review.** All experimental numbers are final (locked run `runs/2026-08-07/`,
+n = 255, DeepInfra models) **except the judge-validation agreement in §4.3, which is PROVISIONAL**
+— currently computed against a second-model proxy while the blind **human expert audit is being
+completed**. Those κ values will be replaced by the human annotator's results. Remaining gaps
+(Related Work, eval-set protocol §3.2) are marked `[TODO]`.
 
 ---
 
@@ -73,13 +76,35 @@ every retriever, removing granularity as a confound); `penal_tree.json` (the ภ
 the search space for PageIndex); and a knowledge graph of `CITES` edges (719) and `APPLIES_TO`
 edges (13,296) linking general provisions to the offences they govern.
 
-### 3.2 Evaluation set
-We construct **255 gold-by-construction items** across six types — lookup (75), penalty (55),
-multi_hop (45), unanswerable (35), exception (25), definition (20) — each carrying `gold_sections`
-(the directly answering มาตรา), `supporting_sections` (general provisions required to reason), a
-reference answer, and answer claims. Items are drafted from the statute so ground truth is
-determined by construction rather than post-hoc annotation. `[TODO: brief generation/validation
-protocol; note unanswerable is excluded from the answer-accuracy analysis, see §8.]`
+### 3.2 ชุดข้อสอบสำหรับประเมินผล (Evaluation set)
+
+เราสร้างชุดข้อสอบทองคำ 255 ข้อบนประมวลกฎหมายอาญา (444 มาตรา) ด้วยหลักการ
+**"gold-by-construction"** คือเฉลยของการค้นคืนถูกกำหนดโดยการออกแบบ ไม่ใช่ให้โมเดลเลือก
+สำหรับแต่ละข้อ เราเป็นผู้เลือกมาตราที่เป็นคำตอบเองก่อน แล้วจึงส่งเฉพาะตัวบทของมาตรานั้น
+ให้แบบจำลองผู้ร่าง (drafter) เขียนเพียงคำถามภาษาธรรมชาติ คำตอบอ้างอิง และชุดข้อความ
+ย่อยที่ตรวจการอ้างอิงได้ (`answer_claims`) โดยทั้งหมดต้องมีที่มาจากตัวบทที่ให้เท่านั้น
+เนื่องจาก `gold_sections` (และ `supporting_sections` สำหรับข้อประเภทหลายมาตรา) ถูกกำหนด
+โดยเรา เฉลยการค้นคืนจึงไม่มีทางเป็นการแต่งเติมของโมเดล อีกทั้งผู้ร่างไม่ใช่แบบจำลองที่
+ถูกทดสอบ (generator) และไม่ใช่กรรมการ (judge) จึงไม่เกิดการปนเปื้อนแบบวงจรประเมินตนเอง
+แต่ละข้อถูกสร้างเป็น JSON ตามสคีมา (`question`, `reference_answer`, `answer_claims`,
+`difficulty`) และผ่านตัวตรวจสอบสคีมา/ความสอดคล้องที่จะปฏิเสธข้อที่มาตราเฉลยไม่มีอยู่จริง
+ในคลังข้อมูล
+
+ชุดข้อสอบครอบคลุม 6 ประเภทตามจำนวนเป้าหมายที่กำหนดไว้: lookup (75) ค้นหามาตราตรง,
+penalty (55) ฐานความผิด/อัตราโทษ, multi_hop (45) ต้องใช้หลายมาตราประกอบ, unanswerable (35)
+คำถามนอกขอบเขตเพื่อทดสอบการปฏิเสธ, exception (25) เหตุยกเว้นความผิดหรือโทษ, และ
+definition (20) ความหมายตามบทนิยาม เราสร้างชุดผู้สมัคร (pool) ของแต่ละประเภทจากคลังข้อมูล
+ด้วยการกรองเชิงโครงสร้างและคำสำคัญ แล้วสุ่มแบบแบ่งชั้น (stratified) กระจายข้ามลักษณะ (titles)
+ด้วยค่า seed คงที่ เพื่อไม่ให้ข้อกระจุกอยู่บริเวณเดียวและทำให้ชุดข้อสอบสร้างซ้ำได้ ประเภท
+lookup/penalty/exception คัดจากมาตราที่มีโทษหรือเป็นเหตุยกเว้นในภาค 2-3, definition คัดจาก
+มาตราบทนิยาม, unanswerable คัดจากหัวข้อนอกกฎหมายอาญา (ภาษี แรงงาน แพ่ง คนเข้าเมือง ฯลฯ)
+ส่วน multi_hop สร้างโดยจับคู่ฐานความผิดในภาค 2 (เป็น `gold`) กับบทบัญญัติทั่วไปในภาค 1
+(เป็น `supporting`) ได้แก่ การพยายาม (ม.80) ตัวการ (ม.83) ผู้ใช้ (ม.84) ผู้สนับสนุน (ม.86)
+หลายกรรม (ม.91) หรือการเพิ่มโทษเมื่อกระทำผิดอีก (ม.92) เพื่อให้การตอบที่ถูกต้องต้องอ้างทั้ง
+ฐานความผิดและบทบัญญัติทั่วไปที่เกี่ยวข้องประกอบกัน
+
+> `[ต้องยืนยันก่อนส่ง: แบบจำลองผู้ร่างต้องต่างจากกรรมการ — ตรวจสอบว่าชุดที่เผยแพร่ร่างด้วย`
+> `โมเดลใด เพราะไฟล์ตั้งค่าชี้ไปที่ผู้ให้บริการเดียวกับกรรมการ]`
 
 ### 3.3 Retrieval components
 - **Hybrid.** BM25 (lexical) fused with BGE-M3 dense similarity (min–max normalised, α = 0.5),
@@ -178,6 +203,38 @@ direct evidence for the additive thesis. We do *not* claim `HYBRID+PI+KG` strict
 `HYBRID+PI` (Δ = +0.045, n.s.); at n = 220 the two are statistically tied, but only the full system
 has a significant edge over baseline.
 
+### 4.3 Judge validation
+
+> **⚠️ PROVISIONAL NUMBERS — NOT FINAL.** The agreement statistics in this subsection are
+> currently computed against a *second LLM's* labels as a stand-in while the **blind human
+> expert audit is being completed**. They indicate the expected shape of the result; the final
+> reported validation will use the human annotations. Values will be updated on completion.
+
+To verify the LLM judge as a reliable evaluation instrument, a blind sample of **150 (item, arm)
+answers** — 30 per question type, spanning all nine generation arms, balanced 75/75 across the
+judge's positive/negative verdicts — is labelled correct/incorrect and 1–5 against the reference
+answer, with the judge's verdicts withheld. We report Cohen's κ (overall and per type), raw
+agreement, and score correlation.
+
+**Table 3. Judge agreement (provisional, vs. a second-model proxy).**
+
+| Split | n | agreement | Cohen's κ | ρ (score) |
+|-------|--:|----------:|----------:|----------:|
+| **Overall** | 150 | 0.87 | **0.73** (substantial) | 0.87 |
+| definition | 30 | 0.97 | 0.93 | 0.90 |
+| exception | 30 | 0.97 | 0.93 | 0.89 |
+| lookup | 30 | 0.97 | 0.93 | 0.83 |
+| penalty | 30 | 0.83 | 0.67 | 0.91 |
+| multi_hop | 30 | 0.60 | **0.20** | 0.65 |
+
+The judge is highly reliable on `definition`, `exception`, and `lookup` (κ ≈ 0.93) and
+substantial on `penalty` (0.67), but agreement drops sharply on `multi_hop` (κ = 0.20) — the same
+type that is hardest for the pipeline. Disagreements are mostly the judge being *stricter* than
+the proxy (15 of 20). This provisional result suggests the headline metrics are well-supported
+except on multi-hop, where answer correctness is intrinsically harder to adjudicate; the final
+human audit will confirm or revise this, and multi-hop claims will be reported with the
+appropriate caution. `[TODO: replace Table 3 with human-annotator κ.]`
+
 ---
 
 ## 5. Ablations
@@ -236,9 +293,11 @@ precisely.
 
 ## 7. Limitations
 
-- **Judge validation.** Answer-accuracy and claim-grounding derive from an LLM judge. It is a
-  different vendor from the generator (no self-preference), but human agreement is `[TODO: report
-  Cohen's κ overall and per type from the 150-item blind audit]`.
+- **Judge validation.** Answer-accuracy and claim-grounding derive from an LLM judge (a different
+  vendor from the generator, mitigating self-preference). A blind human expert audit of 150 items
+  is **in progress** (§4.3); provisional agreement against a second-model proxy is substantial
+  overall (κ ≈ 0.73) but weak on multi-hop (κ ≈ 0.20), so multi-hop conclusions are stated with
+  caution pending the final human κ.
 - **KG edges are unverified** (`verified = 0` of 13,296 `APPLIES_TO`). RQ2 uses automatically
   extracted edges; the over-generic `all_offences` scope is the identified precision bottleneck.
 - **Single generator, single corpus, single statute version.** Robustness replication with a
