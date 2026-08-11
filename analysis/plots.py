@@ -76,9 +76,13 @@ def bars(ax, arms, values, colors, ylabel, title, yerr=None):
     ax.set_xticks(list(x))
     ax.set_xticklabels([LABEL[a] for a in arms], fontsize=8)
     ax.set_ylabel(ylabel); ax.set_title(title, fontsize=11, fontweight="bold")
-    ax.set_ylim(0, 1); ax.grid(axis="y", alpha=0.3)
+    ax.set_ylim(0, 1.05); ax.grid(axis="y", alpha=0.3)
     for i, v in enumerate(values):
-        ax.text(i, v + 0.02, f"{v:.2f}", ha="center", fontsize=7)
+        # place the value label ABOVE the upper CI whisker so the error bar never
+        # strikes through the digits (previously v+0.02 collided with the cap)
+        hi = yerr[1][i] if yerr else 0
+        ax.text(i, min(v + hi + 0.03, 1.02), f"{v:.2f}", ha="center", fontsize=8,
+                fontweight="bold")
 
 
 def main():
