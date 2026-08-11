@@ -127,6 +127,13 @@ cleanly, take its top `k−1`, and append the single best KG-surfaced supporting
 and mirrors the oracle's `gold ∪ supporting` context construction. When KG surfaces nothing new,
 the arm falls back to the top-`k` primary ranking.
 
+![Additive pipeline architecture](../runs/2026-08-07/figs/fig_architecture.png)
+
+**Figure 1.** The additive pipeline. Hybrid and PageIndex candidates are unioned, then reranked
+into `k−1` primary sections plus one reserved slot holding the best KG-expanded supporting
+provision. Structure augments the strong hybrid base rather than replacing it; the generator is
+fixed across all arms.
+
 ### 3.5 Experimental arms
 An additive design over {hybrid, PI, KG}, plus references bracketing the range:
 
@@ -179,6 +186,13 @@ PageIndex-based arms are run at beam 5.
 | ORACLE *(ceiling)* | — | — | — | — | 0.809 | 0.939 | 4.13 |
 
 Hallucinated-section rate ≈ 0 across all arms.
+
+![Answer-correctness ladder with oracle ceiling](../runs/2026-08-07/figs/fig2_correctness.png)
+
+**Figure 2.** Answer correctness across the ladder (judge, 95% bootstrap CI). Structural arms
+(red) rise from the hybrid baseline toward the oracle ceiling (dashed); `HYBRID+PI+KG` is the
+tallest real arm. `pi` alone (replacement) collapses to 0.35, illustrating why structure must
+augment rather than replace hybrid retrieval.
 
 **Replacement fails; additive wins (RQ1).** `PI` alone reaches only 0.350 accuracy and 0.518
 recall — far below `HYBRID` (0.636 / 0.927). Structure as a *replacement* base is strictly worse.
@@ -261,6 +275,13 @@ McNemar exact p = 0.46, **not significant**), but the effect is strongly heterog
 | definition | 1.000 | 1.000 | 0.000 |
 | exception | 0.760 | 0.720 | −0.040 |
 | **penalty** | 0.891 | 0.818 | **−0.073** |
+
+![KG effect by question type](../runs/2026-08-07/figs/fig_kg_per_type.png)
+
+**Figure 3.** KG contribution by question type, holding the four primary sections fixed (KG on −
+KG off). The gain is concentrated on `multi_hop` (+0.178), the type that needs a Book-1 general
+provision; single-section types (`penalty`, `exception`) see small losses from the appended
+provision acting as a distractor. The net effect is small and non-significant.
 
 KG delivers a large gain **precisely where it is designed to help** — multi-hop items that require
 a Book-1 general provision (+0.178) — but injects distracting provisions on single-section types
