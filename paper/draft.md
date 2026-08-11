@@ -23,7 +23,10 @@ PageIndex for hybrid in the "full" system makes it the *worst* real configuratio
 provisions into a reserved rank slot — the full system (`HYBRID+PI+KG`) becomes the best real
 arm at **0.718** answer accuracy, the only configuration to beat the hybrid baseline with
 Holm-corrected significance (Δ = +0.082, p = 0.006), closing 35% of the gap to an oracle-context
-ceiling (0.809). Five ablations and a fault decomposition show the residual gap is bounded by
+ceiling (0.809). A controlled comparison that holds the primary evidence fixed isolates the KG
+contribution as **multi-hop-specific** (+0.178 on multi-hop items) rather than a uniform gain, and
+confirms the reserved slot's context reduction is inconsequential (Δ = −0.005). Five ablations and
+a fault decomposition show the residual gap is bounded by
 **KG edge precision** — the correct supporting provision is 100% reachable but out-ranked among
 ~271 over-generic `APPLIES_TO` neighbours — not by candidate depth, context size, or the
 generator. We release the benchmark, pipeline, and a reproducible run snapshot.
@@ -235,6 +238,39 @@ except on multi-hop, where answer correctness is intrinsically harder to adjudic
 human audit will confirm or revise this, and multi-hop claims will be reported with the
 appropriate caution. `[TODO: replace Table 3 with human-annotator κ.]`
 
+### 4.4 Controlled comparison: isolating the KG contribution
+
+The `HYBRID+PI+KG − HYBRID+PI` contrast confounds two simultaneous changes: the reserved slot
+both (i) appends a KG supporting provision **and** (ii) reduces the primary sections shown to the
+generator from five to four (the fifth slot is spent on KG). We disentangle them with two
+controlled runs that share the same generator and judge.
+
+**(i) Context size is inconsequential.** Feeding `HYBRID+PI` its top-4 instead of top-5 sections
+moves accuracy from 0.673 to **0.668** (Δ = −0.005). Dropping the fifth primary section costs
+essentially nothing, so the reserved slot's context reduction is not the source of the effect.
+
+**(ii) The KG effect, holding primaries fixed.** We take the full system's *own* four primary
+sections and compare generation **with vs. without** the appended KG slot — an item-wise paired
+contrast over identical primary evidence. KG raises accuracy from 0.695 to 0.718 (Δ = **+0.023**;
+McNemar exact p = 0.46, **not significant**), but the effect is strongly heterogeneous by type:
+
+| type | KG off | KG on | Δ |
+|------|-------:|------:|---:|
+| **multi_hop** | 0.311 | 0.489 | **+0.178** |
+| lookup | 0.680 | 0.707 | +0.027 |
+| definition | 1.000 | 1.000 | 0.000 |
+| exception | 0.760 | 0.720 | −0.040 |
+| **penalty** | 0.891 | 0.818 | **−0.073** |
+
+KG delivers a large gain **precisely where it is designed to help** — multi-hop items that require
+a Book-1 general provision (+0.178) — but injects distracting provisions on single-section types
+(penalty, exception), so the *net* increment is small and non-significant. This matches the
+edge-precision diagnosis (§5): the appended provision helps only when the query genuinely needs a
+supporting section. We therefore report the KG contribution as **multi-hop-specific rather than a
+uniform lift**, and note that a query-adaptive KG gate is the natural remedy (§8). Because the two
+top additive arms are already statistically tied (Table 2), this controlled result refines *why*:
+their difference is a type-dependent redistribution, not a uniform improvement.
+
 ---
 
 ## 5. Ablations
@@ -283,6 +319,13 @@ each encode real legal structure, yet each underperforms hybrid alone; their val
 additively, and only when integration preserves primary evidence (the reserved slot). The full
 system's significance-over-baseline arising *only* from the combination suggests the structural
 signals are complementary rather than redundant, despite pairwise ties at this sample size.
+
+The controlled comparison (§4.4) sharpens this: KG is not a uniform improvement but a
+**type-specific** one — a large gain on multi-hop items (+0.178), which need a Book-1 general
+provision, offset by small losses on single-section types where the appended provision is a
+distractor. A static reserved slot therefore trades correctness across types; a query-adaptive
+gate that admits the KG provision only when the question needs one is the principled next step,
+and is currently limited less by the gating rule than by the precision of the underlying edges.
 
 The ceiling analysis is equally instructive: with the recommended system, primary retrieval is nearly
 solved (recall 0.932; `POOL=100` shows it can reach 0.945), and the residual gap to oracle is
