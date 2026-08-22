@@ -36,8 +36,10 @@ BASE_URL = os.environ.get("DEEPINFRA_BASE_URL", "https://api.deepinfra.com/v1/op
 GEN_MODEL = os.environ.get("DEEPINFRA_GEN_MODEL", "Qwen/Qwen3.6-35B-A3B")
 EMBED_MODEL = os.environ.get("DEEPINFRA_EMBED_MODEL", "BAAI/bge-m3")
 RERANK_MODEL = os.environ.get("DEEPINFRA_RERANK_MODEL", "Qwen/Qwen3-Reranker-4B")
-# Judge + eval drafter — MUST differ from GEN_MODEL (different vendor, no self-preference bias)
-JUDGE_MODEL = os.environ.get("DEEPINFRA_JUDGE_MODEL", "deepseek-ai/DeepSeek-V4-Pro")
+# Judge and eval drafter must each differ from GEN_MODEL AND from each other (three distinct
+# vendors: generator=Qwen, judge=Gemma, drafter=DeepSeek) — no self-preference and no drafter=judge
+# confound. Judge validated against a human reviewer (paper §IV): kappa=0.67 overall.
+JUDGE_MODEL = os.environ.get("DEEPINFRA_JUDGE_MODEL", "google/gemma-3-27b-it")
 DRAFT_MODEL = os.environ.get("DEEPINFRA_DRAFT_MODEL", "deepseek-ai/DeepSeek-V4-Pro")
 
 _THINK = re.compile(r"<think>.*?</think>", re.DOTALL)

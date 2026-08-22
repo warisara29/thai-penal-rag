@@ -83,10 +83,12 @@ class HybridRetriever:
     """A1: dense+sparse fusion -> cross-encoder rerank over มาตรา chunks."""
     name = "A1"
 
-    def __init__(self, corpus, bm25, embedder, reranker, alpha=0.5, name="A1"):
+    def __init__(self, corpus, bm25, embedder, reranker, alpha=None, name="A1"):
         self.name, self.corpus, self.bm25 = name, corpus, bm25
         self.dense = DenseRetriever(corpus, embedder, name + ".dense")
-        self.reranker, self.alpha = reranker, alpha
+        # fusion weight: default 0.5, env-tunable for the baseline-tuning ablation
+        self.reranker = reranker
+        self.alpha = float(os.environ.get("RAG_ALPHA", "0.5")) if alpha is None else alpha
 
     @staticmethod
     def _norm(d: dict) -> dict:

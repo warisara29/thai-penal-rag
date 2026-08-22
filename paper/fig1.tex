@@ -1,0 +1,85 @@
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  box/.style={draw,rounded corners=2pt,minimum height=8mm,minimum width=19mm,
+              align=center,inner xsep=4pt,inner ysep=2.5pt,line width=.45pt},
+  source/.style={box,fill=gray!10,draw=gray!65},
+  hybrid/.style={box,fill=blue!9,draw=blue!65!black},
+  tree/.style={box,fill=violet!9,draw=violet!65!black},
+  graph/.style={box,fill=orange!12,draw=orange!75!black},
+  compose/.style={box,fill=teal!10,draw=teal!65!black},
+  output/.style={box,fill=green!11,draw=green!55!black},
+  flow/.style={-{Latex[length=1.9mm]},semithick,rounded corners=2pt},
+  handoff/.style={-{Latex[length=1.7mm]},densely dashed,semithick},
+  junction/.style={circle,fill=gray!65,inner sep=0pt,minimum size=2.2pt}
+]
+
+% -----------------------------------------------------------------------------
+% Offline ingestion. Corpus preparation feeds three parallel stored artifacts.
+% -----------------------------------------------------------------------------
+\node[source] (statute) at (0,4.05) {Thai Criminal\\Code};
+\node[source,minimum width=25mm] (sections) at (2.35,4.05)
+  {Section corpus\\\texttt{sections.jsonl}};
+
+\node[hybrid] (index) at (4.55,3.00) {Hybrid index};
+\node[tree] (hierarchy) at (6.80,3.00) {Hierarchy tree};
+\node[graph] (kg) at (9.05,3.00) {Legal KG};
+
+\draw[flow,draw=gray!72] (statute) -- (sections);
+\coordinate (busstart) at (3.70,3.58);
+\coordinate (busindex) at (4.55,3.58);
+\coordinate (bustree) at (6.80,3.58);
+\coordinate (buskg) at (9.05,3.58);
+\draw[semithick,draw=gray!72,rounded corners=2pt]
+  (sections.east) -- (3.70,4.05) -- (busstart) -- (buskg);
+\draw[flow,draw=gray!72] (busindex) -- (index.north);
+\draw[flow,draw=gray!72] (bustree) -- (hierarchy.north);
+\draw[flow,draw=gray!72] (buskg) -- (kg.north);
+\node[junction] at (busindex) {};
+\node[junction] at (bustree) {};
+\node[junction] at (buskg) {};
+
+% -----------------------------------------------------------------------------
+% Per-query phase.  Retrieval branches are aligned with their stored artifacts.
+% -----------------------------------------------------------------------------
+\node[source] (query) at (0,0) {Question};
+\coordinate (querysplit) at (2.35,0);
+\node[hybrid] (retrieve) at (4.55,0.48) {Hybrid\\retrieval};
+\node[tree] (navigate) at (6.80,-0.48) {PageIndex\\navigation};
+\node[graph] (expand) at (9.05,-0.88) {One-hop KG\\expansion};
+\node[compose] (merge) at (9.90,0.48) {Union +\\reranking};
+\node[compose,minimum width=29mm] (reserve) at (12.65,0.15)
+  {Context assembly\\top $k{-}1$ + KG slot $k$};
+\node[output] (answer) at (15.25,0.15) {Generate\\answer};
+
+\draw[flow,draw=gray!72] (query) -- (querysplit);
+\draw[flow,draw=blue!68!black] (querysplit) |- (retrieve.west);
+\draw[flow,draw=violet!68!black] (querysplit) |- (navigate.west);
+\node[junction] at (querysplit) {};
+
+\draw[flow,draw=blue!68!black] (retrieve.east) -- (merge.west);
+\draw[flow,draw=violet!68!black] (navigate.east) -| (merge.south);
+\draw[flow,draw=teal!68!black] (merge.east) -- (reserve.west);
+\draw[flow,draw=orange!78!black] (merge.south) |- (expand.east);
+\draw[flow,draw=orange!78!black] (expand.east) -| (reserve.south);
+\draw[flow,draw=green!58!black] (reserve.east) -- (answer.west);
+
+% Direct artifact-to-module handoffs; all three are vertical and non-crossing.
+\draw[handoff,draw=blue!65!black] (index.south) -- (retrieve.north);
+\draw[handoff,draw=violet!68!black] (hierarchy.south) -- (navigate.north);
+\draw[handoff,draw=orange!78!black] (kg.south) -- (expand.north);
+
+% Phase bands and labels.
+\node[draw=gray!50,dashed,rounded corners=3pt,
+      fit=(statute)(sections)(index)(hierarchy)(kg),inner xsep=3mm,inner ysep=4mm]
+      (offlinephase) {};
+\node[draw=teal!55!black,dashed,rounded corners=3pt,
+      fit=(query)(retrieve)(navigate)(merge)(expand)(reserve)(answer),
+      inner xsep=3mm,inner ysep=4mm] (queryphase) {};
+
+\node[anchor=north west,fill=white,inner sep=1.2pt,
+      font=\sffamily\scriptsize\bfseries,text=gray!72!black]
+  at ([xshift=2mm,yshift=1mm]offlinephase.north west) {OFFLINE INGESTION};
+\node[anchor=north west,fill=white,inner sep=1.2pt,
+      font=\sffamily\scriptsize\bfseries,text=teal!68!black]
+  at ([xshift=2mm,yshift=1mm]queryphase.north west) {PER-QUERY RETRIEVAL};
+\end{tikzpicture}
