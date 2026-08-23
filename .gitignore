@@ -18,3 +18,9 @@ analysis/report.*.json
 
 # Eval set drafted by the API (regenerate with eval/generate_eval.py)
 eval/eval_set.generated.jsonl
+paper/custom.bib
+paper/main.pdf
+paper/*.log
+paper/*.aux
+paper/*.bbl
+paper/*.xdv

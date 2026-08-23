@@ -19,7 +19,11 @@
 \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
 \IfFontExistsTF{Noto Sans Thai}
   {\newfontfamily\thaifont{Noto Sans Thai}[Script=Thai]}
-  {\newfontfamily\thaifont{Sarabun}[Script=Thai]}
+  {\IfFontExistsTF{Sarabun}
+    {\newfontfamily\thaifont{Sarabun}[Script=Thai]}
+    {\IfFontExistsTF{TH Sarabun New}
+      {\newfontfamily\thaifont{TH Sarabun New}[Script=Thai]}
+      {\newfontfamily\thaifont{Thonburi}[Script=Thai]}}}
 \providecommand{\TH}{}\renewcommand{\TH}[1]{{\thaifont #1}}
 
 \emergencystretch=1em
@@ -413,9 +417,9 @@ little wording with the question. This is the empirical basis for adding a graph
 \hline
 \textbf{Contrast} & $\Delta$ & \textbf{95\% CI} & $p$ & \textbf{Adjusted} \\
 \hline
-\textbf{PIKG-RAG 0} & \textbf{+0.077} & [+0.027, +0.132] & 0.006 & \textbf{sig.} \\
-PIKG-RAG 0+KG & +0.045 & [+0.000, +0.091] & 0.087 & n.s. \\
-PIKG-RAG 0+PI & +0.027 & [$-$0.014, +0.068] & 0.286 & n.s. \\
+\textbf{PIKG-RAG $-$ HYB} & \textbf{+0.077} & [+0.027, +0.132] & 0.006 & \textbf{sig.} \\
+PIKG-RAG $-$ HYB+KG & +0.045 & [+0.000, +0.091] & 0.087 & n.s. \\
+PIKG-RAG $-$ HYB+PI & +0.027 & [$-$0.014, +0.068] & 0.286 & n.s. \\
 HYB+PI $-$ HYB & +0.050 & [$-$0.005, +0.105] & 0.090 & n.s. \\
 HYB+KG $-$ HYB & +0.032 & [$-$0.027, +0.086] & 0.337 & n.s. \\
 \hline
