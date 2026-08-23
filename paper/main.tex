@@ -37,7 +37,7 @@ Law Question Answering}
 \maketitle
 
 \begin{abstract}
-A retrieval-augmented system for Thai criminal-law question answering may retrieve the offence
+A retrieval-augmented system for Thai criminal-law question answering may retrieve the offense
 section matching a query while omitting an unnamed general rule that changes the legal conclusion.
 We study, on a 255-question benchmark of six task types drawn from the 444-section Thai Criminal
 Code, whether the statute's authored hierarchy and a provision graph should \emph{replace} a strong
@@ -66,15 +66,15 @@ hierarchical retrieval
 
 \section{Introduction}
 
-Thai criminal-law question answering is structurally demanding because an offence may be modified
+Thai criminal-law question answering is structurally demanding because an offense may be modified
 by a general rule elsewhere in the Code. Consider a 17-year-old who commits theft: \TH{มาตรา} 334
-defines the offence and adult penalty, but the answer must also consider the juvenile rule in
+defines the offense and adult penalty, but the answer must also consider the juvenile rule in
 \TH{มาตรา} 75, which can reduce the applicable punishment scale. The provisions share little
 wording, so a similarity retriever may return \TH{มาตรา} 334 and miss \TH{มาตรา} 75. The resulting
 answer can cite a genuinely relevant section yet still report the wrong legal consequence.
 
 The Thai Criminal Code is a useful testbed for this failure. Its Book--Title--Chapter--Section
-hierarchy is explicit, Book~1 rules repeatedly modify Book~2 offences~\cite{pythainlpthailaw}, and numbered penalties and
+hierarchy is explicit, Book~1 rules repeatedly modify Book~2 offenses~\cite{pythainlpthailaw}, and numbered penalties and
 inserted provisions make omissions auditable. Modern legal RAG combines BM25
 ~\cite{robertson2009bm25}, dense retrieval~\cite{karpukhin2020dpr}, and retrieved evidence for
 generation~\cite{lewis2020rag}. NitiBench further shows that section-level units outperform
@@ -136,11 +136,13 @@ allocation.
 Domain-specific models support legal NLP~\cite{chalkidis2020legalbert}, while legal RAG has combined
 vector and graph retrieval~\cite{barron2026bridging}. NitiBench's NitiLink condition improves
 cross-reference coverage but reports inconsistent generation gains
-~\cite{akarajaradwong2025nitibench}. Our position is narrower: starting from a section-level
+~\cite{akarajaradwong2025nitibench}; it covers different Thai statutes with a different question
+protocol and metrics, so its scores are not directly comparable to ours and we do not tabulate a
+cross-benchmark number. Our position is narrower: starting from a section-level
 lexical--dense baseline, we test whether an authored hierarchy and provision graph should replace or
 augment that baseline, and whether graph evidence can be admitted without displacing primary
 sections. Unlike bridge-entity benchmarks~\cite{yang2018hotpotqa,trivedi2022musique}, statutory
-multi-hop questions link an offence to a low-overlap applicable rule. We therefore measure primary
+multi-hop questions link an offense to a low-overlap applicable rule. We therefore measure primary
 and supporting retrieval separately and validate the LLM judge~\cite{zheng2023judging} against human
 ratings.
 
@@ -162,8 +164,8 @@ graph'' for the richer, schema-based constructions of prior work.
 
 The two edge types differ in provenance. \texttt{CITES} comes from the statute itself, where one
 section names another, so its precision follows from the text. \texttt{APPLIES\_TO} is
-materialised from three scope rules---\texttt{ALL\_OFFENCES}, \texttt{book2}, and
-\texttt{by\_penalty}---that link a Book-1 general provision to the offences it governs; none of
+materialized from three scope rules---\texttt{ALL\_OFFENCES}, \texttt{book2}, and
+\texttt{by\_penalty}---that link a Book-1 general provision to the offenses it governs; none of
 its 13,296 edges has been hand-verified.
 
 \subsection{Evaluation Set Construction}
@@ -177,7 +179,7 @@ nothing else; a validator rejects any item citing a non-existent provision. The 
 the generator under test nor the judge, so no component evaluates its own output. Items are sampled
 across all \TH{ลักษณะ} by fixed-seed stratified sampling and cover six task types: lookup (75),
 penalty (55), multi-hop (45), unanswerable (35), exception (25), and definition (20). Multi-hop
-items pair a Book-2 offence with a Book-1 general provision---attempt (\TH{มาตรา} 80),
+items pair a Book-2 offense with a Book-1 general provision---attempt (\TH{มาตรา} 80),
 co-principals (83), accessories (86), and others---and a correct answer must cite both.
 
 \begin{figure*}[t]
@@ -194,26 +196,26 @@ co-principals (83), accessories (86), and others---and a correct answer must cit
 Given a query $q$, every component returns an ordered list of complete \TH{มาตรา} rather than text
 fragments. Three components each act on a different signal.
 
-The \textit{Hybrid} retriever fuses min--max-normalised BM25 and BGE-M3
+The \textit{Hybrid} retriever fuses min--max-normalized BM25 and BGE-M3
 scores~\cite{chen2024bgem3} with equal weights ($\alpha = 0.5$). Its top $M = 50$ sections form
 $H(q)$ and are reranked by Qwen3-Reranker-4B~\cite{zhang2025qwen3embedding}.
 \textit{PageIndex} has the generator descend \texttt{penal\_tree.json} with beam width $b = 5$,
 choosing at each level which child headings to expand and returning the leaves it reaches,
 $P\!I(q)$; no embeddings are used at any stage. \textit{Graph traversal} treats edges as undirected
-and untyped, expanding a seed set by one hop to every section it \texttt{CITES} and every offence an
+and untyped, expanding a seed set by one hop to every section it \texttt{CITES} and every offense an
 \texttt{APPLIES\_TO} rule governs. This route can retrieve provisions such as the juvenile
 mitigation in \TH{มาตรา} 75 even when they share little wording with $q$.
 
 \subsection{Additive Composition and the Reserved Slot}
 
 The pipeline collects two kinds of evidence: primary sections and supporting sections.
-Figure~\ref{fig:arch} summarises the composition. The primary pool is the union
+Figure~\ref{fig:arch} summarizes the composition. The primary pool is the union
 $P(q) = H(q) \cup P\!I(q)$, reranked by the cross-encoder $\rho$.
 
 Graph candidates cannot be merged into the same ranking without changing what the score means. A
 provision reached through \texttt{APPLIES\_TO} may be legally necessary despite little lexical
-overlap, so $\rho$ tends to rank it below primary offences; increasing its graph weight can instead
-evict those offences. We expand the graph from the entire primary pool $P(q)$ (not only its top
+overlap, so $\rho$ tends to rank it below primary offenses; increasing its graph weight can instead
+evict those offenses. We expand the graph from the entire primary pool $P(q)$ (not only its top
 ranks) and take, among the graph-only provisions, the one the reranker scores highest. The reserved
 slot then separates the two objectives: primary relevance determines the first $k-1=4$ positions,
 while graph connectivity determines rank $k$ ($k=5$), occupied by the best graph-only provision
@@ -402,7 +404,7 @@ requires (support-recall 0.022) and even BM25 reaches only 0.178, because these 
 little wording with the question. This is the empirical basis for adding a graph route.
 
 \begin{table}[t]
-\caption{Paired contrasts on answer accuracy. Deltas use unrounded paired proportions.}
+\caption{Paired contrasts on answer accuracy (HYB = Hybrid). Deltas use unrounded paired proportions.}
 \label{tab:contrasts}
 \centering
 \footnotesize
@@ -411,9 +413,9 @@ little wording with the question. This is the empirical basis for adding a graph
 \hline
 \textbf{Contrast} & $\Delta$ & \textbf{95\% CI} & $p$ & \textbf{Adjusted} \\
 \hline
-\textbf{FULL $-$ HYB} & \textbf{+0.077} & [+0.027, +0.132] & 0.006 & \textbf{sig.} \\
-FULL $-$ HYB+KG & +0.045 & [+0.000, +0.091] & 0.087 & n.s. \\
-FULL $-$ HYB+PI & +0.027 & [$-$0.014, +0.068] & 0.286 & n.s. \\
+\textbf{PIKG-RAG 0} & \textbf{+0.077} & [+0.027, +0.132] & 0.006 & \textbf{sig.} \\
+PIKG-RAG 0+KG & +0.045 & [+0.000, +0.091] & 0.087 & n.s. \\
+PIKG-RAG 0+PI & +0.027 & [$-$0.014, +0.068] & 0.286 & n.s. \\
 HYB+PI $-$ HYB & +0.050 & [$-$0.005, +0.105] & 0.090 & n.s. \\
 HYB+KG $-$ HYB & +0.032 & [$-$0.027, +0.086] & 0.337 & n.s. \\
 \hline
@@ -431,7 +433,7 @@ it does not distinguish from at $n=220$.
 This advantage is also modest against generation noise. Re-running the generator three times (all at
 temperature 0; MoE inference through one provider is not bit-deterministic), PIKG-RAG accuracy spans
 0.777--0.814 (spread 0.036, roughly eight items) while Hybrid is more stable (0.727--0.736, spread
-0.009); the reported 0.814 is the top of this range. The paired $\Delta$(FULL$-$HYB) is
+0.009); the reported 0.814 is the top of this range. The paired $\Delta$(PIKG-RAG$-$HYB) is
 $+0.077$, $+0.055$, $+0.050$ across the three runs---positive every time but averaging $\approx+0.06$
 rather than a fixed $+0.077$. We therefore treat the headline advantage as a small, directionally
 consistent effect, and report finer-grained per-type differences as exploratory (Section~V), since
@@ -554,7 +556,7 @@ structural advantage transfers unchanged to naturally phrased user questions.
 
 Increasing the candidate pool from 50 to 100 raises Recall@5 from 0.932 to 0.945 but lowers overall
 accuracy; multi-hop accuracy falls by 0.177. The cause is graph noise: a seed that is itself a Book-1
-general provision under the \texttt{ALL\_OFFENCES} scope expands to roughly 271 neighbours (the mean
+general provision under the \texttt{ALL\_OFFENCES} scope expands to roughly 271 neighbors (the mean
 out-degree of such seeds, not of the graph as a whole), so a larger seed set injects many weakly
 related sections. Additional depth therefore hurts rather than helps.
 
@@ -587,7 +589,7 @@ increment is what carries the paired comparison across the significance threshol
 alone falls short of.
 
 Where the reserved slot admits a supporting provision, the model does use it: on multi-hop items it
-answers correctly while citing the Book-1 provision 62\% of the time (and the offence section every
+answers correctly while citing the Book-1 provision 62\% of the time (and the offense section every
 time). But the graph's marginal accuracy benefit is small relative to generation variance, so we do
 not claim a precise figure for it; what is dependable is that it does not harm. Consistently, primary
 recall is already high (0.932, or 0.945 with a deeper pool), and per-claim grounding of the full
@@ -597,7 +599,7 @@ the supporting provision often aids reasoning without changing what the model ex
 Two analysis findings generalise beyond this system. First, recall does not predict accuracy: the
 fusion-tuned baseline attains the best Recall@5 (0.959) yet not the best accuracy, and deepening the
 candidate pool raises recall while lowering accuracy. Second, edge precision beats edge count---719
-text-derived \texttt{CITES} edges outperform 13{,}296 rule-materialised \texttt{APPLIES\_TO} edges,
+text-derived \texttt{CITES} edges outperform 13{,}296 rule-materialized \texttt{APPLIES\_TO} edges,
 of which the \texttt{ALL\_OFFENCES} scope is near-complete and weakly discriminative---so the remedy
 is curation, not broader expansion.
 
@@ -608,7 +610,8 @@ the statute. The LLM judge agrees with the human reviewer substantially overall 
 only at chance on \texttt{multi\_hop} ($\kappa=0.13$), with a single reviewer; reference answers and
 the 13{,}296 \texttt{APPLIES\_TO} edges lack legal verification; PageIndex adds LLM calls the hybrid
 baseline does not make, confounding hierarchy with extra inference; and transfer to a Thai-adapted
-generator is untested.
+generator is untested. Finally, the corpus snapshot carries no amendment date, so penalty figures may
+be out of date---a concern precisely for the \texttt{penalty} type, on which accuracy is highest.
 
 \section{Future Work}
 
