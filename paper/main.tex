@@ -371,9 +371,20 @@ ORACLE & --- & --- & --- & --- & 0.900 & 0.978 & 4.61 \\
 
 \subsection{Main Retrieval and Accuracy Results}
 
-Standalone PageIndex performs below Hybrid in recall (0.518 versus 0.927) and accuracy (0.414 versus 0.736). Adding its candidates to Hybrid instead gives the highest Recall@5, 0.950, and 0.786
-accuracy. Reserving the final slot for graph evidence lowers primary recall to 0.932 but raises
-support-recall from 0.378 to 0.556, coverage to 0.850, and accuracy to 0.814.
+\textbf{Replacement fails.} Standalone PageIndex performs far below Hybrid in recall (0.518 versus
+0.927) and accuracy (0.414 versus 0.736), and the replacement full system ranks last of every
+configuration. This gap is large and unambiguous, and is the paper's most robust finding: navigating
+the authored hierarchy in place of a lexical--dense retriever is strictly worse on every measure.
+
+\textbf{Augmentation is safe.} Unioning PageIndex candidates into the hybrid pool gives the highest
+Recall@5, 0.950, and 0.786 accuracy; reserving the final slot for a graph provision lowers primary
+recall slightly to 0.932 but raises support-recall from 0.378 to 0.556, coverage to 0.850, and
+accuracy to 0.814. The additive components never underperform the baseline.
+
+\textbf{Similarity misses supporting provisions.} The support-recall column isolates why structure is
+needed: the dense retriever recovers almost none of the general provisions a multi-hop answer
+requires (support-recall 0.022) and even BM25 reaches only 0.178, because these provisions share
+little wording with the question. This is the empirical basis for adding a graph route.
 
 \begin{table}[t]
 \caption{Paired contrasts on answer accuracy. Deltas use unrounded paired proportions.}
@@ -394,10 +405,22 @@ HYB+KG $-$ HYB & +0.032 & [$-$0.027, +0.086] & 0.337 & n.s. \\
 \end{tabular}
 \end{table}
 
-Only PIKG-RAG differs significantly from Hybrid after Holm--Bonferroni correction
-($\Delta=+0.077$, $p=0.006$).
-Neither single-component addition is significant, and PIKG-RAG is not distinguishable from
-HYBRID+PI at $n=220$.
+Among the paired contrasts, the cumulative addition of both structural layers is the only one that
+crosses the significance threshold after Holm--Bonferroni ($\Delta=+0.077$, $p=0.006$); each single
+layer alone does not ($p=0.09$). We read this as an \emph{additive} effect rather than a synergy: a
+bootstrap difference-in-differences finds no interaction between the two factors
+($-0.005$, 95\% CI $[-0.073,+0.064]$), so the two increments simply sum to clear the threshold that
+either alone falls short of at this sample size. We do not claim PIKG-RAG dominates HYBRID+PI, which
+it does not distinguish from at $n=220$.
+
+This advantage is also modest against generation noise. Re-running the generator three times (all at
+temperature 0; MoE inference through one provider is not bit-deterministic), PIKG-RAG accuracy spans
+0.777--0.814 (spread 0.036, roughly eight items) while Hybrid is more stable (0.727--0.736, spread
+0.009); the reported 0.814 is the top of this range. The paired $\Delta$(FULL$-$HYB) is
+$+0.077$, $+0.055$, $+0.050$ across the three runs---positive every time but averaging $\approx+0.06$
+rather than a fixed $+0.077$. We therefore treat the headline advantage as a small, directionally
+consistent effect, and report finer-grained per-type differences as exploratory (Section~V), since
+they are smaller than this variance.
 
 \subsection{Judge Validation}
 \label{sec:judge}
@@ -427,16 +450,28 @@ multi\_hop & 30 & 0.57 & \textbf{0.13} & 0.48 \\
 Overall agreement is substantial ($\kappa=0.67$, $\rho=0.86$), but multi-hop agreement is poor
 ($\kappa=0.13$); subgroup conclusions are therefore treated cautiously.
 
-\subsection{Isolating the Graph Contribution}
+\subsection{The Graph Contribution Is Within Generation Variance}
 
-Using four rather than five HYBRID+PI sections leaves accuracy unchanged at 0.786, so allocating one
-slot to a supporting section does not explain the difference. With the four primary sections
-fixed, adding the graph slot changes accuracy from 0.795 to 0.814 ($\Delta=+0.018$, $p=0.54$). The
-exploratory type breakdown shows a $+0.200$ multi-hop difference and small losses elsewhere; it was
-not preregistered or included in the Holm--Bonferroni family.
+We attempted to isolate the graph's own effect from the reserved slot's context change, and the
+honest conclusion is that it cannot be cleanly separated at this scale. A clean control keeps all
+five primary sections and adds the graph provision as a sixth (k$=$6): accuracy moves from 0.786
+(HYBRID+PI, five primaries) to 0.795, a change of $+0.009$ that is well inside the $0.036$
+generation-variance band measured above. The reserved-slot configuration (k$=$5, replacing the fifth
+primary with the graph provision) reaches 0.814, but the differences among 0.786, 0.795, and 0.814
+are all smaller than run-to-run variance. We therefore do not attach a precise number to the graph's
+marginal contribution; what is stable is only that adding it does not hurt.
+
+The per-type breakdown (Table~\ref{tab:pertype}) is likewise \emph{exploratory}: it was not
+preregistered, has no per-type confidence intervals at $n=45$ per type, and---critically---the LLM
+judge agrees with the human reviewer only at $\kappa=0.13$ on \texttt{multi\_hop} (Table~III), the
+very cell that carries the largest number ($+0.200$). We include the breakdown to motivate the
+mechanism qualitatively (the graph helps where a Book-1 provision is needed and mildly distracts
+elsewhere), not as a measured effect.
 
 \begin{table}[t]
-\caption{Exploratory graph contribution by question type, primary sections held fixed.}
+\caption{Exploratory graph contribution by type, primaries held fixed. Not significance-tested; the
+judge's human agreement on \texttt{multi\_hop} is only $\kappa=0.13$, so the multi-hop row is
+indicative at best.}
 \label{tab:pertype}
 \centering
 \small
@@ -444,7 +479,7 @@ not preregistered or included in the Holm--Bonferroni family.
 \hline
 \textbf{Type} & \textbf{KG off} & \textbf{KG on} & $\Delta$ \\
 \hline
-\textbf{multi\_hop} & 0.444 & 0.644 & \textbf{+0.200} \\
+\textbf{multi\_hop} ($\kappa{=}0.13$) & 0.444 & 0.644 & \textbf{+0.200} \\
 lookup & 0.840 & 0.827 & $-$0.013 \\
 definition & 1.000 & 1.000 & 0.000 \\
 exception & 0.800 & 0.760 & $-$0.040 \\
@@ -456,14 +491,48 @@ exception & 0.800 & 0.760 & $-$0.040 \\
 \subsection{Controls and Robustness}
 \label{sec:controls}
 
-Three controls support the comparison. Tuning Hybrid over
-$\alpha\in\{0.3,0.5,0.7\}$ selects $0.7$, yielding Recall@5 of 0.959 and accuracy of 0.759;
-PIKG-RAG remains higher by $+0.055$ (95\% CI $[+0.009,+0.100]$, $p=0.036$). Appending all six
-possible Book~1 provisions gives 0.622 multi-hop and 0.805 overall accuracy, below targeted graph
-selection (0.644 and 0.814) while expanding the context from five to ten sections. Finally,
-decisions fixed on the 80-item development split transfer to the 151 answerable items in the
-175-item test split ($\Delta=+0.073$, 95\% CI
+\textbf{Tuned baseline.} Because PIKG-RAG has more moving parts than Hybrid, we also tune the
+baseline's fusion weight $\alpha\in\{0.3,0.5,0.7\}$; it is best at $0.7$ (Recall@5 0.959, accuracy
+0.759). Each system compared at its own best $\alpha$ (PIKG-RAG is best at $0.5$; $\alpha=0.7$
+actually lowers it), PIKG-RAG leads by $+0.055$ (95\% CI $[+0.009,+0.100]$, $p=0.036$). Forcing both
+to $\alpha=0.7$---which handicaps PIKG-RAG---shrinks the difference to $+0.023$ ($p=0.50$), consistent
+with the small, variance-bounded advantage above. Notably the tuned baseline retrieves \emph{better}
+(Recall@5 0.959 vs 0.932) yet answers no better, reinforcing that recall does not predict accuracy.
+
+\textbf{Targeted vs.\ blind provisions.} Since every multi-hop supporting section is one of six Book-1
+provisions, a trivial alternative is to append all six to every context. This reaches 0.622 multi-hop
+and 0.805 overall---below graph selection (0.644, 0.814) while enlarging the context from five to ten
+sections---so selecting one relevant provision is at least as good as, and far more efficient than,
+including all six.
+
+\textbf{Edge source.} Restricting the graph to the 719 text-derived \texttt{CITES} edges gives 0.791
+overall / 0.511 multi-hop; restricting to the 13{,}296 rule-materialized \texttt{APPLIES\_TO} edges
+gives only 0.768 / 0.467, despite $18\times$ more edges. Using both is best (0.814 / 0.644). Edge
+\emph{precision} therefore matters more than count, and the two edge types are complementary---a
+direct argument for curating \texttt{APPLIES\_TO} rather than expanding it.
+
+\textbf{Refusal.} On the 35 out-of-scope items, PIKG-RAG correctly declines 33 while wrongly refusing
+only 7 of 220 answerable items (refusal accuracy 0.965, highest of all arms; Hybrid 0.957). Refusal
+is thus a strength rather than a gap; the earlier difficulty was a cue-list artifact in the
+deterministic metric, which a phrase-robust check resolves.
+
+\textbf{Held-out test.} Fixing every design and tuning decision on the 80-item development split, the
+additive advantage transfers to the 151 answerable test items ($\Delta=+0.073$, 95\% CI
 $[+0.007,+0.139]$, $p=0.043$).
+
+\subsection{External Validity: Lay-Language Paraphrases}
+\label{sec:paraphrase}
+
+Because each question is drafted from its gold section's text, questions may share vocabulary with
+the answer and favour lexical retrieval. To probe this, we rewrote 40 answerable items (stratified by
+type) into everyday language that avoids statutory terms, reducing 3-gram overlap with the gold text
+from 0.30 to 0.21. On these items, recall@5 falls for both systems (Hybrid $0.875\!\to\!0.800$,
+PIKG-RAG $0.900\!\to\!0.800$) and the accuracy gap closes: PIKG-RAG$-$Hybrid moves from $+0.075$ on
+the original wording to $+0.000$ on the paraphrases ($p=1.0$, $n=40$). We read this as two things at
+once: part of the benchmark's retrievability rests on lexical overlap, and the additive advantage is
+tied to that setting. The sample is small and underpowered, so this bounds rather than refutes the
+effect; a larger paraphrase study is future work. It does, however, temper any claim that the
+structural advantage transfers unchanged to naturally phrased user questions.
 
 \section{Ablation Analysis and Diagnostics}
 \label{sec:ablations}
