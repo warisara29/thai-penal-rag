@@ -1,0 +1,116 @@
+\begin{tikzpicture}[
+  font=\footnotesize,
+  >={Stealth[length=2.2mm]},
+  hdr/.style={draw=gray!55, fill=gray!18, inner xsep=5pt, inner ysep=3pt,
+              align=left, font=\footnotesize\bfseries, anchor=north west},
+  body/.style={draw=gray!55, fill=white, inner xsep=5pt, inner ysep=4.5pt,
+               align=left, anchor=north west},
+  panel/.style={draw=gray!55, rounded corners=3pt, fill=white},
+  chip/.style={draw=gray!55, rounded corners=2pt, fill=gray!8, inner xsep=6pt,
+               inner ysep=4pt, align=center},
+  stepbox/.style={draw, fill=white, rounded corners=1pt, inner xsep=4pt, inner ysep=2.5pt,
+                  font=\scriptsize\bfseries, align=center},
+  slot/.style={draw=blue!45!black, fill=blue!7, rounded corners=1.5pt,
+               minimum width=4.9cm, minimum height=5mm, inner xsep=5pt, align=left,
+               anchor=north west},
+  slotk/.style={draw=orange!70!black, fill=orange!14, rounded corners=1.5pt, very thick,
+                minimum width=4.9cm, minimum height=5mm, inner xsep=5pt, align=left,
+                anchor=north west},
+  ent/.style={circle, fill=blue!55!black, inner sep=1.7pt},
+  entk/.style={circle, fill=orange!75!black, inner sep=2pt},
+  entl/.style={font=\scriptsize, align=center},
+  elab/.style={font=\scriptsize\itshape, gray!45!black, inner sep=1.5pt, fill=white},
+  arr/.style={->, semithick, blue!45!black},
+  note/.style={font=\scriptsize\itshape, gray!50!black, align=left}
+]
+
+% ============================ row 1 : two retrievers ============================
+\node[chip] (query) at (0.85,-2.38) {query $q$};
+
+\node[hdr,  minimum width=6.2cm] (ah) at (3.0,-0.35)
+  {\textsc{hybrid}\; \normalfont\scriptsize lexical $+$ dense, top $M$};
+\node[body, minimum width=6.2cm, text width=5.6cm] (ab) at (ah.south west)
+  {pool $H(q)$: sections whose \emph{wording} matches the query};
+
+\node[hdr,  minimum width=6.2cm] (bh) at (3.0,-2.55)
+  {\textsc{navigate}\; \normalfont\scriptsize beam $b$, no embeddings};
+\node[body, minimum width=6.2cm, text width=5.6cm] (bb) at (bh.south west)
+  {selection $P\!I(q)$: sections reached by descending the authored hierarchy};
+
+\draw[arr] (query.east) -- ++(0.35,0) |- ([yshift=-3pt]ab.west);
+\draw[arr] (query.east) -- ++(0.35,0) |- ([yshift=-3pt]bb.west);
+
+% ============================ row 1 : merge ============================
+\node[hdr,  minimum width=5.6cm] (ch) at (11.4,-1.15) {\textsc{merge}};
+\node[body, minimum width=5.6cm, text width=5.0cm] (cb) at (ch.south west)
+  {$P(q)=H(q)\cup P\!I(q)$, reranked by the cross-encoder $\rho$ into
+   $\pi_1,\pi_2,\dots$\\[3pt]
+   \textit{the pool is a union, so hybrid recall is a floor the structural leg
+   can raise but never lower}};
+
+\coordinate (bx)  at (10.3,0);
+\coordinate (bus) at (cb.west -| bx);
+\draw[semithick, blue!45!black, rounded corners=3pt]
+      ([yshift=-3pt]ab.east) -- ([yshift=-3pt]ab.east -| bx)
+                             -- ([yshift=-3pt]bb.east -| bx)
+                             -- ([yshift=-3pt]bb.east);
+\draw[arr] (bus) -- (cb.west);
+\fill[blue!45!black] (bus) circle (1.6pt);
+\node[stepbox] at ([yshift=16pt]bus) {union $\cup$\\rerank $\rho$};
+
+% ============================ row 2 : knowledge graph ============================
+\node[panel, minimum width=5.9cm, minimum height=3.6cm, anchor=north west] (kg) at (0.2,-4.9) {};
+\node[hdr, fill=blue!16, minimum width=2.45cm, anchor=north west]
+  at ([xshift=4pt,yshift=-4pt]kg.north west) {Knowledge graph};
+
+\node[ent]  (o1) at (3.65,-6.15) {};
+\node[ent]  (o2) at (4.85,-6.95) {};
+\node[ent]  (o3) at (3.45,-7.65) {};
+\node[entk] (g1) at (2.05,-6.90) {};
+
+\node[entl, anchor=west] at ([xshift=3pt]o1.east) {offence};
+\node[entl, anchor=west] at ([xshift=3pt]o2.east) {offence};
+\node[entl, anchor=west] at ([xshift=3pt]o3.east) {offence};
+\node[entl, anchor=east, text=orange!55!black] at ([xshift=-3pt]g1.west)
+  {general\\provision};
+
+\draw[->, thick, orange!75!black] (g1) -- node[elab,pos=0.6]{\texttt{APPLIES\_TO}} (o1);
+\draw[->, thick, orange!75!black] (g1) -- (o3);
+\draw[->, gray!55] (o2) -- node[elab,pos=0.5]{\texttt{CITES}} (o1);
+
+\node[note, anchor=south west] at ([xshift=5pt,yshift=3pt]kg.south west)
+  {a general provision shares little wording with $q$, so it is\\
+   invisible to $\rho$ yet sits one hop from the offence};
+
+% ============================ row 2 : reserved context ============================
+\node[hdr, minimum width=4.9cm] (sh) at (8.6,-4.9) {Context $R(q)$, $|R(q)|=k$};
+\node[slot]  (s1) at ([yshift=-4pt]sh.south west) {rank $1$ \quad primary $\pi_1$};
+\node[slot]  (s2) at ([yshift=-2pt]s1.south west) {rank $2$ \quad primary $\pi_2$};
+\node[slot]  (s3) at ([yshift=-2pt]s2.south west) {rank $3$ \quad primary $\pi_3$};
+\node[slot]  (s4) at ([yshift=-2pt]s3.south west) {rank $k{-}1$ \quad primary $\pi_{k-1}$};
+\node[slotk] (s5) at ([yshift=-2pt]s4.south west) {rank $k$ \quad supporting $s^\star$};
+
+\node[note, anchor=north west] at ([yshift=-3pt]s5.south west)
+  {the graph can always contribute, and can never evict a primary section};
+
+% ============================ row 2 : generation ============================
+\node[hdr,  minimum width=3.9cm] (gh) at (15.0,-5.95) {\textsc{generate}};
+\node[body, minimum width=3.9cm, text width=3.3cm] (gb) at (gh.south west)
+  {answer grounded in $R(q)$, citing the \TH{มาตรา} it used};
+
+% ============================ cross-row routing ============================
+\draw[arr, rounded corners=3pt] ([xshift=-24pt]cb.south) -- ++(0,-0.75) -| (kg.north);
+\coordinate (sx) at (7.55,0);
+\node[stepbox] at ([yshift=-0.75cm]cb.south -| sx) {seed with $P(q)$};
+
+\draw[arr, rounded corners=3pt] ([xshift=56pt]cb.south) -- ++(0,-1.08) -| (sh.north);
+\coordinate (rx) at (13.35,0);
+\node[stepbox] at ([yshift=-1.08cm]cb.south -| rx) {ranks $1..k{-}1$};
+
+\draw[arr, rounded corners=3pt, orange!70!black]
+      (kg.east) -- ++(1.1,0) |- (s5.west);
+\node[stepbox] at (7.2,-7.35) {one hop,\\keep best $s^\star$};
+
+\draw[arr] (s3.east) -- (s3.east -| gb.west);
+
+\end{tikzpicture}

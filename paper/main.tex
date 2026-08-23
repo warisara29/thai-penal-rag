@@ -3,23 +3,18 @@
 \WarningFilter{latexfont}{Font shape}
 \WarningFilter{latexfont}{Some font shapes were not available}
 \documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
 
 \usepackage{cite}
 \usepackage{url}
 \usepackage{amsmath,amssymb}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{array}
 \usepackage{fontspec}
 \usepackage{tikz}
-\usepackage[section]{placeins}  % keep floats within their section (no drift across sections)
-\usepackage{etoolbox}
 \usetikzlibrary{arrows.meta,decorations.pathreplacing,fit,positioning}
-\patchcmd{\thebibliography}{\footnotesize}{\scriptsize}{}{}
+\renewcommand{\IEEEkeywordsname}{Keywords}
 
 \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
 \IfFontExistsTF{Noto Sans Thai}
@@ -27,65 +22,40 @@
   {\newfontfamily\thaifont{Sarabun}[Script=Thai]}
 \providecommand{\TH}{}\renewcommand{\TH}[1]{{\thaifont #1}}
 
-\emergencystretch=2em
-\hbadness=10000
-\vbadness=10000
-\setlength{\floatsep}{0.55\baselineskip plus 0.1\baselineskip minus 0.1\baselineskip}
-\setlength{\textfloatsep}{0.8\baselineskip plus 0.1\baselineskip minus 0.2\baselineskip}
-\setlength{\intextsep}{0.55\baselineskip plus 0.1\baselineskip minus 0.1\baselineskip}
-\setlength{\abovecaptionskip}{0.3\baselineskip}
+\emergencystretch=1em
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin{document}
 
-\title{Structure Augments, It Does Not Replace: Additive\\
-Structure-Aware Retrieval for Thai Statutory\\
-Question Answering}
+\title{PIKG-RAG: Augmenting Hybrid Retrieval with\\
+Hierarchical and Graph Structure for Thai Criminal\\
+Law Question Answering}
 
-\author{
-\IEEEauthorblockN{Warisara Pilasuk}
-\IEEEauthorblockA{\textit{Dept. of Computer Science} \\
-\textit{Thammasat University}\\
-Pathum Thani, Thailand \\
-warisara.pil@dome.tu.ac.th}
-\and
-\IEEEauthorblockN{Second Author}
-\IEEEauthorblockA{\textit{Dept. of Computer Science} \\
-\textit{Thammasat University}\\
-Pathum Thani, Thailand \\
-email@example.com}
-\and
-\IEEEauthorblockN{Third Author}
-\IEEEauthorblockA{\textit{Dept. of Computer Science} \\
-\textit{Thammasat University}\\
-Pathum Thani, Thailand \\
-email@example.com}
-}
+\author{\IEEEauthorblockN{Anonymous Authors}}
 
 \maketitle
 
 \begin{abstract}
-Many legal questions need more than one section to answer fully: the offence, and a general rule
-that changes its outcome. Retrieval-augmented systems find relevant text first, then let the model
-write from it, and that retrieval step works mainly on similarity. Sections that belong together
-often share almost no words, so the system finds the one matching the question and misses the rule
-that modifies it. The Thai Criminal Code sets out a section hierarchy and a network of
-cross-references, so searching through that structure should help. We hypothesised that walking the
-hierarchy from book down to section, as PageIndex does, would beat a dense-sparse hybrid retriever.
-It did not. PageIndex alone reaches 0.409 answer accuracy against 0.741 for the hybrid baseline, and
-the full system built on it scores lowest of every setup we ran. The problem was using structure to
-replace the retriever rather than to extend it. Merging both candidate lists, and giving the
-knowledge graph one reserved rank slot so it cannot displace a primary section, brings the same
-components to 0.814. This is the only setup to beat the baseline after correcting for multiple tests
-($\Delta = +0.073$, $p = 0.007$), closing 43\% of the gap to a 0.909 ceiling obtained by handing the
-model the correct sections. Neither PageIndex nor the graph is significant alone. A controlled
-comparison holding the primary evidence fixed shows the graph contribution is specific to multi-hop
-items ($+0.200$) rather than a uniform gain, and that the reserved slot's context reduction costs
-nothing ($0.000$). We evaluate on 255 questions of six types drawn from the statute, with one fixed
-open-weight model generating and a different-vendor judge scoring. Five ablations and an error
-breakdown isolate the remaining limit: not search depth, context size, or the generator, but graph
-edge precision.
+Thai criminal-law question answering may retrieve the offence section matching a query while
+omitting an unnamed general rule that changes the legal conclusion. We evaluate this problem on 220
+answerable items from a 255-question benchmark across six task types, drawn from the 444-section Thai
+Criminal Code. We
+introduce Page-Indexed Knowledge-Graph Augmented Generation (PIKG-RAG). PageIndex candidates augment
+a lexical--dense Hybrid pool. PIKG-RAG reserves the fifth slot in a five-section context for a
+graph-selected supporting section, leaving the first four positions for primary sections. We initially hypothesized
+that PageIndex could replace conventional retrieval, but standalone PageIndex reached 0.414 answer
+accuracy against 0.736 for Hybrid. The complete PIKG-RAG condition reached 0.814 and was the only
+structural configuration to significantly outperform Hybrid after Holm--Bonferroni correction
+($\Delta=+0.077$, $p=0.006$); neither component was significant alone. It also remained more accurate
+than a tuned Hybrid baseline with higher Recall@5 (0.959 versus 0.932; $\Delta=+0.055$, $p=0.036$).
+Controlled comparisons show that the
+reserved slot does not reduce accuracy and that graph benefits vary by question type, with the
+largest difference on multi-hop items.
+Error analysis suggests that unverified graph-edge selection remains a limitation: increasing
+retrieval depth raised Recall@5 from 0.932 to 0.945 but did not improve accuracy. We release the
+pipeline, benchmark, per-item rankings and
+judge verdicts, and a locked run snapshot.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -93,366 +63,251 @@ retrieval-augmented generation, knowledge graph, legal information retrieval, Th
 hierarchical retrieval
 \end{IEEEkeywords}
 
-\small
-
 \section{Introduction}
 
-Answering a question about the Thai Criminal Code often requires two sections that the Code keeps
-apart. Its 444 sections are arranged as a hierarchy, from \TH{ภาค} through \TH{ลักษณะ} and
-\TH{หมวด} down to \TH{มาตรา}. The general provisions that govern liability, such as limitation,
-attempt, principals and accessories, and the factors that raise or lower a sentence, are collected
-in Book 1, away from the offences they apply to in Books 2 and 3. A question about the penalty a
-17-year-old faces for theft needs \TH{มาตรา} 334 for the offence and \TH{มาตรา} 75 for the
-reduction that applies to offenders over fifteen but under eighteen, which the 2008 amendment made
-mandatory rather than discretionary. The two share almost no vocabulary, so a retriever ranking by
-similarity returns the first and drops the second, and the model reports an adult penalty with an
-accurate citation.
+Thai criminal-law question answering is structurally demanding because an offence may be modified
+by a general rule elsewhere in the Code. Consider a 17-year-old who commits theft: \TH{มาตรา} 334
+defines the offence and adult penalty, but the answer must also consider the juvenile rule in
+\TH{มาตรา} 75, which can reduce the applicable punishment scale. The provisions share little
+wording, so a similarity retriever may return \TH{มาตรา} 334 and miss \TH{มาตรา} 75. The resulting
+answer can cite a genuinely relevant section yet still report the wrong legal consequence.
 
-The separation is deliberate drafting. A rule stated once need not be repeated under every offence.
-It also means the rule and the offence rarely appear near each other or in similar words, which is
-the condition under which similarity-based retrieval fails. We work on the Criminal Code because its
-cross-references are dense, because penalty figures and later-inserted sections (\TH{ทวิ},
-\TH{ตรี}) make errors easy to verify, and because it is the body of law non-specialists most often
-need to ask about.
+The Thai Criminal Code is a useful testbed for this failure. Its Book--Title--Chapter--Section
+hierarchy is explicit, Book~1 rules repeatedly modify Book~2 offences~\cite{pythainlpthailaw}, and numbered penalties and
+inserted provisions make omissions auditable. Modern legal RAG combines BM25
+~\cite{robertson2009bm25}, dense retrieval~\cite{karpukhin2020dpr}, and retrieved evidence for
+generation~\cite{lewis2020rag}. NitiBench further shows that section-level units outperform
+fixed-length chunks in Thai law~\cite{akarajaradwong2025nitibench}. This motivates looking beyond
+segmentation to the recovery of dependencies between complete sections.
+Prior work has not directly established whether statutory structure should replace a strong
+lexical--dense retriever or augment it, nor how supporting sections can enter a fixed context without
+displacing primary sections.
 
-The Code leaves two things a flat retriever ignores: the hierarchy the drafters wrote, and an
-explicit web of cross-references linking provisions to the offences they modify. Prior work has used
-one or the other in isolation. Section-level chunking improves Thai legal retrieval~\cite{akarajaradwong2025nitibench}
-but flattens the hierarchy to a single level. Graph-based retrieval improves multi-hop
-reasoning~\cite{edge2024graphrag}, but its graph is built without a domain schema, and its local mode still
-enters the graph by embedding the query and matching it against entity descriptions. Neither line
-asks whether structure should carry retrieval or merely inform it.
+PageIndex navigates an authored document hierarchy without embeddings~\cite{pageindex}. We initially
+hypothesized that this navigation could replace conventional retrieval. We tested that design, but
+standalone PageIndex reached only
+0.414 answer accuracy against 0.736 for Hybrid. We then evaluated an additive design: PageIndex
+candidates are unioned with the Hybrid pool, while a section-level knowledge
+graph~\cite{edge2024graphrag,pan2024unifying} supplies one supporting section through a reserved
+slot. This design is Page-Indexed Knowledge-Graph Augmented Generation (PIKG-RAG).
 
-We take that question directly. Our first attempt used PageIndex tree navigation as the base
-retriever, and it failed: 0.409 answer accuracy against 0.741 for a dense-sparse hybrid, with the
-full system built on it ranking last of every configuration we ran. The failure turned out to lie in
-the composition rather than in the structural signal. Rebuilt so that structure extends the hybrid
-retriever instead of replacing it, with the knowledge graph confined to a single reserved rank slot,
-the same components reach 0.814. Neither structural component is significant on its own, which is
-why the result is a claim about how they are combined and not about either mechanism.
+On the 220 answerable items in a 255-question benchmark, PIKG-RAG reaches 0.814 accuracy and is the
+only structural configuration that significantly outperforms Hybrid after Holm--Bonferroni correction
+($\Delta=+0.077$, $p=0.006$); neither component is significant alone. The central result is simple:
+for statutory QA, structure should augment retrieval, not replace it.
 
-Four questions organise the study. \textbf{RQ1}: does PageIndex tree navigation beat a dense-sparse
-hybrid at finding the answering section? \textbf{RQ2}: does one-hop knowledge-graph expansion recover
-the general provisions that multi-hop questions need? \textbf{RQ3}: does better retrieval produce
-answers better grounded in the text, with the generator held fixed? \textbf{RQ4}: how much does
-retrieval help at all, given that the Code is public and the model has probably seen it?
-
-We contribute three things. First, an additive design in which the knowledge graph occupies one
-reserved slot, adding context for multi-hop questions without displacing primary sections. Second, a
-controlled comparison of hybrid and PageIndex retrievers with the graph enabled and disabled, over
-255 questions with paired significance tests. Third, an error decomposition tracing what remains of
-the gap to graph edge precision rather than to retrieval depth or generation.
+This work makes three contributions. First, it presents an additive architecture that combines
+lexical--dense retrieval, authored-hierarchy navigation, and a protected supporting section. Second, it
+directly compares replacement and additive structural designs under paired evaluation. Third, its
+ablations distinguish retrieval failures from failures to use retrieved evidence during generation.
 
 \section{Related Work}
 
-\paragraph{Retrieval-augmented generation.}
-RAG~\cite{lewis2020rag} builds on dense retrieval~\cite{karpukhin2020dpr};
-Self-RAG~\cite{asai2024selfrag} adds self-assessment of
-whether retrieval is needed. These operate over flat chunks~\cite{gao2023ragsurvey}, with no
-internal order. Our hybrid leg follows standard practice, fusing BM25~\cite{robertson2009bm25} with
-dense similarity and reranking with a cross-encoder~\cite{nogueira2019bertrank}. Retrieval quality
-transfers poorly across domains~\cite{thakur2021beir}, motivating in-domain evaluation.
+\subsection{Retrieval Foundations}
 
-\paragraph{Structure-aware retrieval.}
-RAPTOR~\cite{sarthi2024raptor} induces a tree by recursive clustering and summarisation of
-unstructured text. A codified statute instead ships with its drafters' hierarchy, so navigation can
-follow the legal taxonomy directly rather than an inferred one. PageIndex~\cite{pageindex} applies
-tree navigation to long documents and positions itself as a vectorless engine, dispensing with
-embeddings, chunking, and vector databases entirely. A statute is an unusually good fit for that
-premise, and we test it directly. Because the reserved slot consumes a context position, we note
-that placement within the window affects utilisation~\cite{liu2024lostmiddle}.
+BM25 captures exact terminology~\cite{robertson2009bm25}, dense retrieval captures semantic
+similarity~\cite{karpukhin2020dpr}, and cross-encoders rerank their candidate pools
+~\cite{nogueira2019bertrank}. RAG supplies retrieved evidence to the generator
+~\cite{lewis2020rag}, with later systems making retrieval adaptive~\cite{asai2024selfrag}. For Thai
+law, section-level units outperform fixed-length chunks~\cite{akarajaradwong2025nitibench}; our
+baseline therefore retrieves complete sections, leaving inter-section dependencies as the main
+structural issue.
 
-\paragraph{Knowledge graphs with language models.}
-Graphs support multi-hop reasoning and reduce fabrication~\cite{pan2024unifying}.
-GraphRAG~\cite{edge2024graphrag} extracts entities, groups them into communities, and summarises
-each group, which helps on broad questions that naive RAG handles poorly. Its graph carries no
-domain schema, so edge types have no fixed meaning, and its local mode reaches the graph by
-embedding the query and matching it against entity descriptions.
-Our graph encodes legal relations under a fixed schema, and we report edge precision as the limiting
-factor.
+\subsection{Trees and Graphs}
 
-\paragraph{Legal retrieval.}
-Legal pre-training~\cite{chalkidis2020legalbert} supports case-law retrieval across
-jurisdictions. Closest to our setting are statutory article
-retrieval~\cite{louis2022statutory} and retrieval-augmented legal QA~\cite{louis2024interpretable};
-Barron \textit{et al.}~\cite{barron2025bridging} combine vector, graph, and hierarchical
-factorisation for case law, whose opinions have no authored hierarchy to navigate. For Thai,
-NitiBench~\cite{akarajaradwong2025nitibench} reports that section-level splitting outperforms
-fixed-length splitting, direct evidence that statutory structure affects retrieval. That uses one
-level of the hierarchy; we use all of it, and add a graph over the general provisions it leaves
-unconnected. Thai processing uses PyThaiNLP~\cite{pythainlp}.
+RAPTOR induces a hierarchy by clustering and summarizing text~\cite{sarthi2024raptor}, whereas
+PageIndex navigates an authored hierarchy without embeddings~\cite{pageindex}. This supports
+vertical Book--Title--Chapter--Section search but not lateral statutory links. GraphRAG and related
+work use graph structure to connect evidence~\cite{edge2024graphrag,pan2024unifying}; however, the
+combination of authored-tree navigation and section-level graph traversal remains less studied.
+Evidence position also affects model use~\cite{liu2024lostmiddle}, motivating controlled context
+allocation.
 
-\paragraph{Multi-hop QA and benchmark validity.}
-Statutory questions are multi-hop~\cite{yang2018hotpotqa,trivedi2022musique}, but the second hop is
-a general provision governing a class of offences rather than a bridge entity named in the question.
-Train--test overlap distorts QA results~\cite{lewis2021overlap}, which bears on our
-gold-by-construction design. Evaluation follows RAGAS~\cite{es2023ragas} with a cross-vendor
-judge~\cite{zheng2023judging} and paired tests under Holm correction~\cite{holm1979simple}.
+\subsection{Legal QA}
+
+Domain-specific models support legal NLP~\cite{chalkidis2020legalbert}, while legal RAG has combined
+vector and graph retrieval~\cite{barron2026bridging}. NitiBench's NitiLink condition improves
+cross-reference coverage but reports inconsistent generation gains
+~\cite{akarajaradwong2025nitibench}. Our position is narrower: starting from a section-level
+lexical--dense baseline, we test whether an authored hierarchy and provision graph should replace or
+augment that baseline, and whether graph evidence can be admitted without displacing primary
+sections. Unlike bridge-entity benchmarks~\cite{yang2018hotpotqa,trivedi2022musique}, statutory
+multi-hop questions link an offence to a low-overlap applicable rule. We therefore measure primary
+and supporting retrieval separately and validate the LLM judge~\cite{zheng2023judging} against human
+ratings.
 
 \section{Method}
 
 \subsection{Corpus and Artifacts}
 
-We use the Thai Criminal Code from the PyThaiNLP \texttt{criminal-csv-v0.1} release, 444 sections in
-total. The ingest pipeline produces three artifacts. \texttt{sections.jsonl} holds one record per
-\TH{มาตรา}; every retriever uses this same unit, so chunk size cannot explain any difference between
-them. \texttt{penal\_tree.json} holds the \TH{ภาค} to \TH{มาตรา} hierarchy, which is the space
-PageIndex searches. The knowledge graph holds 719 \texttt{CITES} edges and 13,296
-\texttt{APPLIES\_TO} edges.
+Our corpus is the 444-section Thai Criminal Code from the PyThaiNLP \texttt{criminal-csv-v0.1}
+release~\cite{pythainlpthailaw}, which we treat as a locked snapshot: it fixes the text used in every
+condition but documents no amendment date, so all penalty results apply to this snapshot rather than
+to a named revision. Ingestion yields three artifacts. \texttt{sections.jsonl} holds one record per
+\TH{มาตรา}, and every retriever uses this unit, so chunk size is constant across conditions.
+\texttt{penal\_tree.json} encodes the authored hierarchy from Book (\TH{ภาค}) through Title
+(\TH{ลักษณะ}) and Chapter (\TH{หมวด}) to Section (\TH{มาตรา}), the space PageIndex searches. A
+knowledge graph holds 719 \texttt{CITES} and 13,296 \texttt{APPLIES\_TO} edges.
 
-The two edge types are built differently and are worth distinguishing. \texttt{CITES} comes from the
-statute itself, where one section names another, so its precision follows from the text.
-\texttt{APPLIES\_TO} is derived from scope rules rather than stated in the Code, and none of its
-edges has been verified by hand. Section~\ref{sec:ablations} returns to this, since it is where the
-remaining error concentrates.
+The two edge types differ in provenance. \texttt{CITES} comes from the statute itself, where one
+section names another, so its precision follows from the text. \texttt{APPLIES\_TO} is
+materialised from three scope rules---\texttt{ALL\_OFFENCES}, \texttt{book2}, and
+\texttt{by\_penalty}---that link a Book-1 general provision to the offences it governs; none of
+its 13,296 edges has been hand-verified.
 
-We fix one amendment version and record its effective date, since penalty figures differ across
-amendments and a mismatch would corrupt every penalty item without showing up in any aggregate.
-
-\subsection{Evaluation Set}
+\subsection{Evaluation Set Construction}
 \label{sec:evalset}
 
-We built a 255-item benchmark on the 444-section Code. The design point is that retrieval ground
-truth is fixed before any model sees the item. For each item we choose the answering sections
-ourselves. Only the text of those sections goes to a drafter model, which writes the
-natural-language question, a reference answer, and a set of atomic claims used for grounding checks.
-Everything the drafter writes has to come from the sections we supplied.
+Our 255-item benchmark follows a human-first protocol: the gold sections $g$, and the supporting
+sections $u$ for multi-hop items, are designated manually before any model sees the item, so the
+retrieval labels cannot be a model's invention. Only the text of those sections is then supplied to a
+drafting model, which writes the question, a reference answer, and atomic validation facts using
+nothing else; a validator rejects any item citing a non-existent provision. The drafter is neither
+the generator under test nor the judge, so no component evaluates its own output. Items are sampled
+across all \TH{ลักษณะ} by fixed-seed stratified sampling and cover six task types: lookup (75),
+penalty (55), multi-hop (45), unanswerable (35), exception (25), and definition (20). Multi-hop
+items pair a Book-2 offence with a Book-1 general provision---attempt (\TH{มาตรา} 80),
+co-principals (83), accessories (86), and others---and a correct answer must cite both.
 
-Because \texttt{gold\_sections}, and \texttt{supporting\_sections} for multi-hop items, are set by us
-rather than selected by a model, the retrieval labels cannot be a model's invention. The drafter is
-also neither the generator under test nor the judge, so no component evaluates its own output. Each
-item is emitted as JSON against a fixed schema covering the question, the reference answer, the
-claims, and a difficulty label, and a validator rejects any item citing a section that does not exist
-in the corpus.
+\begin{figure*}[t]
+  \centering
+  \resizebox{0.96\textwidth}{!}{\input{figures/fig1_architecture.tex}}
+  \caption{Hybrid and PageIndex candidates are unioned and
+  reranked for primary positions $1{:}k{-}1$. A separate graph path selects one supporting section
+  for reserved rank $k$, preventing it from competing directly with primary sections.}
+  \label{fig:arch}
+\end{figure*}
 
-Six types make up the set: lookup (75) for direct section retrieval, penalty (55) for offences and
-sentencing, multi\_hop (45) requiring several sections together, unanswerable (35) for out-of-scope
-questions that test refusal, exception (25) for grounds excluding liability or punishment, and
-definition (20) for terms defined in the Code. For each type we build a candidate pool from the
-corpus by structural and keyword filtering, then sample it stratified across \TH{ลักษณะ} with a
-fixed seed, so items do not cluster in one part of the Code and the set can be regenerated exactly.
+\subsection{Retrievers}
 
-Pools differ by type. Lookup, penalty, and exception draw from sections in Books 2 and 3 carrying a
-penalty or stating an exception; definition from the defining sections; unanswerable from topics
-outside criminal law such as tax, labour, and immigration. Multi-hop items pair an offence in Book 2,
-the gold section, with a Book 1 general provision as the supporting section: attempt (\TH{มาตรา}
-80), principals (83), instigators (84), accessories (86), multiple offences (91), and repeat-offence
-enhancement (92). A correct answer must cite both.
+Given a query $q$, every component returns an ordered list of complete \TH{มาตรา} rather than text
+fragments. Three components each act on a different signal.
 
-This construction fixes the retrieval labels, and it does not verify the wording of the reference
-answers, which the drafter wrote and no lawyer has reviewed. Section~\ref{sec:limitations} returns
-to this.
-
-\subsection{Retrieval Components}
-
-Let the corpus be the set of sections $\mathcal{C}=\{s_1,\dots,s_N\}$ with $N=444$, and let $q$
-denote a query. Each retriever returns an ordered list of whole \TH{มาตรา}, never sub-section
-fragments. We use three components, combined differently across conditions.
-
-\paragraph{Hybrid.}
-A BM25 lexical score and a BGE-M3 dense cosine score are each min--max normalised over the
-candidates for $q$ and combined by an equal-weight convex sum ($\alpha=0.5$). The top $M=50$ sections
-form the hybrid pool $H(q)$, which a Qwen3 cross-encoder (score $\rho$) later reranks. This is the
-standard configuration in current retrieval systems and serves as the baseline.
-
-\paragraph{PageIndex.}
-The generator model descends the hierarchy tree (\texttt{penal\_tree.json}) with beam width $b=5$,
-choosing at each level which child headings to expand and returning the leaf \TH{มาตรา} it reaches,
-$P\!I(q)$. No embeddings are used at any point.
-
-\paragraph{Knowledge graph.}
-Let $E$ be the undirected one-hop relation joining a section to those it \texttt{CITES} or that
-\texttt{APPLIES\_TO} it. Graph expansion of a seed set $S$ adds the neighbours of each seed,
-$G(S)=S\cup\{\,s' : (s,s')\in E,\ s\in S\,\}$. A general provision reached only through
-\texttt{APPLIES\_TO} typically shares little wording with $q$, which is exactly why it is invisible
-to $f_{\mathrm{hyb}}$ but recoverable through the graph.
-
-The three components are sensitive to different evidence: hybrid to wording, PageIndex to position in
-the hierarchy, and the graph to what the retrieved sections depend on. In our opening example the
-offence is reachable by wording and the reduction for minors only by the third route.
+The \textit{Hybrid} retriever fuses min--max-normalised BM25 and BGE-M3
+scores~\cite{chen2024bgem3} with equal weights ($\alpha = 0.5$). Its top $M = 50$ sections form
+$H(q)$ and are reranked by Qwen3-Reranker-4B~\cite{zhang2025qwen3embedding}.
+\textit{PageIndex} has the generator descend \texttt{penal\_tree.json} with beam width $b = 5$,
+choosing at each level which child headings to expand and returning the leaves it reaches,
+$P\!I(q)$; no embeddings are used at any stage. \textit{Graph traversal} treats edges as undirected
+and untyped, expanding a seed set by one hop to every section it \texttt{CITES} and every offence an
+\texttt{APPLIES\_TO} rule governs. This route can retrieve provisions such as the juvenile
+mitigation in \TH{มาตรา} 75 even when they share little wording with $q$.
 
 \subsection{Additive Composition and the Reserved Slot}
 
-The first design treated PageIndex as an alternative base retriever: the tree replaced the hybrid
-pool rather than adding to it. Whatever hybrid would have found was discarded, and the arm inherited
-PageIndex's recall floor. Section~\ref{sec:results} shows what that costs.
+The pipeline collects two kinds of evidence: primary sections and supporting sections.
+Figure~\ref{fig:arch} summarises the composition. The primary pool is the union
+$P(q) = H(q) \cup P\!I(q)$, reranked by the cross-encoder $\rho$.
 
-The additive design keeps both. We form the primary pool as the union $P(q)=H(q)\cup P\!I(q)$ and
-rerank it with the cross-encoder $\rho$. Because $P(q)$ contains the whole hybrid pool, hybrid recall
-becomes a floor: the structural leg can raise recall but can never pull it below the baseline, the
-guarantee the replacement design lacked.
-
-The knowledge graph is added separately, because merging it the same way does not work. Expanding the
-pool with $G(P(q))$ produces many candidates, and a provision reached through \texttt{APPLIES\_TO}
-rarely resembles $q$ in wording, so $\rho$ ranks it low. Merged into one list it either contributes
-nothing or, if up-weighted, displaces a primary section from the top~$k$.
-
-We give it a fixed position instead. The primary list is reranked on its own and its top $k{-}1$
-kept; the single best graph-only provision (the highest-$\rho$ section in
-$G(P(q))\setminus P(q)$) is placed in the last slot:
+Graph candidates cannot be merged into the same ranking without changing what the score means. A
+provision reached through \texttt{APPLIES\_TO} may be legally necessary despite little lexical
+overlap, so $\rho$ tends to rank it below primary offences; increasing its graph weight can instead
+evict those offences. The reserved slot separates these objectives: primary relevance determines
+the first $k-1=4$ positions, while graph connectivity determines rank $k$ ($k=5$), occupied by the
+best graph-only provision $s^*$:
 \begin{equation}
 R(q)=
 \begin{cases}
-(\pi_1,\dots,\pi_{k-1},\,s^\star) & \text{if the graph adds a new provision},\\[2pt]
-(\pi_1,\dots,\pi_{k}) & \text{otherwise.}
+(\pi_1,\dots,\pi_{k-1},\,s^*) & \text{if }s^*\text{ exists},\\[2pt]
+(\pi_1,\dots,\pi_k) & \text{otherwise.}
 \end{cases}
 \label{eq:reserve}
 \end{equation}
-The first $k{-}1$ primary sections are always kept, so the graph can always contribute and can never
-push out a primary section. This mirrors the oracle context, gold $\cup$ supporting. Throughout we
-use $k=5$ with one reserved slot; the reserved count is ablated in Section~\ref{sec:ablations}.
-Algorithm~\ref{alg:pipeline} states the full per-query procedure; every symbol is defined above and
-every constant is listed in Table~\ref{tab:hparams}, so the pipeline can be reimplemented directly.
-
-\begin{figure}[t]
-  \centering
-  \resizebox{\linewidth}{!}{\input{figures/fig3_reserved_slot.tex}}
-  \caption{The reserved slot. Ranks $1$ to $k{-}1$ hold primary evidence from the reranked union
-  pool; rank $k$ is reserved for the best graph-supplied supporting provision. A supporting provision
-  therefore enters the context without evicting a primary section, the guarantee the replacement
-  design lacked.}
-  \label{fig:slot}
-\end{figure}
-
-\begin{algorithm}[t]
-\caption{Additive retrieval with a reserved KG slot (per query $q$).}
-\label{alg:pipeline}
-\begin{algorithmic}[1]
-\Require query $q$; corpus $\mathcal{C}$; tree $\mathcal{T}$; edges $E$; pool size $M$; cutoff $k$
-\Statex \textit{Offline (once): BM25 index, BGE-M3 vectors $\mathbf{e}(s)$, and $E$ over $\mathcal{C}$.}
-\State $\tilde f_{\mathrm{bm}}\gets$ min--max norm of BM25$(q,\cdot)$
-\State $\tilde f_{\mathrm{dn}}\gets$ min--max norm of $\cos(\mathbf{e}(q),\mathbf{e}(\cdot))$
-\State $f_{\mathrm{hyb}}\gets \alpha\,\tilde f_{\mathrm{dn}}+(1-\alpha)\,\tilde f_{\mathrm{bm}}$ \Comment{equal-weight fusion}
-\State $H\gets \operatorname*{top}_{M} f_{\mathrm{hyb}}(q,\cdot)$ \Comment{hybrid pool}
-\State $P\!I\gets \textsc{Navigate}(q,\mathcal{T},b)$ \Comment{beam descent, no vectors}
-\State $P\gets H\cup P\!I$ \Comment{union pool}
-\State $\pi\gets \operatorname{argsort}_{s\in P}\ \rho(q,s)$ \Comment{cross-encoder rerank}
-\State $K\gets G(P)\setminus P$ \Comment{graph-only provisions}
-\If{$K\neq\varnothing$}
-  \State $s^\star\gets \arg\max_{s\in K}\ \rho(q,s)$
-  \State \Return $(\pi_1,\dots,\pi_{k-1},\,s^\star)$ \Comment{reserved slot, Eq.~\eqref{eq:reserve}}
-\Else
-  \State \Return $(\pi_1,\dots,\pi_{k})$
-\EndIf
-\end{algorithmic}
-\end{algorithm}
-
-\begin{figure}[t]
-  \centering
-  \resizebox{\linewidth}{!}{\input{figures/fig1_architecture.tex}}
-  \caption{The pipeline. \textsc{segment}, \textsc{index} and \textsc{graph} run once offline over
-  the statute. Per query, \textsc{hybrid} and \textsc{navigate} produce candidates independently,
-  \textsc{merge} unions and reranks them, and \textsc{propose}/\textsc{reserve} place one
-  graph-supplied provision at rank $k$. Because \textsc{merge} is a union, the hybrid pool is a lower
-  bound on recall that the structural legs can raise but never reduce.}
-  \label{fig:arch}
-\end{figure}
-
-The reserved slot spends one of five positions on evidence the question did not ask for.
-Section~\ref{sec:ablations} quantifies what that trade buys and what it costs.
+Thus the graph is guaranteed one opportunity to supply a missing rule, but it cannot consume any of
+the four positions allocated to primary sections.
 
 \subsection{Experimental Conditions}
 
-Eight conditions. Four are combinations of the components above, and four bracket the range so the
-numbers can be read against something.
+Table~\ref{tab:conditions} lists the nine conditions and the context each supplies. CLOSED and
+ORACLE bracket the range: the first withholds statutory context entirely, measuring parametric
+knowledge and the fabrication floor, and the second hands the generator the gold and supporting
+sections, marking the ceiling retrieval could reach. BM25, DENSE and HYBRID cover the standard
+retrieval baselines, with HYBRID the operational baseline every claim is tested against. PI is the
+replacement design; HYBRID+PI and HYBRID+KG each add one structural layer to that baseline, and
+PIKG-RAG adds both. Those four form a $2 \times 2$ grid over PageIndex and the knowledge graph on a
+fixed hybrid base, providing paired contrasts for each component and their combination.
 
 \begin{table}[t]
 \caption{Experimental conditions.}
 \label{tab:conditions}
 \centering
+\footnotesize
 \setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}p{0.24\linewidth}p{0.70\linewidth}@{}}
 \hline
-\textbf{Condition} & \textbf{Base retriever} & \textbf{KG} & \textbf{Run ID} \\
+\textbf{Condition} & \textbf{Context supplied to the generator} \\
 \hline
-CLOSED & none & off & C0 \\
-BM25 & lexical only & off & R0 \\
-DENSE & BGE-M3 only & off & R1 \\
-HYBRID & hybrid & off & A1 \\
-PI & PageIndex & off & A3 \\
-HYBRID+PI & hybrid $\cup$ PageIndex & off & --- \\
-HYBRID+KG & hybrid & on & A2 \\
-\textbf{HYBRID+PI+KG} & \textbf{hybrid $\cup$ PageIndex} & \textbf{on} & \textbf{A4B} \\
-ORACLE & gold $\cup$ supporting & --- & C1 \\
+CLOSED & none \\
+BM25 & lexical retrieval only \\
+DENSE & dense retrieval only \\
+HYBRID & lexical $+$ dense, reranked \\
+PI & PageIndex tree navigation, replacing the hybrid pool \\
+HYBRID+PI & union pool $H(q)\cup P\!I(q)$, reranked jointly \\
+HYBRID+KG & hybrid pool, rank $k$ reserved for the graph \\
+\textbf{PIKG-RAG} & \textbf{HYBRID+PI+KG: union pool, rank $k$ reserved for the graph} \\
+ORACLE & gold $\cup$ supporting sections, retrieval bypassed \\
 \hline
 \end{tabular}
 \end{table}
 
-CLOSED gives the model no context and measures what it recalls unaided. BM25 and DENSE isolate the
-two halves of the hybrid retriever. HYBRID is the baseline every claim is tested against. ORACLE
-receives the correct sections directly and marks the ceiling: the gap between it and any retrieval
-condition is the error that retrieval could still remove.
+\subsection{Generation, Judging, and Statistical Metrics}
 
-PI is the replacement design. HYBRID+PI and HYBRID+KG add one structural component each to the
-baseline, and HYBRID+PI+KG adds both. Those four form a $2\times2$ over PageIndex and the knowledge
-graph on a fixed hybrid base, which is what lets us report the effect of each component and of their
-combination.
+All final responses are generated using the open-weight model
+Qwen3.6-35B-A3B~\cite{qwen36model} at temperature $0$, processing the top $k=5$ retrieved sections
+without any Thai-specific fine-tuning. Every experimental condition shares an identical system
+prompt to prevent task-type leakage. Furthermore, this same model powers PageIndex tree navigation,
+holding the generator fixed across structural comparisons. Answer evaluation is conducted by
+Gemma-3-27b~\cite{gemma3report}, from a different provider than the generator and dataset drafter,
+which assigns an overall score from 1 to 5 and verifies each atomic claim against the retrieved
+context. Answer accuracy is the fraction scoring 4 or 5; mean judge score is also reported.
 
-CLOSED and ORACLE carry no retrieval score; every other condition is scored on both. Run IDs map to
-the released snapshot.
-
-\subsection{Generation, Judging, and Statistics}
-
-One open-weight multilingual model, Qwen3.6-35B-A3B at temperature 0, writes every answer from the
-top $k = 5$ sections. The model is used as released, with no Thai-specific fine-tuning. All
-conditions share a single prompt, so nothing about the question type reaches the generator. The same
-model also runs PageIndex navigation. If we used a stronger model there, we could not tell whether
-structure helped or the better model did, and the comparison in Section~\ref{sec:results} would not
-mean what we claim it means. The embedder is BGE-M3, the reranker is Qwen3-Reranker-4B, and all
-models run on one provider.
-
-Scoring is done by Gemma-3-27b, from a different vendor than both the generator (Qwen) and the
-drafter (DeepSeek), which rules out a model favouring its own output and keeps the judge independent
-of the reference answers. It marks answer correctness and checks each atomic claim against the
-retrieved context. Section~\ref{sec:judge} reports how far its judgements agree with a human
-reviewer's.
-
-\paragraph{Retrieval metrics.}
-For an item with gold sections $g$, supporting sections $u$, and the top-$k$ of a ranked list, we
-report the standard \emph{recall@5} (fraction of $g$ retrieved) and \emph{MRR@10}, plus two measures
-aimed at multi-hop: \emph{coverage@5}, whether the full set $g\cup u$ is retrieved, and
-\emph{support-recall@5}, the fraction of the supporting set $u$ retrieved. The last two are essential
-here: recall@5 credits only the answering section and would show nothing for a component whose entire
-job is to surface the provisions in $u$ that the question never names.
-
-\paragraph{Generation metrics.}
-With the generator fixed, the judge marks each answer correct or not against the reference (\emph{answer
-accuracy}), rates its \emph{per-claim grounding} as the fraction of the answer's atomic claims entailed
-by the retrieved context, and we compute the \emph{unretrieved-citation rate}, the fraction of cited
-\TH{มาตรา} that never appear in the context (a deterministic hallucination check).
-
-\paragraph{Statistics.}
-Every item passes through every condition, so the design is paired and effects are the mean per-item
-difference in accuracy. We report 95\% confidence intervals from a paired bootstrap over
-$10{,}000$ item resamples, test each contrast with McNemar's exact test on the discordant pairs, and
-control the family-wise error rate across the pre-registered contrasts with Holm--Bonferroni at
-$0.05$. To keep model choices honest, we split the set into a development portion (80 items,
-stratified by type) and a held-out test portion (175 items): every design and tuning decision is
-made on development, and the headline contrast is confirmed on test.
+Retrieval is scored with standard recall@5 and MRR@10 plus two multi-hop measures. Writing $R_k$
+for the top-$k$ of the returned list,
+\begin{align}
+\mathrm{Cov}@k &= \mathbf{1}\big[(g\cup u)\subseteq R_k\big], &
+\mathrm{Sup}@k &= \frac{|u\cap R_k|}{|u|}.
+\end{align}
+These measures capture supporting-section recovery that primary recall@5 omits. On the 220
+answerable items, generation is scored by
+answer accuracy against the reference, per-claim grounding (the fraction of atomic claims entailed by
+the context), and the unretrieved-citation rate (the fraction of cited sections absent from the
+context, a deterministic hallucination check). All conditions are evaluated on a paired per-item
+basis.
+We report 95\% confidence intervals derived from paired bootstrap resampling over $10{,}000$
+iterations, evaluate statistical contrasts using McNemar's exact test on discordant
+pairs~\cite{mcnemar1947}, and strictly control the family-wise error rate using the
+Holm--Bonferroni method~\cite{holm1979simple} at the $\alpha = 0.05$ significance level. The
+benchmark is split by type into 80 development items (69 answerable, 11 unanswerable) and 175
+held-out test items (151 answerable, 24 unanswerable). Design and tuning decisions, including the
+ablations of Section~\ref{sec:ablations}, use the development split; reported metrics use its
+answerable subset, and the headline contrast is confirmed on the 151 answerable test items in
+Section~\ref{sec:controls}.
 
 \subsection{Implementation and Reproducibility}
 \label{sec:repro}
 
-Table~\ref{tab:hparams} lists every model, version, and constant needed to reproduce the pipeline;
-together with Algorithm~\ref{alg:pipeline} it fixes the system end to end. All models are served
-through one provider (DeepInfra) at temperature~0, so runs are deterministic up to provider-side
-non-determinism. The evaluation set is regenerated from a fixed seed (Section~\ref{sec:evalset}); the
-graph is built once from the statute text (\texttt{CITES}, extracted from in-text section
-references) and from scope rules (\texttt{APPLIES\_TO}, mapping each Book-1 general provision to the
-offence classes it governs). We release the code, the eval set, per-item retrieval rankings, judge
-verdicts, and the analysis scripts.
+For reproducibility, Table~\ref{tab:hparams} specifies every model, software
+version, and system hyperparameter used across the pipeline. All language models are served through
+a unified infrastructure provider (DeepInfra) at temperature $0$; provider-side inference variance
+may remain. The evaluation set is generated
+deterministically using a fixed random seed as described in Section~\ref{sec:evalset}, while the
+knowledge graph is constructed offline directly from explicit statutory references
+(\texttt{CITES}) and scope rules (\texttt{APPLIES\_TO}). To support open science and external
+verification, we publicly release the complete codebase, evaluation benchmark, per-item retrieval
+rankings, judge verdicts, and statistical analysis scripts.
 
 \begin{table}[t]
 \caption{All components and settings needed to reproduce the system.}
 \label{tab:hparams}
 \centering
-\footnotesize
+\scriptsize
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}ll@{}}
 \hline
 \textbf{Component / setting} & \textbf{Value} \\
 \hline
 Corpus & Thai Criminal Code, PyThaiNLP \texttt{criminal-csv-v0.1} \\
+Corpus snapshot & \shortstack[l]{Released 2021-07-18; statutory amendment\\cutoff/effective date not documented} \\
 Sections $N$ & 444 (one chunk $=$ one \TH{มาตรา}) \\
 Generator \& PageIndex nav. & Qwen3.6-35B-A3B, temp $0$ \\
 Embedder & BGE-M3 \\
@@ -466,6 +321,7 @@ PageIndex beam width $b$ & $5$ \\
 KG edges & 719 \texttt{CITES}, 13{,}296 \texttt{APPLIES\_TO} \\
 KG expansion & one hop, undirected \\
 Eval set & 255 items, 6 types, seed $=$ fixed \\
+Eval split & \shortstack[l]{Dev: 69 answerable $+$ 11 unanswerable;\\test: 151 answerable $+$ 24 unanswerable} \\
 Bootstrap resamples $T$ & $10{,}000$; CI at $95\%$ \\
 Multiple-testing & Holm--Bonferroni, FWER $0.05$ \\
 \hline
@@ -475,11 +331,13 @@ Multiple-testing & Holm--Bonferroni, FWER $0.05$ \\
 \section{Results}
 \label{sec:results}
 
-Retrieval is scored on the 220 answerable items and generation on all 255.
-Table~\ref{tab:main} reports the main results.
+Retrieval and answer quality are scored on the 220 answerable items.
+Table~\ref{tab:main} reports the main results across all conditions. The hallucinated-section rate
+(unretrieved-citation rate) is approximately zero across all context-assisted conditions.
 
 \begin{table}[t]
-\caption{Main results. Retrieval on 220 answerable items; generation on 255.}
+\caption{Main results on the 220 answerable items. \textit{clm}: per-claim grounding;
+\textit{sc}: mean judge score on a 1--5 scale.}
 \label{tab:main}
 \centering
 \footnotesize
@@ -489,80 +347,55 @@ Table~\ref{tab:main} reports the main results.
 \textbf{Cond.} & \textbf{R@5} & \textbf{MRR} & \textbf{cov5} & \textbf{sup5} & \textbf{acc} &
 \textbf{clm} & \textbf{sc} \\
 \hline
-CLOSED & --- & --- & --- & --- & 0.005 & 0.063 & 1.10 \\
-BM25 & 0.609 & 0.457 & 0.527 & 0.178 & 0.536 & 0.690 & 3.35 \\
-DENSE & 0.832 & 0.687 & 0.682 & 0.022 & 0.714 & 0.811 & 4.05 \\
-HYBRID & 0.927 & 0.824 & 0.800 & 0.311 & 0.741 & 0.897 & 4.22 \\
-PI & 0.518 & 0.444 & 0.400 & 0.133 & 0.409 & 0.542 & 2.83 \\
-HYB+PI & \textbf{0.950} & \textbf{0.838} & 0.827 & 0.378 & 0.786 & \textbf{0.903} & 4.29 \\
-HYB+KG & 0.936 & 0.829 & 0.826 & 0.422 & 0.773 & 0.904 & 4.24 \\
-\textbf{HYB+PI+KG} & 0.932 & 0.833 & \textbf{0.850} & \textbf{0.556} & \textbf{0.814} & 0.897 &
-\textbf{4.31} \\
-ORACLE & --- & --- & --- & --- & 0.909 & 0.979 & 4.61 \\
+CLOSED & --- & --- & --- & --- & 0.005 & 0.075 & 1.10 \\
+BM25 & 0.609 & 0.457 & 0.527 & 0.178 & 0.541 & 0.679 & 3.35 \\
+DENSE & 0.832 & 0.687 & 0.682 & 0.022 & 0.718 & 0.815 & 4.07 \\
+HYBRID & 0.927 & 0.824 & 0.800 & 0.311 & 0.736 & 0.895 & 4.23 \\
+PI & 0.518 & 0.444 & 0.400 & 0.133 & 0.414 & 0.540 & 2.83 \\
+HYB+PI & \textbf{0.950} & \textbf{0.838} & 0.827 & 0.378 & 0.786 & \textbf{0.907} & 4.28 \\
+HYB+KG & 0.936 & 0.829 & 0.826 & 0.422 & 0.768 & 0.902 & 4.23 \\
+\textbf{PIKG-RAG} & 0.932 & 0.833 & \textbf{0.850} & \textbf{0.556} & \textbf{0.814} & 0.895 &
+\textbf{4.32} \\
+ORACLE & --- & --- & --- & --- & 0.900 & 0.978 & 4.61 \\
 \hline
 \end{tabular}
 \end{table}
 
-The hallucinated-section rate is approximately zero across all conditions.
+\subsection{Main Retrieval and Accuracy Results}
 
-\subsection{Replacement Fails, Addition Succeeds (RQ1)}
-
-PageIndex on its own reaches 0.409 accuracy and 0.518 recall, well below hybrid at 0.741 and 0.927.
-As a replacement base it is worse on every measure we track. The tree navigation reaches the right
-section when the question names something the headings contain, and misses when it does not, which
-similarity search handles by matching on wording instead.
-
-Used additively, HYBRID+PI raises recall@5 to 0.950, the highest of any condition, and accuracy to
-0.786. The same component that loses by 0.332 as a replacement gains 0.045 as an addition. Nothing
-about PageIndex changed between those two numbers; only what it was combined with did.
-
-\subsection{The Graph Recovers Supporting Provisions (RQ2)}
-
-The reserved slot raises support-recall@5 from 0.378 under HYBRID+PI to 0.556, and coverage@5 to
-0.850, the highest of any condition. Accuracy rises with it, to 0.814.
+Standalone PageIndex performs below Hybrid in recall (0.518 versus 0.927) and accuracy (0.414 versus 0.736). Adding its candidates to Hybrid instead gives the highest Recall@5, 0.950, and 0.786
+accuracy. Reserving the final slot for graph evidence lowers primary recall to 0.932 but raises
+support-recall from 0.378 to 0.556, coverage to 0.850, and accuracy to 0.814.
 
 \begin{table}[t]
-\caption{Paired contrasts on answer accuracy.}
+\caption{Paired contrasts on answer accuracy. Deltas use unrounded paired proportions.}
 \label{tab:contrasts}
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{@{}lrccc@{}}
 \hline
-\textbf{Contrast} & $\Delta$ & \textbf{95\% CI} & $p$ & \textbf{Holm} \\
+\textbf{Contrast} & $\Delta$ & \textbf{95\% CI} & $p$ & \textbf{Adjusted} \\
 \hline
-\textbf{FULL $-$ HYB} & \textbf{+0.073} & [+0.023, +0.123] & 0.007 & \textbf{sig.} \\
-FULL $-$ HYB+KG & +0.041 & [$-$0.005, +0.086] & 0.136 & n.s. \\
-FULL $-$ HYB+PI & +0.027 & [$-$0.014, +0.073] & 0.308 & n.s. \\
-HYB+PI $-$ HYB & +0.045 & [$-$0.005, +0.095] & 0.121 & n.s. \\
-HYB+KG $-$ HYB & +0.032 & [$-$0.023, +0.086] & 0.337 & n.s. \\
+\textbf{FULL $-$ HYB} & \textbf{+0.077} & [+0.027, +0.132] & 0.006 & \textbf{sig.} \\
+FULL $-$ HYB+KG & +0.045 & [+0.000, +0.091] & 0.087 & n.s. \\
+FULL $-$ HYB+PI & +0.027 & [$-$0.014, +0.068] & 0.286 & n.s. \\
+HYB+PI $-$ HYB & +0.050 & [$-$0.005, +0.105] & 0.090 & n.s. \\
+HYB+KG $-$ HYB & +0.032 & [$-$0.027, +0.086] & 0.337 & n.s. \\
 \hline
 \end{tabular}
 \end{table}
 
-The retrieval gain here is large and the accuracy gain is not. Support-recall improves by 0.178 while
-accuracy improves by 0.027, and that contrast does not survive correction. The graph is finding the
-provisions it was built to find. Whether the generator then uses them is a separate question, and
-Section~\ref{sec:ablations} returns to it.
-
-Only the full system beats the hybrid baseline after Holm correction. Neither structural component
-reaches significance on its own, and the effect appears once they are combined. We do not claim the
-full system dominates HYBRID+PI: at $n = 220$ those two are tied.
-
-\subsection{Retrieval Carries the Answers (RQ3, RQ4)}
-
-Accuracy follows retrieval quality across the ladder. With no context the model answers 0.5\% of
-items correctly, against 81.4\% for the full system and 90.9\% for the oracle. Parametric memory of
-the Code contributes almost nothing.
+Only PIKG-RAG differs significantly from Hybrid after Holm--Bonferroni correction
+($\Delta=+0.077$, $p=0.006$).
+Neither single-component addition is significant, and PIKG-RAG is not distinguishable from
+HYBRID+PI at $n=220$.
 
 \subsection{Judge Validation}
 \label{sec:judge}
 
-A blind sample of 150 answers, 30 per question type and spread across the generation arms, was rated
-1 to 5 for adequacy against the reference answer by a human reviewer, with the judge's verdicts
-withheld. For the agreement analysis we binarise both raters at the same threshold, counting a score
-of 4 or 5 as correct. Table~\ref{tab:judge} reports Cohen's $\kappa$ overall and per type, raw
-agreement, and the correlation of the 1--5 scores.
+A legal reviewer blindly scored 150 answers (30 per answerable type) on the same 1--5 scale as the
+judge. Scores of 4--5 were treated as correct for Cohen's $\kappa$.
 
 \begin{table}[t]
 \caption{Judge agreement against a human reviewer ($n = 150$).}
@@ -583,33 +416,19 @@ multi\_hop & 30 & 0.57 & \textbf{0.13} & 0.48 \\
 \end{tabular}
 \end{table}
 
-Overall agreement is substantial ($\kappa = 0.67$) and the 1--5 scores correlate at $\rho = 0.86$.
-The judge is near-perfect on definition ($\kappa = 1.00$) and strong on exception and lookup (both
-$\kappa = 0.80$), and moderate on penalty ($0.60$). On multi\_hop it collapses to poor agreement
-($\kappa = 0.13$, $\rho = 0.48$), the same type the pipeline finds hardest and the one where
-correctness is itself contentious to adjudicate; the disagreements concentrate almost entirely
-there. Every headline number is well supported except on multi-hop, which we therefore state with
-strong caution.
+Overall agreement is substantial ($\kappa=0.67$, $\rho=0.86$), but multi-hop agreement is poor
+($\kappa=0.13$); subgroup conclusions are therefore treated cautiously.
 
 \subsection{Isolating the Graph Contribution}
 
-The contrast between HYBRID+PI+KG and HYBRID+PI changes two things at once: the reserved slot appends
-a supporting provision, and it also cuts the primary sections shown to the generator from five to
-four. The observed gap therefore splits into a \emph{context-size} term (dropping the fifth primary
-section) and a \emph{graph} term (adding the provision with the primaries held fixed). Two controlled
-runs estimate each term separately, both sharing the generator and judge with everything else.
-
-Context size turns out not to matter. Feeding HYBRID+PI its top four sections instead of five moves
-accuracy from 0.786 to 0.786, so the first term is $0.000$. Dropping the fifth primary section costs
-nothing, so the reserved slot is not paying for itself out of lost primary evidence.
-
-The second run holds the primary evidence fixed. We take the full system's own four primary sections
-and generate with and without the appended slot, item by item, isolating the graph term. The graph
-raises accuracy from 0.795 to 0.814, a change of $+0.018$ with
-McNemar exact $p = 0.54$, which is not significant. The aggregate hides what is happening underneath.
+Using four rather than five HYBRID+PI sections leaves accuracy unchanged at 0.786, so allocating one
+slot to a supporting section does not explain the difference. With the four primary sections
+fixed, adding the graph slot changes accuracy from 0.795 to 0.814 ($\Delta=+0.018$, $p=0.54$). The
+exploratory type breakdown shows a $+0.200$ multi-hop difference and small losses elsewhere; it was
+not preregistered or included in the Holm--Bonferroni family.
 
 \begin{table}[t]
-\caption{Graph contribution by question type, primary evidence held fixed.}
+\caption{Exploratory graph contribution by question type, primary sections held fixed.}
 \label{tab:pertype}
 \centering
 \small
@@ -626,176 +445,114 @@ exception & 0.800 & 0.760 & $-$0.040 \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[t]
-  \centering
-  \resizebox{\linewidth}{!}{\input{figures/fig4_fault.tex}}
-  \caption{Graph contribution by question type with the four primary sections fixed. The gain
-  concentrates on multi\_hop, which needs a Book~1 provision; the appended provision slightly
-  distracts on single-section types.}
-  \label{fig:fault}
-\end{figure}
-
-The graph delivers a large gain exactly where it was designed to, on multi-hop items needing a
-Book 1 general provision, and costs accuracy on single-section types where the appended provision
-distracts. The net is small and non-significant because the two effects partly cancel. We therefore
-report the graph contribution as multi-hop-specific rather than as a uniform lift, which also
-explains the tie in Table~\ref{tab:contrasts}: the difference between the two top conditions is a
-redistribution across question types, not a small uniform improvement.
-
 \subsection{Controls and Robustness}
 \label{sec:controls}
 
-Three controls test whether the headline result is an artifact of the comparison being unfair to the
-baseline or of a single evaluation split.
+Three controls support the comparison. Tuning Hybrid over
+$\alpha\in\{0.3,0.5,0.7\}$ selects $0.7$, yielding Recall@5 of 0.959 and accuracy of 0.759;
+PIKG-RAG remains higher by $+0.055$ (95\% CI $[+0.009,+0.100]$, $p=0.036$). Appending all six
+possible Book~1 provisions gives 0.622 multi-hop and 0.805 overall accuracy, below targeted graph
+selection (0.644 and 0.814) while expanding the context from five to ten sections. Finally,
+decisions fixed on the 80-item development split transfer to the 151 answerable items in the
+175-item test split ($\Delta=+0.073$, 95\% CI
+$[+0.007,+0.139]$, $p=0.043$).
 
-\paragraph{A tuned baseline still loses.}
-The full system tunes five settings while the hybrid baseline uses none, so we tune it. Sweeping the
-fusion weight on development, $\alpha\in\{0.3,0.5,0.7\}$, the baseline is best at $\alpha=0.7$, where
-it reaches recall@5 $0.959$ (above the full system's $0.932$) and accuracy $0.759$. Even at this
-tuned setting the full system beats it by $+0.055$ (95\% CI $[+0.009,+0.100]$, $p=0.036$), still
-significant. Notably the tuned baseline retrieves \emph{better} yet answers \emph{worse}, which is
-the recall--accuracy pattern of Section~\ref{sec:ablations} seen from the baseline side. We keep the
-principled equal-weight $\alpha=0.5$ as the reported baseline and treat $\alpha=0.7$ as the
-conservative comparison.
-
-\paragraph{Targeted retrieval beats blind inclusion.}
-Because every multi-hop supporting section is one of six Book-1 provisions, a trivial alternative to
-the graph is to append all six to every context. This fixed-six baseline reaches $0.622$ on
-multi-hop and $0.805$ overall, below the full system's $0.644$ and $0.814$ while using six added
-sections rather than one. Selecting the single relevant provision through the graph is therefore both
-more accurate and far more context-efficient than including them all.
-
-\paragraph{The effect holds on held-out test.}
-Fixing every decision on the 80-item development split and evaluating on the 175-item test split, the
-full system beats the hybrid baseline by $+0.073$ (95\% CI $[+0.007,+0.139]$, $p=0.043$), so the
-headline survives a strict train--test separation rather than resting on the full $255$.
-
-\section{Ablations}
+\section{Ablation Analysis and Diagnostics}
 \label{sec:ablations}
 
-We tried five ways to push past 0.814. None of them worked, and they failed for the same reason. Each
-sends more candidates into graph expansion, and the \texttt{APPLIES\_TO} edges are too broad to
-absorb that. A node has roughly 271 neighbours on average, none of them verified, so the one relevant
-provision gets buried.
+Increasing the candidate pool from 50 to 100 raises Recall@5 from 0.932 to 0.945 but lowers overall
+accuracy; multi-hop accuracy falls by 0.177. Under \texttt{ALL\_OFFENCES}, one expanded seed can
+expose roughly 271
+neighbors; this is conditional fan-out, not average graph degree. Additional seeds therefore add
+substantial graph noise.
 
-\begin{table}[t]
-\caption{Ablation results on answer accuracy.}
-\label{tab:ablations}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}llrr@{}}
-\hline
-\textbf{Ablation} & \textbf{Setting} & \textbf{Accuracy} & $\Delta$ \\
-\hline
-Context size & $k$ = 5 / 3 / 2 & 0.814 / 0.759 / 0.741 & $\leq 0$ \\
-Multi-hop prompt & off / on & 0.814 / 0.786 & $-$0.027 \\
-KG reserved slots & 1 / 2 & 0.814 / 0.786 & $-$0.027 \\
-Pool depth & 50 / 100 & 0.814 / 0.786 & $-$0.027 \\
-KG slot gating & static / adaptive & 0.814 / 0.741 & $-$0.073 \\
-\hline
-\end{tabular}
-\end{table}
+\subsection{The Recall--Accuracy Trade-Off}
 
-The pool-depth result is worth singling out. Going from 50 to 100 raises recall@5 from 0.932 to 0.945
-and still lowers accuracy, because the larger seed set expands into more graph noise and multi\_hop
-drops by 0.177. Recall is not what limits the system. Graph precision is.
+PIKG-RAG uses one position for support, giving lower primary Recall@5 than HYBRID+PI (0.932 versus
+0.950) but higher support-recall and accuracy (0.556 and 0.814). Adaptive gating raises primary
+recall to 0.936 but lowers accuracy to 0.741, while the deeper pool reaches 0.945 recall at lower
+overall and multi-hop accuracy. The tested variants therefore trade primary recall against supporting
+evidence.
 
-\subsection{A Recall--Accuracy Frontier}
+\subsection{Multi-Hop Failure Breakdown}
 
-recall@5 and MRR@10 only give credit for the primary answering section. The reserved slot spends one
-of the five positions on a supporting provision instead. So the full system leads on coverage@5 at
-0.850 and support-recall@5 at 0.556, and trails on recall@5 at 0.932 against 0.950 for HYBRID+PI.
-
-We also tried an adaptive gate, which keeps the graph slot only when its candidate scores above the
-primary section it would displace. Recall@5 rises to 0.936 while accuracy falls to 0.741: the gate
-holds back provisions that score low but that the multi-hop items still need, and support-recall
-drops from 0.556 to 0.533. Deepening the candidate pool trades the same way, reaching the highest
-recall@5 of any condition (0.945) while accuracy drops. The two targets cannot both be maximised.
-Forcing the supporting provision in is best for accuracy, and gating it out is best for recall. We
-report the accuracy-optimal setting, and its lower recall@5 is a deliberate trade rather than a
-shortfall.
-
-\subsection{Multi-Hop Fault Decomposition}
-
-Accuracy on multi\_hop items is 0.644 against an oracle of 0.844. Of the items, 22\% are retrieval
-failures, where the supporting provision never reaches the top five, and 13\% are generation
-failures, where it is there and the model does not use it. Every missing provision is reachable in
-the graph from the gold section. It just ranks below roughly 271 neighbours. For 51\% of them the
-only route is a generic \texttt{all\_offences} edge, so we cannot simply prune those edges away. What
-limits the system is edge precision, and that is fixed by curation, not by tuning.
+Multi-hop accuracy is 0.644 versus 0.844 for ORACLE. Retrieval misses account for 22\% of items and
+generation failures for 13\%. Every missing support is graph-connected but outranked; 51\% involve
+generic \texttt{ALL\_OFFENCES} edges. The failure pattern motivates more selective graph edges.
 
 \section{Discussion}
+\label{sec:discussion}
 
-PageIndex and the graph both encode real legal structure, and both lose to hybrid retrieval alone.
-They pay off in combination, and only when the combination protects the primary evidence, which is
-what the reserved slot is for. Since the significant result comes from the pair and not either part,
-the two signals look complementary rather than redundant.
+PageIndex is ineffective as a Hybrid replacement, while the combined structural condition is the
+only one that differs significantly from Hybrid. This is consistent with hierarchy and graph links
+providing complementary signals. The graph effect is not uniform: the exploratory breakdown is
+positive for multi-hop questions but slightly negative for several single-section types, so a static
+reserved slot redistributes accuracy across tasks.
 
-The controlled comparison sharpens this. The graph is not a uniform improvement but a type-specific
-one: a large gain on multi-hop items, which need a Book 1 general provision, offset by small losses
-on single-section types where the appended provision distracts. A static reserved slot therefore
-trades correctness across types. A gate that admits the provision only when the question needs one is
-the principled next step, and what limits it today is edge precision rather than the gating rule.
+Primary recall is already high (0.932, or 0.945 with a deeper pool), whereas remaining errors cluster
+in multi-hop retrieval and evidence use. Graph expansion exposes many weakly discriminative
+neighbors, and none of the 13{,}296 \texttt{APPLIES\_TO} edges has been manually verified. These
+observations motivate edge curation and conditional graph use rather than simply increasing search
+depth.
 
-Primary retrieval is nearly solved: recall 0.932 in the recommended configuration, 0.945 with a
-deeper pool. The gap to the oracle sits in multi-hop reasoning, bounded by graph edge precision
-rather than by anything in the pipeline.
-
-\section{Limitations}
-\label{sec:limitations}
-
-\begin{itemize}
-\item \textbf{Judge validation.} Answer accuracy and claim grounding come from an LLM judge from a
-different vendor than both the generator and the drafter, which removes self-preference. A blind human
-audit of 150 items gives substantial agreement overall ($\kappa = 0.67$) but only poor agreement on
-multi-hop ($\kappa = 0.13$), so multi-hop conclusions are stated with strong caution. The audit rates
-adequacy on a 1--5 scale; it uses a single reviewer, and a second annotator for inter-annotator
-agreement remains future work.
-\item \textbf{Unverified labels and edges.} The retrieval labels are fixed by construction, but the
-reference answers were written by a drafter model and not checked by a lawyer, and none of the
-13,296 \texttt{APPLIES\_TO} edges has been verified by hand.
-\item \textbf{Generator and one remaining confound.} The generator is a multilingual open-weight model
-used as released, not adapted to Thai. Section~\ref{sec:results} separates the graph from the
-context-length change, but PageIndex still adds LLM reasoning calls the hybrid baseline does not
-make, so its gain is not yet attributable to the hierarchy alone.
-\item \textbf{Statistical power.} At $n = 220$ the top additive conditions cannot be separated. The
-full system's advantage is established over the baseline, not over HYBRID+PI.
-\item \textbf{Scope.} We report answerable QA; the refusal analysis on unanswerable items is deferred
-because its deterministic refusal metric is not yet reliable.
-\end{itemize}
+The findings have several limits. Judge agreement is substantial overall ($\kappa=0.67$) but poor on
+multi-hop items ($\kappa=0.13$), and only one human reviewer was available. Reference answers and
+graph edges lack legal review. PageIndex also adds LLM calls absent from Hybrid, confounding hierarchy
+with extra inference, and transfer to a Thai-adapted generator is untested. Finally, PIKG-RAG is
+distinguishable from Hybrid but not HYBRID+PI at the reported sample size. The 35 unanswerable items
+are not included in these metrics because a reliable refusal measure remains unavailable.
 
 \section{Future Work}
 
-The fault decomposition makes the next steps concrete. The main lever on multi-hop is curating the
-\texttt{APPLIES\_TO} edges: the \texttt{all\_offences} scope covers 67\% of edges at roughly 271
-neighbours per node, so a lawyer-verified pass that prunes the generic scopes and confirms the
-specific \texttt{book2} and \texttt{by\_penalty} edges should let the reserved slot find the right
-provision reliably. Beyond that, an LLM-selection condition over a flat candidate list, matched on
-the number of reasoning calls, would isolate the hierarchy from the extra reasoning PageIndex
-performs; a second legal annotator would give inter-annotator agreement alongside the human--judge
-figure; repairing the refusal metric would return the unanswerable items to the analysis; and the
-pre-registered $2\times2$ GLMM interaction remains to be fitted in place of the bootstrap
-difference-in-differences reported here.
+The error breakdown motivates further curation of the \texttt{APPLIES\_TO} edges. The
+\texttt{ALL\_OFFENCES} scope accounts for 67\% of all
+edges and can expose many offense neighbors per expanded general-provision seed, making it weakly
+discriminative. A
+lawyer-reviewed pass that removes overly broad scopes and validates the specific \texttt{book2} and
+\texttt{by\_penalty} edges could improve reserved-slot selection. Such a review could focus on an
+estimated 40--60 general provisions rather than all 13,296 edges.
+
+Improved edges may also support more effective dynamic gating. The current gate does not reliably
+distinguish a relevant low-scoring provision from a generic neighbor, which may partly reflect edge
+quality.
+
+Three smaller steps follow. First, an LLM-selection condition over a flat candidate list, matched on
+the number of reasoning calls, would separate gains from hierarchy and extra inference. Second, a
+second legal reviewer would provide human--human agreement alongside the human--judge comparison.
+Third, repairing the refusal metric would enable a dedicated analysis of the 35 unanswerable items.
+
+Finally, the $2\times2$ GLMM interaction remains to be fitted; the current analysis
+uses a bootstrap difference-in-differences in its place.
 
 \section{Ethical Considerations}
 
-The system retrieves and cites statutory provisions and does not provide legal advice; outputs
-require review by a qualified practitioner. The source corpus is redistributed under its original
-licence. Because retrieval errors can mislead non-expert users, we report a closed-book floor, an
-oracle ceiling, and a citation-grounding rate alongside every headline number.
+The system retrieves and cites statutory provisions; it does not provide legal advice. Its outputs
+require review by a qualified practitioner before they are relied upon. The principal deployment
+risk is that a fluent answer with a plausible citation may still be legally wrong. This risk
+motivates reporting a closed-book floor, an oracle ceiling, and citation-grounding measures alongside
+the headline results.
+
+The corpus consists of public law, is redistributed under its original license, and contains no
+personal data.
 
 \section{Conclusion}
 
-On Thai statutory question answering, hierarchy and knowledge-graph structure help only when added to
-a strong retriever. Replacing that retriever with structure is worse on every measure. Layering
-structure on top of it, with the graph given a reserved rank slot, produces the only configuration
-that beats the hybrid baseline once we correct for multiple tests, at 0.814 accuracy against a 0.909
-ceiling. The ablations place the remaining gap in knowledge-graph edge precision, which is a curation
-problem and not a modelling one. We release the pipeline, the 255-item benchmark, and a locked run
-snapshot.
+Structure improves statutory retrieval only when added to a strong retriever rather than used in
+its place. Replacing Hybrid retrieval with PageIndex tree navigation is worse on every tracked
+measure, reaching 0.414 answer accuracy against 0.736. Layering the same structural components onto
+Hybrid produces PIKG-RAG, which confines the knowledge graph to one reserved rank slot, reaches
+0.814, and is the only
+configuration that significantly beats the baseline after Holm--Bonferroni correction. Neither
+structural component is significant alone, so the result concerns their composition rather than
+either mechanism independently.
 
-\IEEEtriggeratref{15}
+The controlled comparison and exploratory subgroup analysis suggest that the graph contribution is
+concentrated on multi-hop questions rather than uniform across types. The observed retrieval errors
+motivate further graph curation and evaluation of dynamic gating. We release the pipeline, the
+255-item benchmark, and a locked run snapshot.
+
+\providecommand{\BIBdecl}{}
+\renewcommand{\BIBdecl}{\sloppy}
 \bibliographystyle{IEEEtran}
 \bibliography{custom}
 
