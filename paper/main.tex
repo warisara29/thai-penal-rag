@@ -560,24 +560,38 @@ generic \texttt{ALL\_OFFENCES} edges. The failure pattern motivates more selecti
 \section{Discussion}
 \label{sec:discussion}
 
-PageIndex is ineffective as a Hybrid replacement, while the combined structural condition is the
-only one that differs significantly from Hybrid. This is consistent with hierarchy and graph links
-providing complementary signals. The graph effect is not uniform: the exploratory breakdown is
-positive for multi-hop questions but slightly negative for several single-section types, so a static
-reserved slot redistributes accuracy across tasks.
+The clearest lesson is about composition, not about a single system. Replacing a lexical--dense
+retriever with hierarchy navigation is decisively worse (0.414 vs 0.736), whereas layering the same
+hierarchy and graph signals on top of that retriever is safe: the additive configurations never fall
+below the baseline. This asymmetry is large and stable, and it inverts the intuition that an authored
+statutory hierarchy could stand in for similarity search. When the two structural layers are added
+together their effect is additive, not synergistic---no interaction is detectable---and the combined
+increment is what carries the paired comparison across the significance threshold that either layer
+alone falls short of.
 
-Primary recall is already high (0.932, or 0.945 with a deeper pool), whereas remaining errors cluster
-in multi-hop retrieval and evidence use. Graph expansion exposes many weakly discriminative
-neighbors, and none of the 13{,}296 \texttt{APPLIES\_TO} edges has been manually verified. These
-observations motivate edge curation and conditional graph use rather than simply increasing search
-depth.
+Where the reserved slot admits a supporting provision, the model does use it: on multi-hop items it
+answers correctly while citing the Book-1 provision 62\% of the time (and the offence section every
+time). But the graph's marginal accuracy benefit is small relative to generation variance, so we do
+not claim a precise figure for it; what is dependable is that it does not harm. Consistently, primary
+recall is already high (0.932, or 0.945 with a deeper pool), and per-claim grounding of the full
+system matches the plain hybrid---accuracy improves without a rise in citation grounding, suggesting
+the supporting provision often aids reasoning without changing what the model explicitly cites.
 
-The findings have several limits. Judge agreement is substantial overall ($\kappa=0.67$) but poor on
-multi-hop items ($\kappa=0.13$), and only one human reviewer was available. Reference answers and
-graph edges lack legal review. PageIndex also adds LLM calls absent from Hybrid, confounding hierarchy
-with extra inference, and transfer to a Thai-adapted generator is untested. Finally, PIKG-RAG is
-distinguishable from Hybrid but not HYBRID+PI at the reported sample size. The 35 unanswerable items
-are not included in these metrics because a reliable refusal measure remains unavailable.
+Two analysis findings generalise beyond this system. First, recall does not predict accuracy: the
+fusion-tuned baseline attains the best Recall@5 (0.959) yet not the best accuracy, and deepening the
+candidate pool raises recall while lowering accuracy. Second, edge precision beats edge count---719
+text-derived \texttt{CITES} edges outperform 13{,}296 rule-materialised \texttt{APPLIES\_TO} edges,
+of which the \texttt{ALL\_OFFENCES} scope is near-complete and weakly discriminative---so the remedy
+is curation, not broader expansion.
+
+The findings carry clear limits. The additive advantage over the strong baseline is small, within
+generation variance, and does not survive lay-language paraphrasing at $n=40$, indicating that part
+of the benchmark's retrievability---and hence part of the advantage---rests on lexical overlap with
+the statute. The LLM judge agrees with the human reviewer substantially overall ($\kappa=0.67$) but
+only at chance on \texttt{multi\_hop} ($\kappa=0.13$), with a single reviewer; reference answers and
+the 13{,}296 \texttt{APPLIES\_TO} edges lack legal verification; PageIndex adds LLM calls the hybrid
+baseline does not make, confounding hierarchy with extra inference; and transfer to a Thai-adapted
+generator is untested.
 
 \section{Future Work}
 
@@ -589,17 +603,19 @@ lawyer-reviewed pass that removes overly broad scopes and validates the specific
 \texttt{by\_penalty} edges could improve reserved-slot selection. Such a review could focus on an
 estimated 40--60 general provisions rather than all 13,296 edges.
 
-Improved edges may also support more effective dynamic gating. The current gate does not reliably
-distinguish a relevant low-scoring provision from a generic neighbor, which may partly reflect edge
-quality.
+Improved edges may also support an adaptive gate. Our adaptive variant (admit the graph slot only
+when its reranker score is competitive with the primary it would displace) recovers primary recall
+but does not improve accuracy on the current edges; the gate cannot reliably tell a relevant
+low-scoring provision from a generic neighbor, which likely reflects edge quality more than the gating
+rule.
 
-Three smaller steps follow. First, an LLM-selection condition over a flat candidate list, matched on
-the number of reasoning calls, would separate gains from hierarchy and extra inference. Second, a
-second legal reviewer would provide human--human agreement alongside the human--judge comparison.
-Third, repairing the refusal metric would enable a dedicated analysis of the 35 unanswerable items.
-
-Finally, the $2\times2$ GLMM interaction remains to be fitted; the current analysis
-uses a bootstrap difference-in-differences in its place.
+A larger paraphrase study is the priority external-validity step: our 40-item probe suggests the
+structural advantage is tied to lexical overlap, and a powered lay-language test set would establish
+whether it persists on naturally phrased questions. Beyond that: an LLM-selection condition over a
+flat candidate list, matched on the number of reasoning calls, would separate gains from hierarchy
+from gains from extra inference; a second legal reviewer would provide human--human agreement
+alongside the human--judge comparison; and multi-run reporting should become standard, given the
+generation variance we observe.
 
 \section{Ethical Considerations}
 
@@ -614,19 +630,16 @@ personal data.
 
 \section{Conclusion}
 
-Structure improves statutory retrieval only when added to a strong retriever rather than used in
-its place. Replacing Hybrid retrieval with PageIndex tree navigation is worse on every tracked
-measure, reaching 0.414 answer accuracy against 0.736. Layering the same structural components onto
-Hybrid produces PIKG-RAG, which confines the knowledge graph to one reserved rank slot, reaches
-0.814, and is the only
-configuration that significantly beats the baseline after Holm--Bonferroni correction. Neither
-structural component is significant alone, so the result concerns their composition rather than
-either mechanism independently.
-
-The controlled comparison and exploratory subgroup analysis suggest that the graph contribution is
-concentrated on multi-hop questions rather than uniform across types. The observed retrieval errors
-motivate further graph curation and evaluation of dynamic gating. We release the pipeline, the
-255-item benchmark, and a locked run snapshot.
+For Thai statutory question answering, an authored hierarchy and a provision graph help only when
+they augment a strong lexical--dense retriever, not when they replace it. Replacing it with PageIndex
+navigation is worse on every measure (0.414 vs 0.736); layering the same signals onto it---confining
+the graph to one reserved rank slot---never underperforms the baseline and yields a small additive
+advantage (mean $\approx+0.06$ over three runs) that we do not claim to be synergistic or to transfer
+unchanged to lay-language questions. The more durable contributions are the design principle itself,
+the reserved-slot mechanism, and two transferable observations: recall does not predict accuracy, and
+edge precision outweighs edge count. The remaining errors are bounded by knowledge-graph edge
+precision, a curation problem rather than a modelling one. We release the pipeline, the 255-item
+benchmark with its measured lexical-overlap bias, and a locked run snapshot.
 
 \providecommand{\BIBdecl}{}
 \renewcommand{\BIBdecl}{\sloppy}
