@@ -155,7 +155,10 @@ to a named revision. Ingestion yields three artifacts. \texttt{sections.jsonl} h
 \TH{มาตรา}, and every retriever uses this unit, so chunk size is constant across conditions.
 \texttt{penal\_tree.json} encodes the authored hierarchy from Book (\TH{ภาค}) through Title
 (\TH{ลักษณะ}) and Chapter (\TH{หมวด}) to Section (\TH{มาตรา}), the space PageIndex searches. A
-knowledge graph holds 719 \texttt{CITES} and 13,296 \texttt{APPLIES\_TO} edges.
+\emph{provision graph} holds 719 \texttt{CITES} and 13,296 \texttt{APPLIES\_TO} edges. We call it a
+provision graph, rather than a knowledge graph, because its edges are not curated relations but are
+derived directly from statutory references and a small set of scope rules; we reserve ``knowledge
+graph'' for the richer, schema-based constructions of prior work.
 
 The two edge types differ in provenance. \texttt{CITES} comes from the statute itself, where one
 section names another, so its precision follows from the text. \texttt{APPLIES\_TO} is
@@ -210,9 +213,11 @@ $P(q) = H(q) \cup P\!I(q)$, reranked by the cross-encoder $\rho$.
 Graph candidates cannot be merged into the same ranking without changing what the score means. A
 provision reached through \texttt{APPLIES\_TO} may be legally necessary despite little lexical
 overlap, so $\rho$ tends to rank it below primary offences; increasing its graph weight can instead
-evict those offences. The reserved slot separates these objectives: primary relevance determines
-the first $k-1=4$ positions, while graph connectivity determines rank $k$ ($k=5$), occupied by the
-best graph-only provision $s^*$:
+evict those offences. We expand the graph from the entire primary pool $P(q)$ (not only its top
+ranks) and take, among the graph-only provisions, the one the reranker scores highest. The reserved
+slot then separates the two objectives: primary relevance determines the first $k-1=4$ positions,
+while graph connectivity determines rank $k$ ($k=5$), occupied by the best graph-only provision
+$s^*$:
 \begin{equation}
 R(q)=
 \begin{cases}
@@ -232,7 +237,7 @@ knowledge and the fabrication floor, and the second hands the generator the gold
 sections, marking the ceiling retrieval could reach. BM25, DENSE and HYBRID cover the standard
 retrieval baselines, with HYBRID the operational baseline every claim is tested against. PI is the
 replacement design; HYBRID+PI and HYBRID+KG each add one structural layer to that baseline, and
-PIKG-RAG adds both. Those four form a $2 \times 2$ grid over PageIndex and the knowledge graph on a
+PIKG-RAG adds both. Those four form a $2 \times 2$ grid over PageIndex and the provision graph on a
 fixed hybrid base, providing paired contrasts for each component and their combination.
 
 \begin{table}[t]
@@ -267,29 +272,36 @@ prompt to prevent task-type leakage. Furthermore, this same model powers PageInd
 holding the generator fixed across structural comparisons. Answer evaluation is conducted by
 Gemma-3-27b~\cite{gemma3report}, from a different provider than the generator and dataset drafter,
 which assigns an overall score from 1 to 5 and verifies each atomic claim against the retrieved
-context. Answer accuracy is the fraction scoring 4 or 5; mean judge score is also reported.
+context. Answer accuracy is the fraction scoring 4 or 5; mean judge score is also reported. The judge
+is from a different developer than both the generator (Alibaba) and the dataset drafter (DeepSeek),
+so no model scores its own output; all three, however, are served through the same provider.
 
-Retrieval is scored with standard recall@5 and MRR@10 plus two multi-hop measures. Writing $R_k$
-for the top-$k$ of the returned list,
+Let $g$ be the gold (answering) sections and $u$ the supporting sections of an item, and $R_k$ the
+top-$k$ of a returned list. \emph{Recall@5} and \emph{MRR@10} score the primary answer only,
+$\mathrm{Recall}@k=|g\cap R_k|/|g|$; they do \emph{not} count $u$, which is why reserving a slot for a
+supporting section can lower Recall@5 even as it helps the answer. Two further measures capture the
+supporting sections:
 \begin{align}
 \mathrm{Cov}@k &= \mathbf{1}\big[(g\cup u)\subseteq R_k\big], &
 \mathrm{Sup}@k &= \frac{|u\cap R_k|}{|u|}.
 \end{align}
-These measures capture supporting-section recovery that primary recall@5 omits. On the 220
-answerable items, generation is scored by
-answer accuracy against the reference, per-claim grounding (the fraction of atomic claims entailed by
-the context), and the unretrieved-citation rate (the fraction of cited sections absent from the
-context, a deterministic hallucination check). All conditions are evaluated on a paired per-item
-basis.
-We report 95\% confidence intervals derived from paired bootstrap resampling over $10{,}000$
-iterations, evaluate statistical contrasts using McNemar's exact test on discordant
-pairs~\cite{mcnemar1947}, and strictly control the family-wise error rate using the
-Holm--Bonferroni method~\cite{holm1979simple} at the $\alpha = 0.05$ significance level. The
-benchmark is split by type into 80 development items (69 answerable, 11 unanswerable) and 175
-held-out test items (151 answerable, 24 unanswerable). Design and tuning decisions, including the
-ablations of Section~\ref{sec:ablations}, use the development split; reported metrics use its
-answerable subset, and the headline contrast is confirmed on the 151 answerable test items in
-Section~\ref{sec:controls}.
+$\mathrm{Sup}@k$ is defined only for items with $u\neq\varnothing$; in our set this is exactly the 45
+multi-hop items, so the sup@5 column is an average over those 45. Generation is scored by answer
+accuracy, per-claim grounding (fraction of atomic claims entailed by the context), and the
+unretrieved-citation rate (fraction of cited sections absent from the context, a deterministic
+hallucination check). Retrieval adds cost only for the navigator arms: PageIndex and PIKG-RAG make on
+average $4.1$ generator calls per query ($\approx4{,}700$ tokens) for tree descent, whereas Hybrid,
+BM25, and DENSE make none; all arms then issue one generation call.
+
+All conditions are evaluated per item (paired). We report 95\% confidence intervals from a paired
+bootstrap over $10{,}000$ resamples, McNemar's exact test on discordant
+pairs~\cite{mcnemar1947}, and Holm--Bonferroni family-wise control~\cite{holm1979simple} at
+$\alpha=0.05$; we also report a bootstrap difference-in-differences as an interaction test. The
+benchmark is split by type into 80 development items (69 answerable) and 175 held-out test items (151
+answerable). All main tables report on the full 220 answerable items; only \emph{design and tuning}
+decisions (the ablations of Section~\ref{sec:ablations} and the fusion-weight choice) are made on the
+development split, and the headline contrast is re-confirmed on the answerable test items
+(Section~\ref{sec:controls}).
 
 \subsection{Implementation and Reproducibility}
 \label{sec:repro}
@@ -299,7 +311,7 @@ version, and system hyperparameter used across the pipeline. All language models
 a unified infrastructure provider (DeepInfra) at temperature $0$; provider-side inference variance
 may remain. The evaluation set is generated
 deterministically using a fixed random seed as described in Section~\ref{sec:evalset}, while the
-knowledge graph is constructed offline directly from explicit statutory references
+provision graph is constructed offline directly from explicit statutory references
 (\texttt{CITES}) and scope rules (\texttt{APPLIES\_TO}). To support open science and external
 verification, we publicly release the complete codebase, evaluation benchmark, per-item retrieval
 rankings, judge verdicts, and statistical analysis scripts.
@@ -340,8 +352,11 @@ Multiple-testing & Holm--Bonferroni, FWER $0.05$ \\
 \label{sec:results}
 
 Retrieval and answer quality are scored on the 220 answerable items.
-Table~\ref{tab:main} reports the main results across all conditions. The hallucinated-section rate
-(unretrieved-citation rate) is approximately zero across all context-assisted conditions.
+Table~\ref{tab:main} reports the main results across all conditions; per-claim grounding is undefined
+for CLOSED, which has no context, so that cell is left blank. The hallucinated-section rate
+(unretrieved-citation rate) is approximately zero across all context-assisted conditions. Accuracy
+figures are single-run; Section~V quantifies the run-to-run variance (PIKG-RAG spread $\approx0.036$),
+so small differences between the top arms should be read against that band.
 
 \begin{table}[t]
 \caption{Main results on the 220 answerable items. \textit{clm}: per-claim grounding;
@@ -355,7 +370,7 @@ Table~\ref{tab:main} reports the main results across all conditions. The halluci
 \textbf{Cond.} & \textbf{R@5} & \textbf{MRR} & \textbf{cov5} & \textbf{sup5} & \textbf{acc} &
 \textbf{clm} & \textbf{sc} \\
 \hline
-CLOSED & --- & --- & --- & --- & 0.005 & 0.075 & 1.10 \\
+CLOSED & --- & --- & --- & --- & 0.005 & --- & 1.10 \\
 BM25 & 0.609 & 0.457 & 0.527 & 0.178 & 0.541 & 0.679 & 3.35 \\
 DENSE & 0.832 & 0.687 & 0.682 & 0.022 & 0.718 & 0.815 & 4.07 \\
 HYBRID & 0.927 & 0.824 & 0.800 & 0.311 & 0.736 & 0.895 & 4.23 \\
@@ -538,18 +553,20 @@ structural advantage transfers unchanged to naturally phrased user questions.
 \label{sec:ablations}
 
 Increasing the candidate pool from 50 to 100 raises Recall@5 from 0.932 to 0.945 but lowers overall
-accuracy; multi-hop accuracy falls by 0.177. Under \texttt{ALL\_OFFENCES}, one expanded seed can
-expose roughly 271
-neighbors; this is conditional fan-out, not average graph degree. Additional seeds therefore add
-substantial graph noise.
+accuracy; multi-hop accuracy falls by 0.177. The cause is graph noise: a seed that is itself a Book-1
+general provision under the \texttt{ALL\_OFFENCES} scope expands to roughly 271 neighbours (the mean
+out-degree of such seeds, not of the graph as a whole), so a larger seed set injects many weakly
+related sections. Additional depth therefore hurts rather than helps.
 
 \subsection{The Recall--Accuracy Trade-Off}
 
 PIKG-RAG uses one position for support, giving lower primary Recall@5 than HYBRID+PI (0.932 versus
-0.950) but higher support-recall and accuracy (0.556 and 0.814). Adaptive gating raises primary
-recall to 0.936 but lowers accuracy to 0.741, while the deeper pool reaches 0.945 recall at lower
-overall and multi-hop accuracy. The tested variants therefore trade primary recall against supporting
-evidence.
+0.950) but higher support-recall and accuracy (0.556 and 0.814). An \emph{adaptive gate}---which
+fills the reserved slot only when the graph candidate's reranker score is competitive with the
+primary section it would displace, and otherwise keeps all five primaries---raises primary recall to
+0.936 but lowers accuracy to 0.741; the deeper pool likewise reaches 0.945 recall at lower overall
+and multi-hop accuracy. The tested variants therefore trade primary recall against supporting
+evidence rather than improving both.
 
 \subsection{Multi-Hop Failure Breakdown}
 
@@ -637,9 +654,34 @@ the graph to one reserved rank slot---never underperforms the baseline and yield
 advantage (mean $\approx+0.06$ over three runs) that we do not claim to be synergistic or to transfer
 unchanged to lay-language questions. The more durable contributions are the design principle itself,
 the reserved-slot mechanism, and two transferable observations: recall does not predict accuracy, and
-edge precision outweighs edge count. The remaining errors are bounded by knowledge-graph edge
+edge precision outweighs edge count. The remaining errors are bounded by provision-graph edge
 precision, a curation problem rather than a modelling one. We release the pipeline, the 255-item
 benchmark with its measured lexical-overlap bias, and a locked run snapshot.
+
+\appendices
+
+\section{Prompts and Judge Rubric}
+\label{app:prompts}
+
+All arms share one generator system prompt (translated; the Thai original is released with the code):
+\begin{quote}\small
+``You answer Thai criminal-law questions using \emph{only} the provided sections. Always state the
+section number(s) you rely on. If the provided sections are insufficient, or the question is outside
+the Criminal Code, reply `This question is outside the scope of the Criminal Code.' Do not invent
+section numbers or penalties not present in the provided text.''
+\end{quote}
+
+The judge (Gemma-3-27b) scores each answer against the reference on a 1--5 scale and returns a binary
+correctness flag and a short rationale as JSON. The instruction is:
+\begin{quote}\small
+``You grade the correctness of a Thai criminal-law answer against a reference answer. Return JSON
+\{\texttt{score}: 1--5, \texttt{correct}: true/false, \texttt{rationale}: ...\}, where 5 means fully
+correct and complete.''
+\end{quote}
+For all agreement and accuracy figures we binarise the 1--5 score at $\ge 4 \Rightarrow$ correct,
+applying the same threshold to the judge and to the human reviewer. Per-claim grounding uses a
+separate call that checks, for each atomic claim, whether it is entailed by the retrieved context;
+it is undefined when the context is empty (CLOSED).
 
 \providecommand{\BIBdecl}{}
 \renewcommand{\BIBdecl}{\sloppy}
