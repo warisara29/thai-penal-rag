@@ -37,25 +37,26 @@ Law Question Answering}
 \maketitle
 
 \begin{abstract}
-Thai criminal-law question answering may retrieve the offence section matching a query while
-omitting an unnamed general rule that changes the legal conclusion. We evaluate this problem on 220
-answerable items from a 255-question benchmark across six task types, drawn from the 444-section Thai
-Criminal Code. We
-introduce Page-Indexed Knowledge-Graph Augmented Generation (PIKG-RAG). PageIndex candidates augment
-a lexical--dense Hybrid pool. PIKG-RAG reserves the fifth slot in a five-section context for a
-graph-selected supporting section, leaving the first four positions for primary sections. We initially hypothesized
-that PageIndex could replace conventional retrieval, but standalone PageIndex reached 0.414 answer
-accuracy against 0.736 for Hybrid. The complete PIKG-RAG condition reached 0.814 and was the only
-structural configuration to significantly outperform Hybrid after Holm--Bonferroni correction
-($\Delta=+0.077$, $p=0.006$); neither component was significant alone. It also remained more accurate
-than a tuned Hybrid baseline with higher Recall@5 (0.959 versus 0.932; $\Delta=+0.055$, $p=0.036$).
-Controlled comparisons show that the
-reserved slot does not reduce accuracy and that graph benefits vary by question type, with the
-largest difference on multi-hop items.
-Error analysis suggests that unverified graph-edge selection remains a limitation: increasing
-retrieval depth raised Recall@5 from 0.932 to 0.945 but did not improve accuracy. We release the
-pipeline, benchmark, per-item rankings and
-judge verdicts, and a locked run snapshot.
+A retrieval-augmented system for Thai criminal-law question answering may retrieve the offence
+section matching a query while omitting an unnamed general rule that changes the legal conclusion.
+We study, on a 255-question benchmark of six task types drawn from the 444-section Thai Criminal
+Code, whether the statute's authored hierarchy and a provision graph should \emph{replace} a strong
+lexical--dense retriever or \emph{augment} it. The decisive result is directional and large:
+navigating the hierarchy in place of retrieval (PageIndex) collapses answer accuracy to 0.414
+against 0.736 for the hybrid baseline, and the ``full'' system built on that replacement ranks last
+of every configuration. Recast additively as Page-Indexed Knowledge-Graph Augmented Generation (PIKG-RAG)---PageIndex
+candidates unioned into the hybrid pool, and a graph-selected supporting section placed in a reserved
+rank slot so it never displaces a primary section---the same components recover to 0.79--0.81,
+matching or modestly exceeding the baseline while never underperforming it. We report this advantage cautiously: it is small (paired
+$\Delta\approx+0.06$, range $+0.05$ to $+0.08$ across three generation runs), and it does not persist
+under lay-language paraphrases of the questions ($n=40$), indicating that part of the benchmark's
+retrievability rests on lexical overlap with the statute. Beyond the system, our analysis yields
+transferable findings: recall does not predict accuracy (a fusion-tuned baseline reaches the highest
+Recall@5, 0.959, yet lower accuracy); 719 text-derived \texttt{CITES} edges outperform 13{,}296
+rule-materialized \texttt{APPLIES\_TO} edges, so edge precision matters more than count; and
+generation variance is large enough at this scale to swamp fine-grained effects, which we therefore
+report as exploratory. We release the pipeline, the benchmark, per-item rankings and judge verdicts,
+and a locked run snapshot.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -91,15 +92,22 @@ candidates are unioned with the Hybrid pool, while a section-level knowledge
 graph~\cite{edge2024graphrag,pan2024unifying} supplies one supporting section through a reserved
 slot. This design is Page-Indexed Knowledge-Graph Augmented Generation (PIKG-RAG).
 
-On the 220 answerable items in a 255-question benchmark, PIKG-RAG reaches 0.814 accuracy and is the
-only structural configuration that significantly outperforms Hybrid after Holm--Bonferroni correction
-($\Delta=+0.077$, $p=0.006$); neither component is significant alone. The central result is simple:
-for statutory QA, structure should augment retrieval, not replace it.
+On the 220 answerable items of the benchmark, the additive system recovers to 0.79--0.81 and never
+underperforms the hybrid baseline, whereas the replacement design collapses to 0.414. The central,
+robust result is a design principle: for statutory QA, structure should augment a strong retriever,
+not replace it. The additive system's advantage \emph{over} the baseline is real but small and
+setting-dependent, and we treat it as such.
 
-This work makes three contributions. First, it presents an additive architecture that combines
-lexical--dense retrieval, authored-hierarchy navigation, and a protected supporting section. Second, it
-directly compares replacement and additive structural designs under paired evaluation. Third, its
-ablations distinguish retrieval failures from failures to use retrieved evidence during generation.
+This work makes four contributions. First, a design principle established by a direct
+replacement-vs-augmentation comparison under paired evaluation: replacing lexical--dense retrieval
+with hierarchy navigation is catastrophic (0.414 vs 0.736), while augmenting it is safe. Second, a
+mechanism---a reserved rank slot---that admits a graph-selected supporting section without displacing
+primary evidence, and that we show never reduces accuracy. Third, an analysis with transferable
+lessons for legal RAG: recall does not predict answer accuracy, edge precision outweighs edge count
+(\texttt{CITES} $\gg$ \texttt{APPLIES\_TO}), and generation variance is large enough to require
+multi-run reporting at this scale. Fourth, a released 255-item Thai statutory QA benchmark built by a
+gold-by-construction protocol, together with an honest account of its lexical-overlap bias measured
+via lay-language paraphrases.
 
 \section{Related Work}
 
