@@ -205,7 +205,8 @@ scores~\cite{chen2024bgem3} with equal weights ($\alpha = 0.5$). Its top $M = 50
 $H(q)$ and are reranked by Qwen3-Reranker-4B~\cite{zhang2025qwen3embedding}.
 \textit{PageIndex} has the generator descend \texttt{penal\_tree.json} with beam width $b = 5$,
 choosing at each level which child headings to expand and returning the leaves it reaches,
-$P\!I(q)$; no embeddings are used at any stage. \textit{Graph traversal} treats edges as undirected
+$P\!I(q)$; no embeddings are used at any stage. We raised $b$ from an initial $3$ to $5$ to retain
+more Title/Chapter branches but did not run a systematic sweep, as cost grows with the beam. \textit{Graph traversal} treats edges as undirected
 and untyped, expanding a seed set by one hop to every section it \texttt{CITES} and every offense an
 \texttt{APPLIES\_TO} rule governs. This route can retrieve provisions such as the juvenile
 mitigation in \TH{มาตรา} 75 even when they share little wording with $q$.
