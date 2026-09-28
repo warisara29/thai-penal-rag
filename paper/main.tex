@@ -668,28 +668,94 @@ benchmark with its measured lexical-overlap bias, and a locked run snapshot.
 
 \appendices
 
-\section{Prompts and Judge Rubric}
+\section{Prompts Used in the Experiments}
 \label{app:prompts}
 
-All arms share one generator system prompt (translated; the Thai original is released with the code):
-\begin{quote}\small
-``You answer Thai criminal-law questions using \emph{only} the provided sections. Always state the
-section number(s) you rely on. If the provided sections are insufficient, or the question is outside
-the Criminal Code, reply `This question is outside the scope of the Criminal Code.' Do not invent
-section numbers or penalties not present in the provided text.''
+All prompts are reproduced verbatim in the original Thai; a one-line English gloss precedes each.
+Runtime values (the retrieved sections, the query, headings, the reference answer, the answer under
+evaluation) are substituted where indicated.
+
+\smallskip\noindent\textbf{A.1 Answer generation (system prompt, shared by all arms).}
+\emph{Answer only from the provided sections, always cite the section numbers, refuse if out of
+scope, and never invent sections or penalties.}
+\begin{quote}\footnotesize
+\TH{คุณเป็นผู้ช่วยตอบคำถามกฎหมายอาญาไทย ตอบโดยอ้างอิงเฉพาะ ‘ตัวบทที่ให้มา’ เท่านั้น ระบุเลขมาตราที่ใช้ตอบเสมอ ถ้าตัวบทที่ให้มาไม่พอจะตอบ หรือคำถามไม่อยู่ในขอบเขตประมวลกฎหมายอาญา ให้ตอบว่า ‘คำถามนี้ไม่อยู่ในขอบเขตของประมวลกฎหมายอาญา’ อย่าแต่งเลขมาตราหรือโทษที่ไม่ปรากฏในตัวบท}
 \end{quote}
 
-The judge (Gemma-3-27b) scores each answer against the reference on a 1--5 scale and returns a binary
-correctness flag and a short rationale as JSON. The instruction is:
-\begin{quote}\small
-``You grade the correctness of a Thai criminal-law answer against a reference answer. Return JSON
-\{\texttt{score}: 1--5, \texttt{correct}: true/false, \texttt{rationale}: ...\}, where 5 means fully
-correct and complete.''
+\smallskip\noindent\textbf{A.2 PageIndex navigation.}
+System: \emph{help navigate to Criminal-Code sections by choosing relevant headings.} User (per tree
+level; \{query\}, \{numbered headings\}, \{max\} substituted):
+\begin{quote}\footnotesize
+\TH{คุณช่วยนำทางค้นหามาตราในประมวลกฎหมายอาญาโดยเลือกหัวข้อที่เกี่ยวข้อง}\\[2pt]
+\TH{คำถาม:} \{query\}\\
+\TH{รายการหัวข้อกฎหมาย (มีหมายเลขกำกับ):} \{numbered\}\\
+\TH{เลือกหมายเลขที่เกี่ยวข้องกับคำถามมากที่สุด ไม่เกิน} \{max\} \TH{หมายเลข ตอบเป็นรายการหมายเลขเท่านั้น เช่น} [0, 3]
 \end{quote}
-For all agreement and accuracy figures we binarise the 1--5 score at $\ge 4 \Rightarrow$ correct,
-applying the same threshold to the judge and to the human reviewer. Per-claim grounding uses a
-separate call that checks, for each atomic claim, whether it is entailed by the retrieved context;
-it is undefined when the context is empty (CLOSED).
+
+\smallskip\noindent\textbf{A.3 Question drafting (benchmark construction).}
+\emph{Expert drafter: write a natural question, a reference answer, and atomic checkable claims, all
+grounded only in the supplied section text.}
+\begin{quote}\footnotesize
+\TH{คุณเป็นผู้เชี่ยวชาญกฎหมายอาญาไทยที่กำลังสร้างชุดข้อสอบทองคำ (gold eval set) เพื่อวัดระบบค้นคืนกฎหมาย (RAG) บนประมวลกฎหมายอาญา เขียนคำถามให้เป็นธรรมชาติแบบที่ประชาชนหรือนักกฎหมายถามจริง คำตอบอ้างอิงและ answer\_claims ต้องมีที่มาจากตัวบทที่ให้ไว้เท่านั้น ห้ามแต่งเติมมาตราหรือโทษที่ไม่ปรากฏ answer\_claims คือข้อเท็จจริงย่อย ๆ ที่ตรวจสอบได้ทีละข้อ}
+\end{quote}
+
+\smallskip\noindent\textbf{A.4 Judge (Gemma-3-27b).}
+System: \emph{grade the answer against the reference; reply JSON.} User (\{reference\}, \{answer\}
+substituted):
+\begin{quote}\footnotesize
+\TH{คุณเป็นกรรมการให้คะแนนความถูกต้องของคำตอบกฎหมายอาญาไทยเทียบคำตอบอ้างอิง ตอบ JSON}\\[2pt]
+[\TH{คำตอบอ้างอิง}] \{reference\}\quad [\TH{คำตอบที่ต้องประเมิน}] \{answer\}\\
+\TH{ให้คะแนน 1-5 (5=ถูกครบถ้วน) ตอบ JSON:}
+\texttt{\{"score": 1-5, "correct": true/false, "rationale": "...\TH{เหตุผลสั้น ๆ}..."\}}
+\end{quote}
+A separate call verifies per-claim grounding (system: \TH{คุณเป็นกรรมการตรวจการอ้างอิง ตัดสินจากบริบทที่ให้เท่านั้น ตอบ JSON}), returning a boolean per atomic claim. For all agreement and accuracy
+figures the 1--5 score is binarized at ${\ge}4\Rightarrow$ correct, applied identically to the judge
+and the human reviewer.
+
+\section{Benchmark Examples}
+\label{app:examples}
+
+One item per type is shown with all schema fields (\texttt{answer\_claims} abbreviated). The full
+255-item set, per-item retrieval rankings, and judge verdicts are released in the run snapshot
+(\texttt{runs/2026-08-07/} in the code repository).
+
+\smallskip\noindent\textbf{lookup} --- \texttt{gold}=[135/4], \texttt{supporting}=[\,]:
+\begin{quote}\footnotesize
+Q: \TH{การเป็นสมาชิกของกลุ่มที่ถูกสหประชาชาติและรัฐบาลไทยประกาศว่าเป็นกลุ่มก่อการร้าย มีโทษอย่างไร}\\
+Ref: \TH{ตามมาตรา 135/4 ... ต้องระวางโทษจำคุกไม่เกินเจ็ดปีและปรับไม่เกินหนึ่งแสนสี่หมื่นบาท}\\
+Claims: [\TH{โทษจำคุกไม่เกินเจ็ดปี}; \dots] \quad Difficulty: easy
+\end{quote}
+
+\smallskip\noindent\textbf{penalty} --- \texttt{gold}=[289]:
+\begin{quote}\footnotesize
+Q: \TH{ถ้าผมวางแผนฆ่าใครสักคนไว้ล่วงหน้าแล้วลงมือฆ่าจริง ผมจะโดนโทษอะไรครับ}\\
+Ref: \TH{ความผิดฐานฆ่าผู้อื่นโดยไตร่ตรองไว้ก่อน ตามมาตรา 289(4) ต้องระวางโทษประหารชีวิต}\\
+Claims: [\TH{ฆ่าโดยไตร่ตรองไว้ก่อน}; \TH{มาตรา 289(4)}; \TH{ประหารชีวิต}]
+\end{quote}
+
+\smallskip\noindent\textbf{multi\_hop} --- \texttt{gold}=[209], \texttt{supporting}=[80]:
+\begin{quote}\footnotesize
+Q: \TH{สมชายกับพวกอีก 5 คนตกลงกันตั้งกลุ่มลับ ... มีเป้าหมายเพื่อลักลอบขนของหนีภาษี แต่ยังไม่ทันลงมือ ตำรวจจับกุมก่อน สมชายมีความผิดฐานใดและต้องรับโทษอย่างไร}\\
+Ref: \TH{ผิดฐานเป็นอั้งยี่ตามมาตรา 209 วรรคสอง ในฐานะหัวหน้า ... (อ้างมาตรา 80 การพยายาม)}
+\end{quote}
+
+\smallskip\noindent\textbf{exception} --- \texttt{gold}=[105]:
+\begin{quote}\footnotesize
+Q: \TH{สมชายพยายามลักไม้กวาดราคา 200 บาท แต่เจ้าของร้านเห็นก่อน จึงวิ่งหนี ... เป็นการพยายามลักทรัพย์ลหุโทษหรือไม่ ต้องรับโทษหรือไม่}\\
+Ref: \TH{เป็นการพยายามกระทำความผิดลหุโทษ ตามมาตรา 105 ผู้พยายามกระทำความผิดลหุโทษไม่ต้องรับโทษ}
+\end{quote}
+
+\smallskip\noindent\textbf{definition} --- \texttt{gold}=[1]:
+\begin{quote}\footnotesize
+Q: \TH{ตามประมวลกฎหมายอาญา ‘ทางสาธารณะ’ มีความหมายว่าอย่างไร}\\
+Ref: \TH{ทางบกหรือทางน้ำสำหรับประชาชนใช้ในการจราจร และรวมถึงทางรถไฟและทางรถรางที่มีรถเดินสำหรับประชาชนโดยสาร}
+\end{quote}
+
+\smallskip\noindent\textbf{unanswerable} --- \texttt{gold}=[\,] (must refuse):
+\begin{quote}\footnotesize
+Q: \TH{อยากจดทะเบียนจัดตั้งบริษัทจำกัด ต้องใช้เอกสารอะไรบ้าง และค่าธรรมเนียมเท่าไหร่ครับ}\\
+Ref: \TH{เป็นเรื่องกฎหมายแพ่งและพาณิชย์ ไม่อยู่ในขอบเขตของประมวลกฎหมายอาญา จึงไม่สามารถตอบได้}
+\end{quote}
 
 \providecommand{\BIBdecl}{}
 \renewcommand{\BIBdecl}{\sloppy}
