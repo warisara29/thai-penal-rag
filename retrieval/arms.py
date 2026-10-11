@@ -57,6 +57,8 @@ class Context:
     reranker: object
     navigator: object
     config: dict
+    fact_extractor: object = None          # task C (optional); None -> reranker-gated KG slot
+    chapter_sections: dict = None          # {chapter_no: {section_id}} for F(q) filtering
 
 
 class DenseRetriever:
@@ -148,7 +150,8 @@ class FullSystem:
     expander=None → hybrid+pi (no KG); an expander → hybrid+pi+kg."""
 
     def __init__(self, hybrid, pi, expander, reranker, corpus, name="A4B", kg_reserve=1,
-                 kg_tau=None):
+                 kg_tau=None, fact_extractor=None, chapter_sections=None,
+                 use_fact_filter=True, random_slot=False, slot_seed=0):
         self.hybrid, self.pi = hybrid, pi
         self.expander, self.reranker, self.corpus, self.name = expander, reranker, corpus, name
         self.kg_reserve = kg_reserve   # slots at the tail reserved for KG supporting provisions
@@ -157,6 +160,16 @@ class FullSystem:
         # (static reserved-slot). Env RAG_KG_GATE sets it globally for ablation.
         env = os.environ.get("RAG_KG_GATE")
         self.kg_tau = float(env) if (kg_tau is None and env not in (None, "")) else kg_tau
+        # Task C — fact-guided traversal. When a fact_extractor is given, the reserved KG slot is
+        # chosen by: F(q) chapter(s) -> keep only neighbours in those general-part chapters ->
+        # rank by court-citation weight w. Ablations: use_fact_filter=False (skip the F(q) filter),
+        # random_slot=True (pick a random eligible neighbour), or build the expander rule_based
+        # (unweighted edges) upstream.
+        self.fact_extractor = fact_extractor
+        self.chapter_sections = chapter_sections or {}
+        self.use_fact_filter = use_fact_filter
+        self.random_slot = random_slot
+        self.slot_seed = slot_seed
 
     def _scored(self, query, ids):
         if hasattr(self.reranker, "rerank_scored"):
@@ -171,8 +184,11 @@ class FullSystem:
         # Rank the ANSWER candidates cleanly — KG never dilutes the primary ordering.
         scored = self._scored(query, seed)
         primary = [i for i, _ in scored]
+        meta = dict(pi.meta or {})
         if not self.expander:
-            return RetrievalResult(query_id, primary[:k], meta=pi.meta)
+            return RetrievalResult(query_id, primary[:k], meta=meta)
+        if self.fact_extractor is not None:                         # task C — fact-guided slot
+            return self._fact_guided(query, query_id, k, primary, meta)
         expanded = self.expander.expand(seed)
         kg_new = [s for s in expanded if s not in set(seed)]        # provisions only KG surfaced
         head = primary[:k]                                          # default: keep full primary top-k
@@ -184,15 +200,47 @@ class FullSystem:
             if reserved:                                            # give up 1 primary slot per gated KG
                 head = primary[: k - len(reserved)] + reserved
         ranked = list(dict.fromkeys(head + primary))[:k]
-        return RetrievalResult(query_id, ranked, meta=pi.meta)
+        return RetrievalResult(query_id, ranked, meta=meta)
+
+    def _fact_guided(self, query, query_id, k, primary, meta):
+        """Reserved KG slot chosen by F(q) chapter filter + court-citation weight (task C)."""
+        from caselaw.facts import allowed_sections
+        cats, fmeta = self.fact_extractor.extract(query)
+        meta.update(fmeta)
+        head_set = set(primary[:k])
+        allowed = allowed_sections(cats, self.chapter_sections) if self.use_fact_filter else None
+        cand: dict[str, float] = {}       # candidate provision -> best co-citation weight
+        for s in primary[:k]:             # one hop from each answer candidate
+            for nb, w in self.expander.weighted_neighbors(s):
+                if nb in head_set:
+                    continue
+                if allowed is not None and nb not in allowed:
+                    continue
+                cand[nb] = max(cand.get(nb, 0.0), w)
+        ordered = sorted(cand, key=cand.get, reverse=True)
+        if self.random_slot and ordered:     # ablation: pick randomly among eligible, seeded
+            import random
+            rng = random.Random(self.slot_seed ^ (hash(query_id) & 0xFFFFFFFF))
+            rng.shuffle(ordered)
+        reserved = ordered[: self.kg_reserve]
+        meta["kg_reserved"] = reserved
+        head = (primary[: k - len(reserved)] + reserved) if reserved else primary[:k]
+        ranked = list(dict.fromkeys(head + primary))[:k]
+        return RetrievalResult(query_id, ranked, meta=meta)
 
 
 def build_arm(name: str, ctx: Context):
     if name == "A4B":  # additive full system: hybrid ∪ PageIndex → KG → rerank
         hyb = HybridRetriever(ctx.corpus, ctx.bm25, ctx.embedder, ctx.reranker, name="A4B.hyb")
         pi = PageIndexRetriever(ctx.corpus, ctx.navigator, ctx.config["tree_path"], name="A4B.pi")
+        cfg = ctx.config
+        # task C: enable fact-guided traversal when configured AND a fact_extractor is wired
+        fx = ctx.fact_extractor if cfg.get("fact_guided") else None
         return FullSystem(hyb, pi, ctx.expander, ctx.reranker, ctx.corpus, "A4B",
-                          kg_reserve=ctx.config.get("kg_reserve", 1))
+                          kg_reserve=cfg.get("kg_reserve", 1),
+                          fact_extractor=fx, chapter_sections=ctx.chapter_sections,
+                          use_fact_filter=cfg.get("use_fact_filter", True),
+                          random_slot=cfg.get("random_slot", False))
     if name == "A5":  # additive hybrid+pi, NO KG: hybrid ∪ PageIndex → rerank
         hyb = HybridRetriever(ctx.corpus, ctx.bm25, ctx.embedder, ctx.reranker, name="A5.hyb")
         pi = PageIndexRetriever(ctx.corpus, ctx.navigator, ctx.config["tree_path"], name="A5.pi")

@@ -193,6 +193,28 @@ def draft_json(system: str, user: str, max_tokens: int = 2000) -> dict:
                        {"role": "user", "content": user}], max_tokens, DRAFT_MODEL)[0]
 
 
+class DeepInfraFactExtractor:
+    """Task C: ONE Qwen call maps a question's facts to the general-part chapters F(q)
+    (ภาค 1 ลักษณะ 1, หมวด 4–8). Same model as the generator/navigator (design §4c, no confound).
+    Returns (categories, meta) where meta logs llm_calls/tokens/latency per query."""
+
+    def extract(self, question: str):
+        import time
+        from caselaw.facts import FACT_SYSTEM, build_fact_user_prompt, parse_fact_categories
+        t0 = time.time()
+        try:  # /no_think: Qwen emits the JSON, not a reasoning block
+            data, tokens = _chat_json(
+                [{"role": "system", "content": FACT_SYSTEM + " /no_think"},
+                 {"role": "user", "content": build_fact_user_prompt(question)}],
+                400, GEN_MODEL)
+            cats = parse_fact_categories(data)
+            return cats, {"fact_llm_calls": 1, "fact_tokens": tokens,
+                          "fact_latency": round(time.time() - t0, 3), "fact_categories": cats}
+        except Exception as e:
+            return [], {"fact_llm_calls": 1, "fact_tokens": 0,
+                        "fact_latency": round(time.time() - t0, 3), "fact_error": str(e)[:80]}
+
+
 class DeepInfraReranker:
     """Reranker backend: bge-reranker-v2-m3 via the DeepInfra inference endpoint.
     VERIFY the request/response shape against current DeepInfra docs for this model —

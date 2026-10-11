@@ -39,17 +39,27 @@ def build_context(cfg) -> A.Context:
     corpus = Corpus.load(cfg["sections_path"])
     bm25 = BM25(corpus, tokenizer=cfg.get("tokenizer", "char_ngram"))
     expander = KGExpander(cfg.get("cites_edges_path"), cfg.get("applies_to_edges_path"),
-                          cfg.get("verified_applies_to_only", False))
+                          cfg.get("verified_applies_to_only", False),
+                          weighted_applies_path=cfg.get("weighted_applies_to_path"),
+                          tau=cfg.get("kg_tau", 0.0),
+                          rule_based=cfg.get("kg_rule_based", False))
     bk = cfg.get("backends", {})
     # navigator defaults to the no-LLM heuristic descent so A3 runs today; override
     # backends.navigator with an LLMNodeSelector-based navigator for the real arm.
     navigator = _load_backend(bk.get("navigator")) or PageIndexNavigator(HeuristicNodeSelector())
+    fact_extractor = chapter_sections = None
+    if cfg.get("fact_guided"):   # task C: load the fact extractor + corpus chapter map
+        from caselaw.facts import load_chapter_sections
+        fact_extractor = _load_backend(bk.get("fact_extractor"))
+        chapter_sections = load_chapter_sections(cfg["sections_path"])
     return A.Context(
         corpus=corpus, bm25=bm25, expander=expander,
         embedder=_load_backend(bk.get("embedder")) or B.default_embedder(),
         reranker=_load_backend(bk.get("reranker")) or B.default_reranker(),
         navigator=navigator,
         config=cfg,
+        fact_extractor=fact_extractor,
+        chapter_sections=chapter_sections,
     )
 
 
