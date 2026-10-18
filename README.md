@@ -1,18 +1,23 @@
 # PIKG-RAG — Thai Criminal-Law Question Answering
 
-Code and data for **"PIKG-RAG: Augmenting Hybrid Retrieval with Hierarchical and Graph
-Structure for Thai Criminal Law Question Answering."** Corpus: the Thai Penal Code
-(**ประมวลกฎหมายอาญา**) only. The system combines three ingredients over one shared corpus —
-a dense+sparse **hybrid** retriever, **PageIndex** hierarchy navigation, and a rule-derived
-**provision graph** — and measures each one's contribution against the same evaluation set.
+Code and data for **"PIKG-RAG: Augmented Hybrid Retrieval System of Thai Criminal Law"**
+(iSAI-NLP 2026). Corpus: the Thai Penal Code (**ประมวลกฎหมายอาญา**) only. The system combines
+three ingredients over one shared corpus — a dense+sparse **hybrid** retriever, **PageIndex**
+hierarchy navigation, and a rule-derived **provision graph** — and measures each one's
+contribution against the same evaluation set.
 
 > This repository reproduces the results in the paper. For the exact paper state, check out the
-> release tag (see *Releases*). Development continues on other branches.
+> release tag `v1.0-isai-nlp2026`. Development continues on other branches.
 
 ## Arms (paper Table I ↔ code id)
 
-The design is **additive**: structure is added on top of hybrid, never replacing it. The full
-system **PIKG-RAG = HYBRID ∪ PageIndex → reserved-slot KG → rerank**.
+The full system is **additive**: structure is added on top of hybrid, not in place of it.
+PIKG-RAG joins the HYBRID and PageIndex pools, reranks them, keeps the top k−1 sections, and
+fills the last slot with the best new section found one graph step away (reserved slot).
+
+```
+PIKG-RAG = (HYBRID ∪ PageIndex) → rerank → top k−1 + reserved-slot KG section
+```
 
 | Paper name | code id | description |
 |------------|---------|-------------|
@@ -20,17 +25,17 @@ system **PIKG-RAG = HYBRID ∪ PageIndex → reserved-slot KG → rerank**.
 | BM25 | `R0` | lexical only |
 | DENSE | `R1` | dense (BGE-M3) only |
 | HYBRID | `A1` | dense+sparse fusion → rerank — **baseline** |
-| PI | `A3` | PageIndex tree navigation only |
-| HYBRID+PI | `A5` | hybrid ∪ PageIndex (additive) |
-| HYBRID+KG | `A2` | hybrid + one-hop provision-graph expansion |
-| PI+KG | `A4` | PageIndex + graph expansion |
-| **PIKG-RAG** | `A4B` | **hybrid ∪ PageIndex + reserved-slot KG** (full system) |
+| PI | `A3` | PageIndex tree navigation only (replacement setting) |
+| HYBRID+PI | `A5` | hybrid ∪ PageIndex → rerank |
+| HYBRID+KG | `A2` | hybrid + reserved-slot graph section |
+| **PIKG-RAG** | `A4B` | **hybrid ∪ PageIndex + reserved-slot graph section** (full system) |
 | ORACLE | `C1` | gold sections in context — ceiling |
 
-Older `B0–B3` CLI aliases still resolve (see `retrieval/arms.py:OLD_ALIASES`) but the paper and
-Table I use the names above. PageIndex is an **additive signal**, not a replacement base; the
-study is an additive ladder, not a 2×2, and significance uses paired bootstrap + McNemar/Holm +
-a bootstrap difference-in-differences (there is **no GLMM** in the paper).
+These are the nine conditions reported in the paper. The code also includes `A4` (PI+KG:
+PageIndex + graph expansion), which is **not reported in the paper**.
+
+Older `B0–B3` CLI aliases still resolve (see `retrieval/arms.py:OLD_ALIASES`), but the paper
+uses the names above.
 
 ## Models (all via DeepInfra, temperature 0)
 
@@ -49,16 +54,26 @@ Set `DEEPINFRA_API_KEY`. Override any model with the matching `DEEPINFRA_*_MODEL
 
 Pinned to PyThaiNLP thai-law `criminal-csv-v0.1` → `data/raw/criminal-datasets.csv`. Ingested
 into **444 section chunks** (one มาตรา each): **398 base sections (มาตรา 1–398) plus 46 inserted
-sections** rendered with a slash id, e.g. `269/1`, `277/2` (= มาตรา ๒๗๗ ทวิ). See the PyThaiNLP
-source for the corpus license before redistributing `data/raw/`.
+sections** rendered with a slash id, e.g. `269/1`, `277/2` (= มาตรา ๒๗๗ ทวิ). The release does
+not state the law's latest amendment date, so penalties refer to this copy.
 
 ## Knowledge graph
 
-`CITES` edges are text-derived. `APPLIES_TO` edges (Book-1 general provision → Book-2 offence)
-are **rule-materialized and currently unverified** — all 13,296 carry `verified=false`. The code
-exposes `--verified-only` / `verified_applies_to_only=True`, but with no lawyer pass done yet it
-selects an empty set; a legal-expert review of these edges is noted as a limitation / future work
-in the paper. Do **not** read the flag as "edges have been checked."
+- `CITES` (719 edges) are extracted from explicit cross-references in the text.
+- `APPLIES_TO` (13,296 edges) point from a Book-1 general rule to an offense (Book 2 or 3).
+  They are produced by scope rules — mainly `ALL_OFFENCES` (8,932), `by_penalty` (3,080) and
+  `book2` (1,104), plus two minor rules (180). 44 pairs are produced by more than one rule.
+
+All `APPLIES_TO` edges are **rule-materialized and currently unverified** — every edge carries
+`verified=false`. The code exposes `--verified-only` / `verified_applies_to_only=True`, but
+with no lawyer review done yet it selects an empty set. Do **not** read the flag as "edges
+have been checked."
+
+## Statistics
+
+The paper reports paired bootstrap 95% CIs, McNemar's exact test, and Holm–Bonferroni
+correction. `analysis/` also contains a bootstrap difference-in-differences, which is **not
+reported in the paper**. There is no GLMM.
 
 ## Pipeline
 
@@ -93,11 +108,11 @@ python eval/validate_eval.py eval/eval_set.generated.jsonl \
        --schema eval/schema.json --sections data/sections.jsonl
 
 # 4. retrieval → generation → judge (use paper names or code ids)
-python -m retrieval.run_eval    --arms all --eval eval/eval_set.generated.jsonl
+python -m retrieval.run_eval        --arms all --eval eval/eval_set.generated.jsonl
 python -m generation.run_generation --arms all --eval eval/eval_set.generated.jsonl
 python -m generation.run_judge      --arms all --eval eval/eval_set.generated.jsonl
 
-# 5. statistics: paired bootstrap CIs + McNemar/Holm + difference-in-differences
+# 5. statistics: paired bootstrap CIs + McNemar/Holm
 python -m analysis.run_analysis --metric correct --arms all
 ```
 
@@ -106,16 +121,23 @@ python -m analysis.run_analysis --metric correct --arms all
 ```
 ingest/      CSV → sections.jsonl + penal_tree.json
 kg/          CITES + APPLIES_TO graph construction
-retrieval/   arms (A1–A4B, R0/R1, C0/C1), BM25, PageIndex, KG expansion, metrics
+retrieval/   arms (A1–A5, R0/R1, C0/C1), BM25, PageIndex, KG expansion, metrics
 generation/  generator + LLM-judge harness (correctness, grounding, refusal)
-analysis/    bootstrap, McNemar/Holm, difference-in-differences, plots
+analysis/    bootstrap, McNemar/Holm, plots
 eval/        schema + validator + generator for the gold eval set
-data/         corpus, tree, graph edges
-runs/         result snapshots (per-arm rankings, answers, verdicts)
+data/        corpus, tree, graph edges
+runs/        result snapshots (per-arm rankings, answers, verdicts)
+```
+
+## Citation
+
+```
+W. Pilasuk and N. Hongwarittorn, "PIKG-RAG: Augmented Hybrid Retrieval System of Thai
+Criminal Law," in Proc. iSAI-NLP 2026.
 ```
 
 ## License
 
 Code is released under the **MIT License** (see `LICENSE`). The Thai Penal Code text under
-`data/raw/` is Thai statutory text (not a copyright work under Thai Copyright Act B.E. 2537 §7(1)),
-redistributed via PyThaiNLP `thai-law`; see `data/raw/SOURCE.txt` for attribution.
+`data/raw/` is Thai statutory text (not a copyright work under Thai Copyright Act B.E. 2537
+§7(1)), redistributed via PyThaiNLP `thai-law`; see `data/raw/SOURCE.txt` for attribution.
