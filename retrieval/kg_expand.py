@@ -5,7 +5,9 @@ Loads CITES edges (kg_edges.jsonl from build_kg.py) and APPLIES_TO edges
 ids from a base retriever, expands one hop along those relations to grow the
 candidate pool; the shared reranker then re-ranks seeds+expansion.
 
-verified_applies_to_only=True uses only lawyer-approved APPLIES_TO edges.
+verified_applies_to_only=True keeps only APPLIES_TO edges flagged verified=true. These edges are
+rule-materialized and currently UNVERIFIED (all verified=false), so this flag selects an empty set
+until a legal-expert review is done — a limitation noted in the paper, not a completed curation.
 """
 
 from __future__ import annotations
