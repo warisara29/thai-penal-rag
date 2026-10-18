@@ -1,0 +1,12 @@
+Corpus source & attribution
+============================
+File: criminal-datasets.csv
+Content: Thai Penal Code (ประมวลกฎหมายอาญา), one row per มาตรา.
+
+Source: PyThaiNLP thai-law dataset, pinned release `criminal-csv-v0.1`.
+  https://github.com/PyThaiNLP/thai-law  (and PyThaiNLP: https://pythainlp.org)
+
+Legal status: Thai statutory text is not subject to copyright under the Thai
+Copyright Act B.E. 2537, Section 7(1) (constitutions, legislation, and regulations
+are not copyright works). Redistribution of the statute text is therefore permitted.
+Please credit PyThaiNLP as the data source when reusing this file.

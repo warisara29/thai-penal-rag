@@ -113,3 +113,9 @@ eval/        schema + validator + generator for the gold eval set
 data/         corpus, tree, graph edges
 runs/         result snapshots (per-arm rankings, answers, verdicts)
 ```
+
+## License
+
+Code is released under the **MIT License** (see `LICENSE`). The Thai Penal Code text under
+`data/raw/` is Thai statutory text (not a copyright work under Thai Copyright Act B.E. 2537 §7(1)),
+redistributed via PyThaiNLP `thai-law`; see `data/raw/SOURCE.txt` for attribution.
